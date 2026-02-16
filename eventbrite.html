@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Nation - Event Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #B0E0E6 100%);
+            min-height: 100vh;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 20px 0;
+        }
+
+        .back-link {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-header {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .event-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 40px;
+        }
+
+        .event-category {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-details {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-list {
+            list-style: none;
+        }
+
+        .details-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .details-list strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 2rem;
+            }
+
+            .event-content {
+                padding: 30px 20px;
+            }
+
+            .event-details {
+                padding: 30px 20px;
+            }
+
+            .event-hero-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="connection-event-hotline.html" class="nav-logo">Event Collective</a>
+            <a href="connection-event-hotline.html" class="back-link">← Back to Events</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="event-header">
+            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=600&fit=crop" alt="Live Nation" class="event-hero-image">
+            <div class="event-content">
+                <div class="event-category">Experiences</div>
+                <h1 class="event-title">Eventbrite</h1>
+                <p class="event-description">
+                    Eventbrite is the world's largest event technology platform, connecting millions of people to local activities, workshops, classes, and community events. Discover unique experiences happening in your neighborhood and beyond.
+                </p>
+                <a href="https://your-affiliate-link-here.com" class="cta-button">Explore Now →</a>
+            </div>
+        </div>
+
+        <div class="event-details">
+            <h2 class="details-title">What You'll Find</h2>
+            <ul class="details-list">
+                <li><strong>Local Events:</strong> Discover workshops, classes, meetups, and activities near you</li>
+                <li><strong>Diverse Categories:</strong> Food & drink, fitness, business, arts, education, and more</li>
+                <li><strong>Free & Paid Events:</strong> Find both free community events and premium experiences</li>
+                <li><strong>Networking:</strong> Professional conferences, startup events, and industry meetups</li>
+                <li><strong>Virtual Events:</strong> Join online classes and webinars from anywhere</li>
+                <li><strong>Follow Organizers:</strong> Get updates from your favorite event creators</li>
+                <li><strong>Mobile App:</strong> Browse, book, and check-in to events on the go</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
