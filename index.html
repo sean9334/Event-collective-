@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Collective</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Experience Connection - Cyberlink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.cdnfonts.com/css/circular-std');
         * {
             margin: 0;
             padding: 0;
@@ -14,952 +13,786 @@
         }
 
         :root {
-            --neon-cyan: #00ffff;
-            --neon-magenta: #ff00ff;
-            --neon-lime: #39ff14;
-            --black: #000000;
+            --chrome-pink: #ff3d9a;
+            --chrome-purple: #9d4edd;
+            --chrome-blue: #00b4d8;
+            --chrome-cyan: #4af2ff;
+            --chrome-yellow: #ffea00;
+            --light-gray: #f0f4f8;
             --white: #ffffff;
-            --gray-dark: #1a1a1a;
-            --gray-light: #333333;
         }
 
         body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--black);
-            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            color: #2b2d42;
             overflow-x: hidden;
             position: relative;
-            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
         }
 
-        /* Animated gradient background */
-        body::before {
-            content: '';
+        /* Video Background - MUST BE VISIBLE */
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(180deg, 
-                    #87CEEB 0%, 
-                    #E0F6FF 50%, 
-                    #B0E0E6 100%
-                );
             z-index: 0;
-            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* Glass overlay effect */
-        body::after {
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Light overlay to help text readability but keep video visible */
+        .video-background::after {
             content: '';
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
-            backdrop-filter: blur(100px);
+            background: rgba(255, 255, 255, 0.4);
             pointer-events: none;
-            z-index: 0;
-            animation: glassShift 20s ease-in-out infinite;
-        }
-
-        @keyframes glassShift {
-            0%, 100% { 
-                opacity: 0.8;
-            }
-            50% { 
-                opacity: 1;
-            }
         }
 
         .container {
-            max-width: 1400px;
+            position: relative;
+            z-index: 10;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
+            padding: 0 50px;
         }
 
-        /* Navigation Bar */
-        nav {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
-            padding: 20px 0;
-        }
-
-        .nav-logo-hotline {
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 1rem;
-            text-transform: uppercase;
-            color: #0066ff;
-            text-shadow: 
-                0 0 8px rgba(0, 217, 255, 1),
-                0 0 15px rgba(0, 217, 255, 0.7);
-            margin-left: 8px;
-            letter-spacing: 0.08em;
-            animation: colorCycle 8s ease-in-out infinite;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin: 0;
-        }
-
-        .nav-links a {
-            display: block;
-            padding: 20px 30px;
-            color: rgba(0, 0, 0, 0.7);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            text-transform: capitalize;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-links a:hover::after {
-            width: 60%;
-        }
-
-        .nav-links a.active {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .nav-links a.active::after {
-            width: 60%;
-        }
-
-        /* Dropdown menu */
-        .nav-links li {
-            position: relative;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 10px 10px;
-            z-index: 1000;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            color: rgba(0, 0, 0, 0.7);
-            padding: 15px 20px;
-            text-decoration: none;
-            display: block;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--white);
-        }
-
-        .dropdown > a::after {
-            content: ' ▾';
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
-
-        /* Mobile menu toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 20px 0;
-                gap: 0;
-                display: none;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 15px 30px;
-            }
-
-            .dropdown-content {
-                position: static;
-                display: none;
-                background: rgba(255, 255, 255, 0.85);
-                box-shadow: none;
-                border-radius: 0;
-            }
-
-            .dropdown.active .dropdown-content {
-                display: block;
-            }
-
-            .dropdown > a {
-                cursor: pointer;
-            }
-        }
-
-        /* Header */
-        header {
-            padding: 80px 0 40px;
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 20px;
             text-align: center;
             position: relative;
-            animation: fadeInDown 1s ease;
+            z-index: 10;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 61, 154, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            animation: heroFloat 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-30px); }
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0;
         }
 
         .logo {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 600;
-            text-transform: none;
-            letter-spacing: 0.02em;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-hotline {
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(1.6rem, 4vw, 2.8rem);
-            font-weight: 900;
-            font-style: normal;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.8rem;
+            font-style: italic;
             text-transform: uppercase;
-            color: #0066ff;
-            text-shadow: 
-                0 0 10px rgba(0, 217, 255, 1),
-                0 0 20px rgba(0, 217, 255, 0.8),
-                0 0 30px rgba(0, 217, 255, 0.6),
-                0 0 40px rgba(0, 217, 255, 0.4);
-            letter-spacing: 0.08em;
-            margin-left: 15px;
-            animation: colorCycle 8s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple), var(--chrome-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            letter-spacing: -2px;
+            filter: 
+                brightness(1.3)
+                drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) 
+                drop-shadow(0 0 50px rgba(255, 255, 255, 0.6));
+            animation: chromePulse 3s ease-in-out infinite;
+            line-height: 1.1;
+            margin-bottom: 5px;
         }
 
-        @keyframes colorCycle {
-            0%, 100% {
-                color: #0066ff; /* Standard blue */
-                text-shadow: 
-                    0 0 10px rgba(0, 217, 255, 1),
-                    0 0 20px rgba(0, 217, 255, 0.8),
-                    0 0 30px rgba(0, 217, 255, 0.6),
-                    0 0 40px rgba(0, 217, 255, 0.4);
+        @keyframes chromePulse {
+            0%, 100% { 
+                filter: 
+                    brightness(1.3)
+                    drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) 
+                    drop-shadow(0 0 50px rgba(255, 255, 255, 0.6));
             }
-            25% {
-                color: #ff0080; /* Pink */
-                text-shadow: 
-                    0 0 10px rgba(255, 102, 204, 1),
-                    0 0 20px rgba(255, 102, 204, 0.8),
-                    0 0 30px rgba(255, 102, 204, 0.6),
-                    0 0 40px rgba(255, 102, 204, 0.4);
-            }
-            50% {
-                color: #ff0000; /* Red */
-                text-shadow: 
-                    0 0 10px rgba(255, 102, 102, 1),
-                    0 0 20px rgba(255, 102, 102, 0.8),
-                    0 0 30px rgba(255, 102, 102, 0.6),
-                    0 0 40px rgba(255, 102, 102, 0.4);
-            }
-            75% {
-                color: #ff6600; /* Orange */
-                text-shadow: 
-                    0 0 10px rgba(255, 153, 102, 1),
-                    0 0 20px rgba(255, 153, 102, 0.8),
-                    0 0 30px rgba(255, 153, 102, 0.6),
-                    0 0 40px rgba(255, 153, 102, 0.4);
+            50% { 
+                filter: 
+                    brightness(1.4)
+                    drop-shadow(0 0 40px rgba(255, 255, 255, 1)) 
+                    drop-shadow(0 0 60px rgba(255, 255, 255, 0.8));
             }
         }
 
         .tagline {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: rgba(0, 0, 0, 0.7);
-            letter-spacing: 0.2em;
+            font-family: 'Courier New', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-transform: lowercase;
+            position: relative;
+            margin-top: 0;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorGlow 3s linear infinite;
+        }
+
+        .tagline::first-letter {
             text-transform: uppercase;
-            font-weight: 400;
-            margin-bottom: 10px;
-            opacity: 1;
+        }
+
+        @keyframes colorGlow {
+            0% { 
+                background-position: 0% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+            }
+            100% { 
+                background-position: 0% 50%;
+            }
         }
 
         .subtitle {
-            font-size: clamp(0.85rem, 1.5vw, 1rem);
-            color: rgba(0, 0, 0, 0.6);
-            opacity: 1;
+            font-size: 1rem;
+            color: #2b2d42;
+            font-weight: 400;
+            line-height: 1.6;
             max-width: 600px;
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
         }
 
-        .category-links {
+        .subtitle-small {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 300;
+        }
+
+        /* Navigation Pills */
+        nav {
             display: flex;
-            gap: 20px;
             justify-content: center;
+            gap: 20px;
+            margin: 20px 0 50px;
             flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .category-links a {
-            color: rgba(0, 0, 0, 0.7);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 8px 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .category-links a:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.9);
-        }
-
-        /* Main content */
-        main {
-            padding: 40px 0 80px;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 600;
-            text-transform: none;
-            letter-spacing: 0.02em;
-            margin-bottom: 40px;
-            text-align: center;
-            color: var(--white);
             position: relative;
-            padding-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            z-index: 10;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--neon-magenta), transparent);
-        }
-
-        /* Event Grid */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        .event-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .event-card {
-            background: rgba(255, 255, 255, 0.25);
+        .nav-pill {
+            padding: 16px 35px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            padding: 0;
+            color: var(--chrome-purple);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(157, 78, 221, 0.25);
+            transition: all 0.3s;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
             overflow: hidden;
-            animation: fadeInUp 0.6s ease backwards;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        .event-card-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .event-card-content {
-            padding: 25px 20px;
-        }
-
-        .event-card:nth-child(1) { animation-delay: 0.1s; }
-        .event-card:nth-child(2) { animation-delay: 0.15s; }
-        .event-card:nth-child(3) { animation-delay: 0.2s; }
-        .event-card:nth-child(4) { animation-delay: 0.25s; }
-        .event-card:nth-child(5) { animation-delay: 0.3s; }
-        .event-card:nth-child(6) { animation-delay: 0.35s; }
-        .event-card:nth-child(7) { animation-delay: 0.4s; }
-        .event-card:nth-child(8) { animation-delay: 0.45s; }
-        .event-card:nth-child(9) { animation-delay: 0.5s; }
-        .event-card:nth-child(10) { animation-delay: 0.55s; }
-        .event-card:nth-child(11) { animation-delay: 0.6s; }
-        .event-card:nth-child(12) { animation-delay: 0.65s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .event-card::before {
+        .nav-pill::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, var(--chrome-pink), var(--chrome-purple));
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .nav-pill:hover::before {
+            left: 0;
+        }
+
+        .nav-pill:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 61, 154, 0.4);
+        }
+
+        /* Section Title */
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #4a4a6a;
+            font-weight: 300;
+        }
+
+        /* Events Showcase */
+        .events-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 50px;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 61, 154, 0.1), rgba(0, 180, 216, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: 35px;
         }
 
         .event-card:hover::before {
-            left: 100%;
+            opacity: 1;
         }
 
         .event-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.5);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(255, 61, 154, 0.3);
         }
 
-        .event-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+        .event-hero {
+            height: 280px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple), var(--chrome-blue));
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .event-category {
-            font-size: 0.7rem;
+        .event-hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.05) 10px,
+                    rgba(255, 255, 255, 0.05) 20px
+                );
+            animation: stripeMove 20s linear infinite;
+        }
+
+        @keyframes stripeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(28px); }
+        }
+
+        .event-title-display {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: white;
+            text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+
+        .event-body {
+            padding: 40px;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: linear-gradient(135deg, rgba(255, 61, 154, 0.1), rgba(157, 78, 221, 0.1));
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(0, 0, 0, 0.5);
-            margin-bottom: 8px;
-            opacity: 1;
+            color: var(--chrome-purple);
+        }
+
+        .meta-icon {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            border-radius: 50%;
         }
 
         .event-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: rgba(0, 0, 0, 0.9);
-            line-height: 1.3;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--chrome-purple);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
 
         .event-description {
-            font-size: 0.9rem;
-            color: rgba(0, 0, 0, 0.7);
-            opacity: 1;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #6c757d;
+            margin-bottom: 30px;
         }
 
-        .event-link {
-            display: inline-block;
-            padding: 12px 28px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.8);
+        .event-features {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 61, 154, 0.3);
+        }
+
+        .event-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 61, 154, 0.4);
+        }
+
+        .event-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 61, 154, 0.6);
+        }
+
+        .event-cta::after {
+            content: '→';
+            font-size: 1.4rem;
+            transition: transform 0.3s;
+        }
+
+        .event-cta:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Call to Action Banner */
+        .construction-banner {
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple), var(--chrome-blue));
+            border-radius: 40px;
+            padding: 80px 60px;
+            text-align: center;
+            margin: 100px 0;
             position: relative;
             overflow: hidden;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 20px 60px rgba(255, 61, 154, 0.3);
+            z-index: 10;
         }
 
-        .event-link:hover {
-            color: rgba(0, 0, 0, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            background: rgba(255, 255, 255, 1);
+        .construction-banner::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .construction-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .construction-banner h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .construction-banner p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .email-signup {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.1rem;
+            outline: none;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            background: white;
+            color: #2b2d42;
+        }
+
+        .email-input::placeholder {
+            color: #999;
+        }
+
+        .email-button {
+            padding: 20px 45px;
+            background: white;
+            color: var(--chrome-purple);
+            border: none;
+            border-radius: 35px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .email-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px 40px 0 0;
+            padding: 70px 60px;
+            margin-top: 80px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.8rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .footer-description {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 61, 154, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 61, 154, 0.5);
+        }
+
+        .footer-section h4 {
+            font-weight: 700;
+            color: var(--chrome-purple);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #6c757d;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--chrome-pink);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            margin-top: 60px;
+            color: #6c757d;
+            font-size: 0.95rem;
         }
 
-        footer p {
-            color: rgba(0, 0, 0, 0.5);
-            opacity: 1;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
-            .events-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .events-showcase { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .events-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            header {
-                padding: 60px 0 30px;
-            }
-
-            .event-card {
-                padding: 25px 20px;
-            }
-
-            .event-card-content {
-                padding: 20px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            header {
-                padding: 50px 0 30px;
-            }
-        }
-
-        /* Cursor effect */
-        @media (hover: hover) {
-            body {
-                cursor: crosshair;
-            }
-
-            .event-link, .event-card {
-                cursor: pointer;
-            }
-        }
-
-        /* CRT flicker on load */
-        @keyframes crtFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.95; }
-        }
-
-        body {
-            animation: crtFlicker 0.1s ease-in-out 3;
+            .logo { font-size: 3rem; }
+            .tagline { font-size: 1.2rem; letter-spacing: 4px; }
+            nav { flex-direction: column; padding: 0 20px; }
+            .container { padding: 0 25px; }
+            .construction-banner, footer { padding: 50px 30px; border-radius: 25px; }
+            .construction-banner h2 { font-size: 2.5rem; }
+            .construction-icon { font-size: 3.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .event-title-display { font-size: 2.5rem; }
+            .email-signup { flex-direction: column; }
+            .email-input, .email-button { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="nav-logo">Event Collective<span class="nav-logo-hotline">hotline</span></a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#all" class="active">All Events</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#sports">Sports</a></li>
-                <li><a href="#theatre">Theatre</a></li>
-                <li><a href="#experiences">Experiences</a></li>
-                <li class="dropdown">
-                    <a href="#magic">Magic</a>
-                    <div class="dropdown-content">
-                        <a href="hypnotic.html">Hypnotic</a>
-                        <a href="motivation.html">Motivation</a>
-                        <a href="#subpage3">Sub Page 3</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <div class="container">
-        <header>
-            <h1 class="logo">Event Collective <span class="logo-hotline">hotline</span></h1>
-            <p class="tagline">Your Gateway to Live Experiences</p>
-            <p class="subtitle">Discover concerts, sports, theater & local events</p>
-            <div class="category-links">
-                <a href="#music">Music</a>
-                <a href="#sports">Sports</a>
-                <a href="#theatre">Theatre</a>
-                <a href="#experiences">Experiences</a>
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="logo-container">
+                <h1 class="logo">EXPERIENCE CONNECTION</h1>
+                <p class="tagline">cyberlink</p>
+                <p class="subtitle">Your portal to true connection through live events</p>
+                <p class="subtitle-small">Discover concerts, sports, theatre, classes and social events</p>
             </div>
-        </header>
+        </div>
+
+        <nav>
+            <a href="#events" class="nav-pill">Events</a>
+            <a href="#signup" class="nav-pill">Sign Up</a>
+            <a href="magic.html" class="nav-pill">Magic</a>
+            <a href="#contact" class="nav-pill">Contact</a>
+        </nav>
 
         <main>
-            <h2 class="section-title">Featured Events</h2>
-            
-            <div class="events-grid">
-                <!-- Concerts -->
-                <a href="live-nation.html" class="event-card-link">
-                    <div class="event-card" data-category="concerts">
-                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&h=400&fit=crop" alt="Live Nation" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Concerts</div>
-                            <h3 class="event-title">Live Nation</h3>
-                            <p class="event-description">Major concert tours, festivals, and arena shows worldwide</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
-                    </div>
-                </a>
+            <div class="construction-banner" id="signup">
+                <div class="construction-icon">🏗️</div>
+                <h2>Site Under Construction</h2>
+                <p>Email sign up for exciting things to come...</p>
+                
+                <form class="email-signup" action="https://formsubmit.co/seanonline9334@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Cyberlink Newsletter Signup!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="thankyou.html">
+                    <input type="email" name="email" placeholder="Enter your email" required class="email-input">
+                    <button type="submit" class="email-button">Notify Me</button>
+                </form>
+            </div>
 
-                <a href="ticketmaster.html" class="event-card-link">
-                    <div class="event-card" data-category="concerts">
-                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=400&fit=crop" alt="Ticketmaster" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Concerts</div>
-                            <h3 class="event-title">Ticketmaster</h3>
-                            <p class="event-description">Premier ticketing for music events and concerts</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
-                    </div>
-                </a>
+            <div class="section-header">
+                <h2 class="section-title">COMING SOON</h2>
+                <p class="section-subtitle" style="font-size: 1.3rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #2b2d42;">
+                    Events that connect people socially. Say goodbye to screens, we're connecting people once again, in new exciting ways. We're thinking outside the computer box.
+                </p>
+            </div>
 
-                <a href="stubhub.html" class="event-card-link">
-                    <div class="event-card" data-category="concerts">
-                        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&h=400&fit=crop" alt="StubHub Music" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Concerts</div>
-                            <h3 class="event-title">StubHub Music</h3>
-                            <p class="event-description">Buy and sell tickets to the hottest music events</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
+            <div class="events-showcase" id="events">
+                <div class="event-card">
+                    <div class="event-hero">
+                        <div class="event-title-display">NEON</div>
                     </div>
-                </a>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-badge">
+                                <div class="meta-icon"></div>
+                                Coming Soon
+                            </div>
+                        </div>
+                        <h3 class="event-title">Neon Paradise</h3>
+                        <p class="event-description">
+                            Dive into a luminous world where electronic music meets cutting-edge visuals. Experience live performances, interactive installations, and an atmosphere that pushes the boundaries of nightlife.
+                        </p>
+                        <div class="event-features">
+                            <span class="feature-tag">Live DJs</span>
+                            <span class="feature-tag">Visual Art</span>
+                            <span class="feature-tag">Interactive</span>
+                        </div>
+                        <a href="#signup" class="event-cta">Stay Updated</a>
+                    </div>
+                </div>
 
-                <!-- Sports -->
-                <a href="seatgeek.html" class="event-card-link">
-                    <div class="event-card" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&h=400&fit=crop" alt="SeatGeek Sports" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Sports</div>
-                            <h3 class="event-title">SeatGeek Sports</h3>
-                            <p class="event-description">NFL, NBA, MLB, NHL and college sports tickets</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
+                <div class="event-card">
+                    <div class="event-hero">
+                        <div class="event-title-display">CYBER</div>
                     </div>
-                </a>
-
-                <a href="vividseats.html" class="event-card-link">
-                    <div class="event-card" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=400&fit=crop" alt="Vivid Seats Sports" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Sports</div>
-                            <h3 class="event-title">Vivid Seats Sports</h3>
-                            <p class="event-description">Premium seating for major sporting events</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-badge">
+                                <div class="meta-icon"></div>
+                                Coming Soon
+                            </div>
                         </div>
-                    </div>
-                </a>
-
-                <a href="tickpick.html" class="event-card-link">
-                    <div class="event-card" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=400&fit=crop" alt="TickPick Sports" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Sports</div>
-                            <h3 class="event-title">TickPick Sports</h3>
-                            <p class="event-description">No-fee tickets to your favorite teams</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
+                        <h3 class="event-title">Cyber Dreams</h3>
+                        <p class="event-description">
+                            Enter a digital wonderland where reality and technology blur. Holographic displays, VR zones, and futuristic soundscapes create an unforgettable journey into tomorrow.
+                        </p>
+                        <div class="event-features">
+                            <span class="feature-tag">Holographics</span>
+                            <span class="feature-tag">VR Experience</span>
+                            <span class="feature-tag">Tech Art</span>
                         </div>
+                        <a href="#signup" class="event-cta">Stay Updated</a>
                     </div>
-                </a>
-
-                <!-- Theater -->
-                <a href="broadway.html" class="event-card-link">
-                    <div class="event-card" data-category="theater">
-                        <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&h=400&fit=crop" alt="Broadway.com" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Theater</div>
-                            <h3 class="event-title">Broadway.com</h3>
-                            <p class="event-description">Broadway shows, musicals, and theater experiences</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="todaytix.html" class="event-card-link">
-                    <div class="event-card" data-category="theater">
-                        <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&h=400&fit=crop" alt="TodayTix" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Theater</div>
-                            <h3 class="event-title">TodayTix</h3>
-                            <p class="event-description">Last-minute theater tickets at great prices</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="telecharge.html" class="event-card-link">
-                    <div class="event-card" data-category="theater">
-                        <img src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=800&h=400&fit=crop" alt="Telecharge" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Theater</div>
-                            <h3 class="event-title">Telecharge</h3>
-                            <p class="event-description">Off-Broadway and regional theater productions</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Get Tickets →</button>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Local Experiences -->
-                <a href="eventbrite.html" class="event-card-link">
-                    <div class="event-card" data-category="experiences">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=400&fit=crop" alt="Eventbrite" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Experiences</div>
-                            <h3 class="event-title">Eventbrite</h3>
-                            <p class="event-description">Local activities, workshops, and community events</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Explore →</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="fever.html" class="event-card-link">
-                    <div class="event-card" data-category="experiences">
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=400&fit=crop" alt="Fever" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Experiences</div>
-                            <h3 class="event-title">Fever</h3>
-                            <p class="event-description">Unique local experiences and immersive events</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Explore →</button>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="viator.html" class="event-card-link">
-                    <div class="event-card" data-category="experiences">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=400&fit=crop" alt="Viator" class="event-card-image">
-                        <div class="event-card-content">
-                            <div class="event-category">Experiences</div>
-                            <h3 class="event-title">Viator</h3>
-                            <p class="event-description">Tours, attractions, and things to do near you</p>
-                            <button class="event-link" onclick="event.stopPropagation(); event.preventDefault();">Explore →</button>
-                        </div>
-                    </div>
-                </a>
+                </div>
             </div>
         </main>
 
         <footer>
-            <p>&copy; 2026 Event Collective. All rights reserved.</p>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">CYBERLINK</div>
+                    <p class="footer-description">
+                        Creating the future of live experiences through innovation, creativity, and community. Join us on a journey beyond the ordinary.
+                    </p>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn">📷</a>
+                        <a href="#" class="social-btn">🎵</a>
+                        <a href="#" class="social-btn">💬</a>
+                        <a href="#" class="social-btn">🎮</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Events</h4>
+                    <a href="#">All Events</a>
+                    <a href="#">This Month</a>
+                    <a href="#">Next Month</a>
+                    <a href="#">Past Events</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#">Partners</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Tickets</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Cyberlink. All rights reserved.
+            </div>
         </footer>
     </div>
-
-    <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.dropdown > a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const dropdown = this.parentElement;
-                    dropdown.classList.toggle('active');
-                });
-            });
-        }
-
-        // Handle both nav links and category links
-        function handleCategoryFilter(category) {
-            // Update active state in nav
-            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-            const navLink = document.querySelector(`.nav-links a[href="#${category}"]`);
-            if (navLink) navLink.classList.add('active');
-            
-            // Filter cards
-            const cards = document.querySelectorAll('.event-card-link');
-            cards.forEach(link => {
-                const card = link.querySelector('.event-card');
-                if (category === 'all') {
-                    link.style.display = 'block';
-                } else if (category === 'music' && card.dataset.category === 'concerts') {
-                    link.style.display = 'block';
-                } else if (category === 'theatre' && card.dataset.category === 'theater') {
-                    link.style.display = 'block';
-                } else if (card.dataset.category === category) {
-                    link.style.display = 'block';
-                } else {
-                    link.style.display = 'none';
-                }
-            });
-            
-            // Close mobile menu
-            if (window.innerWidth <= 768) {
-                document.getElementById('navLinks').classList.remove('active');
-            }
-        }
-
-        // Navigation filtering
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                // Only prevent default for hash links (filters), allow normal navigation for page links
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    const category = href.replace('#', '');
-                    handleCategoryFilter(category);
-                }
-                // If href doesn't start with #, let it navigate normally
-            });
-        });
-
-        // Category links filtering
-        document.querySelectorAll('.category-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const category = this.getAttribute('href').replace('#', '');
-                handleCategoryFilter(category);
-            });
-        });
-
-        // Add click tracking for affiliate buttons
-        document.querySelectorAll('.event-link').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // This will be where you add your affiliate link redirect
-                const card = this.closest('.event-card');
-                const title = card.querySelector('.event-title').textContent;
-                console.log('Affiliate button clicked:', title);
-                // TODO: Replace with actual affiliate redirect
-                // window.location.href = 'your-affiliate-link-here';
-            });
-        });
-
-        // Glitch effect on logo
-        const logo = document.querySelector('.logo');
-        if (logo) {
-            setInterval(() => {
-                if (Math.random() > 0.95) {
-                    logo.style.textShadow = '2px 0 rgba(0, 0, 0, 0.3), -2px 0 rgba(255, 255, 255, 0.3)';
-                    setTimeout(() => {
-                        logo.style.textShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                    }, 50);
-                }
-            }, 2000);
-        }
-    </script>
 </body>
 </html>

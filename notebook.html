@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomber's Notebook - Cyberlink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%);
+            color: #2b2d42;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            border-radius: 50px;
+            color: #9d4edd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #9d4edd;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+
+        .page-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, #ff4db0, #c060ff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .notebook {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .note-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+
+        .note-input:focus {
+            outline: none;
+            border-color: #9d4edd;
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .add-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+        }
+
+        .notes-list {
+            list-style: none;
+        }
+
+        .note-item {
+            background: linear-gradient(135deg, rgba(255, 77, 176, 0.05), rgba(0, 212, 255, 0.05));
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #9d4edd;
+            transition: all 0.3s;
+        }
+
+        .note-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.2);
+        }
+
+        .note-text {
+            flex: 1;
+            font-size: 1.05rem;
+            color: #2b2d42;
+        }
+
+        .delete-button {
+            background: #ff4db0;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .delete-button:hover {
+            background: #ff006e;
+            transform: scale(1.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .notebook { padding: 25px; }
+            .note-item { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .delete-button { align-self: flex-end; }
+        }
+    </style>
+</head>
+<body>
+    <a href="magic.html" class="back-button">← Back to Magic</a>
+
+    <div class="container">
+        <h1 class="page-title">Bomber's Notebook</h1>
+        <p class="subtitle">Keep track of your thoughts and ideas</p>
+
+        <div class="notebook">
+            <input type="text" id="noteInput" class="note-input" placeholder="Write something down..." />
+            <button onclick="addNote()" class="add-button">Add Note</button>
+
+            <ul id="notesList" class="notes-list">
+                <div class="empty-state">
+                    <div class="empty-icon">📓</div>
+                    <p>Your notebook is empty. Start writing!</p>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Load notes from localStorage
+        let notes = JSON.parse(localStorage.getItem('bomberNotes')) || [];
+
+        function renderNotes() {
+            const notesList = document.getElementById('notesList');
+            
+            if (notes.length === 0) {
+                notesList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📓</div>
+                        <p>Your notebook is empty. Start writing!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            notesList.innerHTML = notes.map((note, index) => `
+                <li class="note-item">
+                    <span class="note-text">${note}</span>
+                    <button onclick="deleteNote(${index})" class="delete-button">Delete</button>
+                </li>
+            `).join('');
+        }
+
+        function addNote() {
+            const input = document.getElementById('noteInput');
+            const noteText = input.value.trim();
+
+            if (noteText) {
+                notes.push(noteText);
+                localStorage.setItem('bomberNotes', JSON.stringify(notes));
+                input.value = '';
+                renderNotes();
+            }
+        }
+
+        function deleteNote(index) {
+            notes.splice(index, 1);
+            localStorage.setItem('bomberNotes', JSON.stringify(notes));
+            renderNotes();
+        }
+
+        // Allow Enter key to add note
+        document.getElementById('noteInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addNote();
+            }
+        });
+
+        // Initial render
+        renderNotes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic - Cyberlink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --chrome-pink: #ff3d9a;
+            --chrome-purple: #9d4edd;
+            --chrome-blue: #00b4d8;
+            --chrome-cyan: #4af2ff;
+            --chrome-yellow: #ffea00;
+            --light-gray: #f0f4f8;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #2b2d42;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.8rem;
+            font-style: italic;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple), var(--chrome-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            letter-spacing: -2px;
+            filter: 
+                brightness(1.3)
+                drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) 
+                drop-shadow(0 0 50px rgba(255, 255, 255, 0.6));
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-transform: lowercase;
+            margin-top: 0;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorGlow 3s linear infinite;
+        }
+
+        .tagline::first-letter {
+            text-transform: uppercase;
+        }
+
+        @keyframes colorGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-pill {
+            padding: 16px 35px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--chrome-purple);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(157, 78, 221, 0.25);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--chrome-pink), var(--chrome-purple));
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .nav-pill:hover::before {
+            left: 0;
+        }
+
+        .nav-pill:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 61, 154, 0.4);
+        }
+
+        .nav-pill.active {
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            color: white;
+        }
+
+        /* Content Section */
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 80px 60px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            text-align: center;
+        }
+
+        .magic-intro {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #2b2d42;
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .magic-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .experience-button {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s;
+            border: 3px solid transparent;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-button:hover {
+            transform: translateY(-10px);
+            border-color: var(--chrome-pink);
+            box-shadow: 0 20px 60px rgba(255, 61, 154, 0.3);
+        }
+
+        .button-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .experience-button h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .experience-button p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px 40px 0 0;
+            padding: 70px 60px;
+            margin-top: 80px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.8rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .footer-description {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 61, 154, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 61, 154, 0.5);
+        }
+
+        .footer-section h4 {
+            font-weight: 700;
+            color: var(--chrome-purple);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: #6c757d;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--chrome-pink);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .magic-buttons { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .page-title { font-size: 2.5rem; }
+            .tagline { font-size: 1rem; letter-spacing: 4px; }
+            nav { flex-direction: column; padding: 0 20px; }
+            .container { padding: 0 25px; }
+            .content-section, footer { padding: 50px 30px; border-radius: 25px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .magic-buttons { grid-template-columns: 1fr; gap: 20px; }
+            .experience-button { padding: 40px 30px; }
+            .button-icon { font-size: 4rem; }
+            .experience-button h3 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1 class="logo">MAGIC</h1>
+            <p class="tagline">Cyberlink</p>
+        </div>
+
+        <nav>
+            <a href="index.html" class="nav-pill">Home</a>
+            <a href="index.html#events" class="nav-pill">Events</a>
+            <a href="index.html#signup" class="nav-pill">Sign Up</a>
+            <a href="magic.html" class="nav-pill active">Magic</a>
+        </nav>
+
+        <div class="content-section">
+            <h2 class="page-title">Choose Your Experience</h2>
+            
+            <div class="magic-buttons">
+                <a href="hypnotic.html" class="experience-button">
+                    <div class="button-icon">🌀</div>
+                    <h3>Hypnotic</h3>
+                    <p>Enter the spiral</p>
+                </a>
+                
+                <a href="motivation.html" class="experience-button">
+                    <div class="button-icon">⚡</div>
+                    <h3>Motivation</h3>
+                    <p>Get inspired</p>
+                </a>
+
+                <a href="notebook.html" class="experience-button">
+                    <div class="button-icon">📓</div>
+                    <h3>Bomber's Notebook</h3>
+                    <p>Keep track</p>
+                </a>
+
+                <a href="random.html" class="experience-button">
+                    <div class="button-icon">🎲</div>
+                    <h3>Random</h3>
+                    <p>Surprise me</p>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">CYBERLINK</div>
+                    <p class="footer-description">
+                        Creating the future of live experiences through innovation, creativity, and community. Join us on a journey beyond the ordinary.
+                    </p>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn">📷</a>
+                        <a href="#" class="social-btn">🎵</a>
+                        <a href="#" class="social-btn">💬</a>
+                        <a href="#" class="social-btn">🎮</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#events">Events</a>
+                    <a href="magic.html">Magic</a>
+                    <a href="index.html#signup">Sign Up</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">Discord</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Cyberlink. All rights reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
