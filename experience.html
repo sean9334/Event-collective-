@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Cyberlink</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%);
+            color: #2b2d42;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(157, 78, 221, 0.3) !important;
+            border-radius: 50px;
+            color: #9d4edd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #9d4edd !important;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+
+        .page-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, #ff4db0, #c060ff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 0 auto;
+        }
+
+        .tour-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(157, 78, 221, 0.3) !important;
+        }
+
+        .tour-hero {
+            background: linear-gradient(135deg, #ff4db0, #9d4edd, #00d4ff);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tour-hero.liverpool {
+            background-image: 
+                linear-gradient(135deg, rgba(255, 77, 176, 0.5), rgba(157, 78, 221, 0.5), rgba(0, 180, 216, 0.5)),
+                url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800');
+        }
+
+        .tour-hero.london {
+            background-image: 
+                linear-gradient(135deg, rgba(255, 77, 176, 0.5), rgba(157, 78, 221, 0.5), rgba(0, 180, 216, 0.5)),
+                url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800');
+        }
+
+        .tour-hero.sales {
+            background-image: 
+                linear-gradient(135deg, rgba(255, 77, 176, 0.4), rgba(157, 78, 221, 0.4), rgba(0, 180, 216, 0.4)),
+                url('sales.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .single-experience {
+            max-width: 600px;
+            margin: 40px auto 0;
+        }
+
+        .single-experience .tour-card {
+            margin: 0 auto;
+        }
+
+        .tour-hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: stripeMove 20s linear infinite;
+        }
+
+        @keyframes stripeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(28px); }
+        }
+
+        .tour-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: white;
+            text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+
+        .tour-body {
+            padding: 40px;
+        }
+
+        .tour-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(255, 77, 176, 0.1), rgba(157, 78, 221, 0.1));
+            border: 2px solid #9d4edd;
+            border-radius: 25px;
+            color: #9d4edd;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .tour-subtitle {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2b2d42;
+            margin-bottom: 15px;
+        }
+
+        .tour-description {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .tour-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            color: white;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tour-cta::after {
+            content: '→';
+            transition: transform 0.3s;
+        }
+
+        .tour-card:hover .tour-cta {
+            transform: translateX(5px);
+        }
+
+        /* Sales Form */
+        .sales-form {
+            margin-top: 25px;
+        }
+
+        .sales-input,
+        .sales-textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .sales-input:focus,
+        .sales-textarea:focus {
+            outline: none;
+            border-color: #9d4edd;
+        }
+
+        .sales-textarea {
+            resize: vertical;
+        }
+
+        .sales-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sales-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+        }
+
+        .affiliate-notice {
+            text-align: center;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0;
+            position: relative;
+        }
+
+        .affiliate-notice-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff4db0, #9d4edd, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .tours-grid { grid-template-columns: 1fr; }
+            .tour-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <div class="container">
+        <h1 class="page-title">EXPERIENCE</h1>
+        <p class="subtitle">Immersive city tours</p>
+
+        <div class="tours-grid">
+            <a href="https://www.airbnb.com/s/Liverpool--United-Kingdom/experiences" target="_blank" class="tour-card">
+                <div class="tour-hero liverpool">
+                    <div class="tour-title">LIVERPOOL</div>
+                </div>
+                <div class="tour-body">
+                    <div class="tour-badge">City Tour</div>
+                    <h3 class="tour-subtitle">Liverpool Tours</h3>
+                    <p class="tour-description">
+                        Explore the vibrant culture, rich history, and iconic landmarks of Liverpool. From the Beatles' legacy to the waterfront, discover what makes this city unique.
+                    </p>
+                    <span class="tour-cta">Explore Tours</span>
+                </div>
+            </a>
+
+            <a href="https://www.airbnb.com/s/London--United-Kingdom/experiences" target="_blank" class="tour-card">
+                <div class="tour-hero london">
+                    <div class="tour-title">LONDON</div>
+                </div>
+                <div class="tour-body">
+                    <div class="tour-badge">City Tour</div>
+                    <h3 class="tour-subtitle">London Tours</h3>
+                    <p class="tour-description">
+                        Experience the heart of the UK capital. From historic palaces to modern attractions, immerse yourself in everything London has to offer.
+                    </p>
+                    <span class="tour-cta">Explore Tours</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="single-experience">
+            <div class="tour-card sales-card">
+                <div class="tour-hero sales">
+                    <div class="tour-title">IMMERSIVE SALES</div>
+                </div>
+                <div class="tour-body">
+                    <div class="tour-badge">Business Promotion</div>
+                    <h3 class="tour-subtitle">Hire Me To Promote Your Business</h3>
+                    <p class="tour-description">
+                        Empower your brand in new ways with sounds, visuals and energy. Transform your marketing approach and captivate your audience like never before.
+                    </p>
+                    
+                    <form class="sales-form" action="https://formsubmit.co/seanonline9334@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New Immersive Sales Inquiry!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="thankyou.html">
+                        
+                        <input type="email" name="email" placeholder="Your email" required class="sales-input">
+                        <textarea name="comment" placeholder="Tell me about your business and how I can help..." required class="sales-textarea" rows="4"></textarea>
+                        <button type="submit" class="sales-submit">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="affiliate-notice">
+            <span class="affiliate-notice-text">Affiliate links are active - help a local business have a slice of the big boys pie</span>
+        </div>
+    </div>
+</body>
+</html>

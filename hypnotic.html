@@ -4,7 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hypnotic Spiral - Event Collective</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+    
     <style>
+        /* Warning Overlay */
+        .warning-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .warning-overlay.hidden {
+            display: none;
+        }
+
+        .warning-box {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .warning-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .warning-box h2 {
+            color: #ff4db0;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .warning-box p {
+            color: #2b2d42;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .warning-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .warning-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .accept-btn {
+            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            color: white;
+        }
+
+        .accept-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+        }
+
+        .decline-btn {
+            background: #e0e8f0;
+            color: #2b2d42;
+        }
+
+        .decline-btn:hover {
+            background: #d0d8e0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         * {
             margin: 0;
             padding: 0;
@@ -103,6 +198,19 @@
     </style>
 </head>
 <body>
+    <div class="warning-overlay" id="warningOverlay">
+        <div class="warning-box">
+            <div class="warning-icon">⚠️</div>
+            <h2>Epilepsy Warning</h2>
+            <p>This page contains rapidly rotating patterns and visual effects that may cause discomfort or trigger seizures for people with photosensitive epilepsy.</p>
+            <p><strong>Please proceed with caution.</strong></p>
+            <div class="warning-buttons">
+                <button class="warning-btn decline-btn" onclick="goBack()">Go Back</button>
+                <button class="warning-btn accept-btn" onclick="acceptWarning()">I Understand, Continue</button>
+            </div>
+        </div>
+    </div>
+
     <a href="index.html" class="back-button">← Back to Events</a>
 
     <div class="container">
@@ -116,6 +224,14 @@
     </div>
 
     <script>
+        function acceptWarning() {
+            document.getElementById('warningOverlay').classList.add('hidden');
+        }
+
+        function goBack() {
+            window.location.href = 'magic.html';
+        }
+
         const canvas = document.getElementById('spiralCanvas');
         const ctx = canvas.getContext('2d');
         

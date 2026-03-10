@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random - Cyberlink</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
     <style>
         * {
@@ -65,6 +75,13 @@
             box-shadow: 0 20px 60px rgba(157, 78, 221, 0.4);
             animation: gradientShift 3s ease infinite;
             position: relative;
+            opacity: 1;
+        }
+
+        .mystery-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0);
         }
 
         @keyframes gradientShift {
@@ -218,10 +235,14 @@
             {
                 emoji: '💭',
                 text: 'Do you have a dream?'
+            },
+            {
+                emoji: '✨',
+                text: 'Quick magic trick!'
             }
         ];
 
-        let currentAnimation = null;
+        let currentIndex = 0;
 
         function createEmojiBurst(emoji, x, y) {
             for (let i = 0; i < 12; i++) {
@@ -257,14 +278,12 @@
                 return;
             }
             
-            // Pick random animation (avoid repeating the same one)
-            let randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * animations.length);
-            } while (randomIndex === currentAnimation && animations.length > 1);
+            // Hide the dice button
+            button.classList.add('hidden');
             
-            currentAnimation = randomIndex;
-            const selected = animations[randomIndex];
+            // Get current animation sequentially
+            const selected = animations[currentIndex];
+            currentIndex = (currentIndex + 1) % animations.length; // Loop back to start
             
             // Create emoji burst
             createEmojiBurst(selected.emoji, centerX, centerY);
@@ -279,16 +298,19 @@
             content.classList.remove('hiding');
             content.classList.add('active');
             
-            // Hide after 4 seconds with smooth transition
+            // Hide after 2 seconds (half the original time)
             setTimeout(() => {
                 content.classList.remove('active');
                 content.classList.add('hiding');
+                
+                // Show dice button again
+                button.classList.remove('hidden');
                 
                 // Clean up after transition completes
                 setTimeout(() => {
                     content.classList.remove('hiding');
                 }, 500);
-            }, 4000);
+            }, 2000);
         }
     </script>
 </body>
