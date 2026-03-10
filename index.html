@@ -34,7 +34,7 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            color: #2b2d42;
+            color: #e0f0ff;
             overflow-x: hidden;
             position: relative;
             margin: 0;
@@ -120,7 +120,7 @@
 
         .logo {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-style: italic;
             text-transform: uppercase;
             background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
@@ -188,7 +188,7 @@
 
         .subtitle {
             font-size: 1rem;
-            color: #2b2d42;
+            color: #b0d5ff;
             font-weight: 400;
             line-height: 1.6;
             max-width: 600px;
@@ -197,7 +197,7 @@
 
         .subtitle-small {
             font-size: 0.9rem;
-            color: #6c757d;
+            color: #90c5ff;
             font-weight: 300;
         }
 
@@ -271,7 +271,7 @@
 
         .section-subtitle {
             font-size: 1.2rem;
-            color: #4a4a6a;
+            color: #a0d0ff;
             font-weight: 300;
         }
 
@@ -401,7 +401,7 @@
         .event-description {
             font-size: 1.05rem;
             line-height: 1.7;
-            color: #6c757d;
+            color: #90c5ff;
             margin-bottom: 30px;
         }
 
@@ -498,30 +498,29 @@
         }
 
         .page-section-desc {
-            color: #6c757d;
+            color: #90c5ff;
             font-size: 0.95rem;
         }
 
-        /* Extra Buttons Section (Blog & Social) */
+        /* Extra Buttons Section (Blog & Social) - Top Right */
         .extra-section {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px auto 20px;
-            max-width: 800px;
-            position: relative;
-            z-index: 10;
+            gap: 8px;
+            z-index: 1000;
         }
 
         .social-icons-group {
             display: flex;
-            gap: 15px;
+            gap: 8px;
         }
 
         .mini-social-icon {
-            width: 45px;
-            height: 45px;
+            width: 32px;
+            height: 32px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(157, 78, 221, 0.3);
@@ -529,45 +528,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 0.9rem;
             text-decoration: none;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .mini-social-icon:hover {
             border-color: var(--chrome-pink);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 61, 154, 0.3);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.4);
         }
 
         .extra-buttons-main {
             display: flex;
-            gap: 20px;
-            flex: 1;
-            max-width: 600px;
+            gap: 8px;
         }
 
         .extra-button-main {
-            flex: 1;
-            padding: 20px 30px;
+            padding: 8px 14px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            border: 3px solid rgba(157, 78, 221, 0.3);
+            border: 2px solid rgba(157, 78, 221, 0.3);
             text-decoration: none;
             text-align: center;
             color: #9d4edd;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.75rem;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
         }
 
         .extra-button-main:hover {
             border-color: var(--chrome-pink);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 61, 154, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 8, 68, 0.4);
             background: rgba(255, 255, 255, 1);
         }
 
@@ -701,12 +698,12 @@
         .tour-subtitle {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #2b2d42;
+            color: #b0d5ff;
             margin-bottom: 10px;
         }
 
         .tour-description {
-            color: #6c757d;
+            color: #90c5ff;
             line-height: 1.6;
             margin-bottom: 20px;
             font-size: 0.95rem;
@@ -854,7 +851,7 @@
             outline: none;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             background: white;
-            color: #2b2d42;
+            color: #b0d5ff;
         }
 
         .email-input::placeholder {
@@ -916,7 +913,7 @@
         }
 
         .footer-description {
-            color: #6c757d;
+            color: #90c5ff;
             line-height: 1.8;
             margin-bottom: 25px;
         }
@@ -955,7 +952,7 @@
 
         .footer-section a {
             display: block;
-            color: #6c757d;
+            color: #90c5ff;
             text-decoration: none;
             margin-bottom: 12px;
             transition: color 0.3s;
@@ -969,7 +966,7 @@
             padding-top: 30px;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
-            color: #6c757d;
+            color: #90c5ff;
             font-size: 0.95rem;
         }
 
@@ -990,9 +987,9 @@
             .event-title-display { font-size: 2.5rem; }
             .email-signup { flex-direction: column; }
             .email-input, .email-button { width: 100%; }
-            .extra-section { flex-direction: column; gap: 20px; }
-            .extra-buttons-main { width: 100%; max-width: 100%; }
-            .social-icons-group { justify-content: center; }
+            .extra-section { top: 10px; right: 10px; gap: 6px; }
+            .extra-button-main { font-size: 0.65rem; padding: 6px 10px; }
+            .mini-social-icon { width: 28px; height: 28px; font-size: 0.8rem; }
             .tour-title { font-size: 2rem; }
             .tours-grid { grid-template-columns: 1fr; }
         }
@@ -1000,9 +997,17 @@
 </head>
 <body>
     <div class="video-background">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="auto">
             <source src="bg.mp4" type="video/mp4">
         </video>
+    </div>
+
+    <!-- Social Buttons - Top Right -->
+    <div class="extra-section">
+        <a href="https://www.instagram.com" target="_blank" class="mini-social-icon">📷</a>
+        <a href="https://www.youtube.com" target="_blank" class="mini-social-icon">🎥</a>
+        <a href="blog.html" class="extra-button-main">📝 Blog</a>
+        <a href="https://seanonline9334.wixsite.com/my-site" target="_blank" class="extra-button-main">📱 Social Media</a>
     </div>
 
     <div class="container">
@@ -1042,17 +1047,6 @@
                     <h2 class="page-section-title">TOOLS</h2>
                     <p class="page-section-desc">Interactive utilities</p>
                 </a>
-            </div>
-
-            <div class="extra-section">
-                <div class="social-icons-group">
-                    <a href="https://www.instagram.com" target="_blank" class="mini-social-icon">📷</a>
-                    <a href="https://www.youtube.com" target="_blank" class="mini-social-icon">🎥</a>
-                </div>
-                <div class="extra-buttons-main">
-                    <a href="blog.html" class="extra-button-main">📝 Blog</a>
-                    <a href="https://seanonline9334.wixsite.com/my-site" target="_blank" class="extra-button-main">📱 Social Media</a>
-                </div>
             </div>
 
             <div class="affiliate-notice">
@@ -1130,7 +1124,7 @@
 
             <div class="section-header">
                 <h2 class="section-title">COMING SOON</h2>
-                <p class="section-subtitle" style="font-size: 1.3rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #2b2d42;">
+                <p class="section-subtitle" style="font-size: 1.3rem; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #b0d5ff;">
                     Events that connect people socially. Say goodbye to screens, we're connecting people once again, in new exciting ways. We're thinking outside the computer box. Liverpool and London.
                 </p>
             </div>
