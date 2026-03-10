@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomber's Notebook - Cyberlink</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
     <style>
         * {
@@ -44,7 +54,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding-top: 60px;
         }
@@ -64,85 +74,246 @@
         .subtitle {
             text-align: center;
             color: #6c757d;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-size: 1.1rem;
         }
 
-        .notebook {
+        .bio-section {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 77, 176, 0.1), rgba(157, 78, 221, 0.1));
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(157, 78, 221, 0.2);
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #2b2d42;
+            font-weight: 500;
+        }
+
+        .upload-form {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
-        .note-input {
+        .photo-upload-area {
+            border: 3px dashed #9d4edd;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(255, 77, 176, 0.05), rgba(0, 212, 255, 0.05));
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .photo-upload-area:hover {
+            border-color: #ff4db0;
+            background: linear-gradient(135deg, rgba(255, 77, 176, 0.1), rgba(0, 212, 255, 0.1));
+            transform: translateY(-2px);
+        }
+
+        .photo-upload-area.has-image {
+            padding: 20px;
+        }
+
+        #photoInput {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: #9d4edd;
+            font-weight: 600;
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            display: none;
+            margin: 0 auto;
+        }
+
+        .change-photo-btn {
+            display: none;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #9d4edd;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group::before,
+        .form-group::after {
+            display: none !important;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2b2d42;
+            font-size: 1rem;
+        }
+
+        .form-group label::before,
+        .form-group label::after {
+            display: none !important;
+        }
+
+        .form-group label .required {
+            color: #ff4db0;
+            margin-left: 3px;
+        }
+
+        .form-group label .optional {
+            color: #6c757d;
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        .form-input {
             width: 100%;
             padding: 15px;
             border: 2px solid #e0e8f0;
             border-radius: 10px;
             font-size: 1rem;
             font-family: 'Outfit', sans-serif;
-            margin-bottom: 10px;
             transition: border-color 0.3s;
+            background: white;
         }
 
-        .note-input:focus {
+        .form-input::before,
+        .form-input::after {
+            display: none !important;
+        }
+
+        .form-input:focus {
             outline: none;
             border-color: #9d4edd;
         }
 
-        .add-button {
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-button {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: linear-gradient(135deg, #ff4db0, #9d4edd);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            margin-bottom: 30px;
+            margin-top: 10px;
         }
 
-        .add-button:hover {
+        .submit-button:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
         }
 
-        .notes-list {
-            list-style: none;
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
 
-        .note-item {
-            background: linear-gradient(135deg, rgba(255, 77, 176, 0.05), rgba(0, 212, 255, 0.05));
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid #9d4edd;
+        .entries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .entry-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
         }
 
-        .note-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.2);
+        .entry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
         }
 
-        .note-text {
-            flex: 1;
-            font-size: 1.05rem;
+        .entry-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .entry-content {
+            padding: 20px;
+        }
+
+        .entry-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #9d4edd;
+            margin-bottom: 5px;
+        }
+
+        .entry-service {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .entry-comment {
             color: #2b2d42;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: #9d4edd;
+            margin-bottom: 10px;
         }
 
         .delete-button {
+            width: 100%;
+            padding: 10px;
             background: #ff4db0;
             color: white;
             border: none;
-            padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
@@ -151,7 +322,6 @@
 
         .delete-button:hover {
             background: #ff006e;
-            transform: scale(1.05);
         }
 
         .empty-state {
@@ -159,6 +329,7 @@
             padding: 60px 20px;
             color: #6c757d;
             font-size: 1.1rem;
+            grid-column: 1 / -1;
         }
 
         .empty-icon {
@@ -168,9 +339,8 @@
 
         @media (max-width: 768px) {
             .page-title { font-size: 2rem; }
-            .notebook { padding: 25px; }
-            .note-item { flex-direction: column; gap: 15px; align-items: flex-start; }
-            .delete-button { align-self: flex-end; }
+            .upload-form { padding: 25px; }
+            .entries-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -179,73 +349,247 @@
 
     <div class="container">
         <h1 class="page-title">Bomber's Notebook</h1>
-        <p class="subtitle">Keep track of your thoughts and ideas</p>
+        <p class="subtitle">Share your moment with a photo</p>
 
-        <div class="notebook">
-            <input type="text" id="noteInput" class="note-input" placeholder="Write something down..." />
-            <button onclick="addNote()" class="add-button">Add Note</button>
+        <div class="bio-section">
+            <p class="bio-text">
+                Upload your image to the Bomber's Notebook and be connected with someone in the universe requiring your frequency... Duh
+            </p>
+        </div>
 
-            <ul id="notesList" class="notes-list">
-                <div class="empty-state">
-                    <div class="empty-icon">📓</div>
-                    <p>Your notebook is empty. Start writing!</p>
+        <div class="upload-form">
+            <form id="entryForm">
+                <label for="photoInput" class="photo-upload-area" id="uploadArea">
+                    <div id="uploadPrompt">
+                        <div class="upload-icon">📸</div>
+                        <div class="upload-text">Upload a Photo</div>
+                        <div class="upload-subtext">Click to choose from camera or library</div>
+                    </div>
+                    <img id="imagePreview" alt="Preview">
+                    <button type="button" class="change-photo-btn" id="changePhotoBtn">Change Photo</button>
+                </label>
+                <input type="file" id="photoInput" accept="image/*" capture="environment" required>
+
+                <div class="form-group">
+                    <label for="nameInput">
+                        Your Name
+                        <span class="required">*</span>
+                    </label>
+                    <input type="text" id="nameInput" class="form-input" placeholder="Enter your name" required>
                 </div>
-            </ul>
+
+                <div class="form-group">
+                    <label for="serviceInput">
+                        Service
+                        <span class="required">*</span>
+                    </label>
+                    <input type="text" id="serviceInput" class="form-input" placeholder="e.g. Concert, Sports Event, Theatre, Class" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailInput">
+                        Email
+                        <span class="optional">(Optional - to connect with others)</span>
+                    </label>
+                    <input type="email" id="emailInput" class="form-input" placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="commentInput">
+                        Comment
+                        <span class="optional">(Optional)</span>
+                    </label>
+                    <textarea id="commentInput" class="form-input" placeholder="Share your thoughts..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button" id="submitBtn">Add to Notebook</button>
+            </form>
+        </div>
+
+        <div class="entries-grid" id="entriesGrid">
+            <div class="empty-state">
+                <div class="empty-icon">📓</div>
+                <p>No entries yet. Be the first to share!</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Load notes from localStorage
-        let notes = JSON.parse(localStorage.getItem('bomberNotes')) || [];
+        // Storage for entries
+        let entries = JSON.parse(localStorage.getItem('bomberEntries')) || [];
 
-        function renderNotes() {
-            const notesList = document.getElementById('notesList');
+        const photoInput = document.getElementById('photoInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const uploadArea = document.getElementById('uploadArea');
+        const uploadPrompt = document.getElementById('uploadPrompt');
+        const changePhotoBtn = document.getElementById('changePhotoBtn');
+        const entryForm = document.getElementById('entryForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        let currentPhoto = null;
+
+        // Handle photo selection
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Basic client-side validation
+                if (!file.type.startsWith('image/')) {
+                    alert('❌ Photo Rejected: Please upload an image file');
+                    photoInput.value = '';
+                    return;
+                }
+                if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                    alert('❌ Photo Rejected: Image size must be less than 5MB');
+                    photoInput.value = '';
+                    return;
+                }
+
+                // Simple inappropriate content check (filename-based - basic protection)
+                const suspiciousWords = ['nsfw', 'nude', 'explicit', 'xxx'];
+                const fileName = file.name.toLowerCase();
+                if (suspiciousWords.some(word => fileName.includes(word))) {
+                    alert('❌ Photo Rejected: This image has been flagged as inappropriate content. Please upload a different photo.');
+                    photoInput.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentPhoto = e.target.result;
+                    imagePreview.src = currentPhoto;
+                    imagePreview.style.display = 'block';
+                    uploadPrompt.style.display = 'none';
+                    changePhotoBtn.style.display = 'inline-block';
+                    uploadArea.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Change photo button
+        changePhotoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            photoInput.click();
+        });
+
+        // Handle form submission
+        entryForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            if (!currentPhoto) {
+                alert('Please upload a photo first');
+                return;
+            }
+
+            const name = document.getElementById('nameInput').value.trim();
+            const service = document.getElementById('serviceInput').value.trim();
+            const comment = document.getElementById('commentInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+
+            if (!name || !service) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Create entry
+            const entry = {
+                id: Date.now(),
+                photo: currentPhoto,
+                name: name,
+                service: service,
+                comment: comment,
+                email: email || 'Not provided',
+                date: new Date().toLocaleDateString()
+            };
+
+            entries.unshift(entry); // Add to beginning
+            localStorage.setItem('bomberEntries', JSON.stringify(entries));
+
+            // Send to your email via FormSubmit if user provided data
+            try {
+                const formData = new FormData();
+                formData.append('_subject', 'New Bomber\'s Notebook Entry - Cyberlink');
+                formData.append('Name', name);
+                formData.append('Service', service);
+                formData.append('Comment', comment || 'No comment');
+                formData.append('User_Email', email || 'Not provided');
+                formData.append('Date', entry.date);
+                formData.append('_captcha', 'false');
+                
+                // Note: Photo data is too large for FormSubmit, so we'll just notify you
+                formData.append('Photo_Info', 'Photo uploaded - view in Bomber\'s Notebook on website');
+
+                await fetch('https://formsubmit.co/seanonline9334@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+            } catch (error) {
+                console.log('Email notification error:', error);
+                // Don't show error to user, entry is still saved locally
+            }
+
+            // Reset form
+            entryForm.reset();
+            currentPhoto = null;
+            imagePreview.style.display = 'none';
+            uploadPrompt.style.display = 'block';
+            changePhotoBtn.style.display = 'none';
+            uploadArea.classList.remove('has-image');
+
+            renderEntries();
             
-            if (notes.length === 0) {
-                notesList.innerHTML = `
+            // Scroll to top to see new entry
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Render entries
+        function renderEntries() {
+            const grid = document.getElementById('entriesGrid');
+
+            if (entries.length === 0) {
+                grid.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-icon">📓</div>
-                        <p>Your notebook is empty. Start writing!</p>
+                        <p>No entries yet. Be the first to share!</p>
                     </div>
                 `;
                 return;
             }
 
-            notesList.innerHTML = notes.map((note, index) => `
-                <li class="note-item">
-                    <span class="note-text">${note}</span>
-                    <button onclick="deleteNote(${index})" class="delete-button">Delete</button>
-                </li>
+            grid.innerHTML = entries.map(entry => `
+                <div class="entry-card">
+                    <img src="${entry.photo}" alt="${entry.name}" class="entry-image">
+                    <div class="entry-content">
+                        <div class="entry-name">${escapeHtml(entry.name)}</div>
+                        <div class="entry-service">${escapeHtml(entry.service)}</div>
+                        ${entry.email && entry.email !== 'Not provided' ? `<div class="entry-service">📧 ${escapeHtml(entry.email)}</div>` : ''}
+                        ${entry.comment ? `<div class="entry-comment">${escapeHtml(entry.comment)}</div>` : ''}
+                        <div class="entry-date">${entry.date}</div>
+                        <button onclick="deleteEntry(${entry.id})" class="delete-button">Delete</button>
+                    </div>
+                </div>
             `).join('');
         }
 
-        function addNote() {
-            const input = document.getElementById('noteInput');
-            const noteText = input.value.trim();
-
-            if (noteText) {
-                notes.push(noteText);
-                localStorage.setItem('bomberNotes', JSON.stringify(notes));
-                input.value = '';
-                renderNotes();
+        // Delete entry
+        window.deleteEntry = function(id) {
+            if (confirm('Are you sure you want to delete this entry?')) {
+                entries = entries.filter(entry => entry.id !== id);
+                localStorage.setItem('bomberEntries', JSON.stringify(entries));
+                renderEntries();
             }
-        }
+        };
 
-        function deleteNote(index) {
-            notes.splice(index, 1);
-            localStorage.setItem('bomberNotes', JSON.stringify(notes));
-            renderNotes();
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
-
-        // Allow Enter key to add note
-        document.getElementById('noteInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addNote();
-            }
-        });
 
         // Initial render
-        renderNotes();
+        renderEntries();
     </script>
 </body>
 </html>
