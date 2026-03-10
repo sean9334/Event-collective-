@@ -23,7 +23,7 @@
         }
 
         :root {
-            --chrome-pink: #ff3d9a;
+            --chrome-pink: #ff0844;
             --chrome-purple: #9d4edd;
             --chrome-blue: #00b4d8;
             --chrome-cyan: #4af2ff;
@@ -65,7 +65,7 @@
             object-fit: cover;
         }
 
-        /* Light overlay to help text readability but keep video visible */
+        /* Dimmed black overlay */
         .video-background::after {
             content: '';
             position: absolute;
@@ -73,7 +73,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(10, 10, 10, 0.65);
             pointer-events: none;
         }
 
@@ -123,7 +123,7 @@
             font-size: 3.5rem;
             font-style: italic;
             text-transform: uppercase;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple), var(--chrome-blue));
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -162,7 +162,7 @@
             position: relative;
             margin-top: 0;
             margin-bottom: 15px;
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            background: linear-gradient(90deg, #ff0844, #00ffff, #ff0844);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             background-clip: text;
@@ -261,7 +261,7 @@
             font-family: 'Archivo Black', sans-serif;
             font-size: 3.5rem;
             font-style: italic;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -489,7 +489,7 @@
             font-family: 'Archivo Black', sans-serif;
             font-size: 1.8rem;
             font-style: italic;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -618,7 +618,7 @@
         }
 
         .tour-hero {
-            background: linear-gradient(135deg, #ff4db0, #9d4edd, #00d4ff);
+            background: linear-gradient(135deg, #ff0844, #9d4edd, #00d4ff);
             padding: 50px 30px;
             text-align: center;
             position: relative;
@@ -717,7 +717,7 @@
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            background: linear-gradient(135deg, #ff0844, #00b4d8);
             color: white;
             border-radius: 30px;
             font-weight: 700;
@@ -765,7 +765,7 @@
         .sales-submit {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            background: linear-gradient(135deg, #ff0844, #00b4d8);
             color: white;
             border: none;
             border-radius: 10px;
@@ -1032,7 +1032,7 @@
                 </a>
 
                 <a href="experience.html" class="page-section-button">
-                    <div class="page-section-icon">✨</div>
+                    <div class="page-section-icon">👥</div>
                     <h2 class="page-section-title">EXPERIENCE</h2>
                     <p class="page-section-desc">Immersive moments await</p>
                 </a>

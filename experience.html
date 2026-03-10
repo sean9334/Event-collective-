@@ -24,10 +24,52 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%);
             color: #2b2d42;
             min-height: 100vh;
             padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Video Background with Spinning Animation */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            animation: spin 60s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Dimmed black overlay */
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.65);
+            pointer-events: none;
         }
 
         .back-button {
@@ -57,6 +99,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 60px;
+            position: relative;
+            z-index: 10;
         }
 
         .page-title {
@@ -64,7 +108,7 @@
             font-size: 3rem;
             font-style: italic;
             text-align: center;
-            background: linear-gradient(135deg, #ff4db0, #c060ff, #00d4ff);
+            background: linear-gradient(135deg, #ff0844, #c060ff, #00d4ff);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -103,7 +147,7 @@
         }
 
         .tour-hero {
-            background: linear-gradient(135deg, #ff4db0, #9d4edd, #00d4ff);
+            background: linear-gradient(135deg, #ff0844, #9d4edd, #00d4ff);
             padding: 60px 40px;
             text-align: center;
             position: relative;
@@ -206,7 +250,7 @@
             align-items: center;
             gap: 10px;
             padding: 15px 30px;
-            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            background: linear-gradient(135deg, #ff0844, #00b4d8);
             color: white;
             border-radius: 30px;
             font-weight: 700;
@@ -253,7 +297,7 @@
         .sales-submit {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #ff4db0, #9d4edd);
+            background: linear-gradient(135deg, #ff0844, #00b4d8);
             color: white;
             border: none;
             border-radius: 10px;
@@ -280,7 +324,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
-            background: linear-gradient(135deg, #ff4db0, #9d4edd, #00d4ff);
+            background: linear-gradient(135deg, #ff0844, #9d4edd, #00d4ff);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -294,6 +338,12 @@
     </style>
 </head>
 <body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <a href="index.html" class="back-button">← Back to Home</a>
 
     <div class="container">
