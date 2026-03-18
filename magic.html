@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic - Cyberlink</title>
+    <title>Frequency - Cyberlink</title>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
@@ -234,49 +234,115 @@
 
         .magic-buttons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 900px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1400px;
             margin: 60px auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 8, 68, 0.3);
         }
 
         .experience-button {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 30px 20px;
             text-align: center;
             text-decoration: none;
             transition: all 0.4s;
-            border: 3px solid transparent;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .experience-button:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--chrome-pink);
-            box-shadow: 0 20px 60px rgba(255, 61, 154, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.4);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .button-icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
 
         .experience-button h3 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 2.5rem;
+            font-size: 1.3rem;
             font-style: italic;
             background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .experience-button p {
-            font-size: 1.2rem;
-            color: #90c5ff;
+            font-size: 0.9rem;
+            color: #b0d5ff;
+        }
+
+        /* YouTube Videos Section */
+        .videos-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(0, 180, 216, 0.3);
+        }
+
+        .videos-section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, #ff0844, #00b4d8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #e0f0ff;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Extra Buttons (Blog & Social) */
@@ -447,13 +513,22 @@
             .container { padding: 0 25px; }
             .content-section, footer { padding: 50px 30px; border-radius: 25px; }
             .footer-grid { grid-template-columns: 1fr; }
-            .magic-buttons { grid-template-columns: 1fr; gap: 20px; }
-            .experience-button { padding: 40px 30px; }
-            .button-icon { font-size: 4rem; }
-            .experience-button h3 { font-size: 2rem; }
+            .magic-buttons { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 15px; 
+                padding: 25px;
+            }
+            .experience-button { padding: 25px 15px; }
+            .button-icon { font-size: 2.5rem; }
+            .experience-button h3 { font-size: 1.1rem; }
+            .experience-button p { font-size: 0.8rem; }
             .extra-section-tools { top: 10px; right: 10px; gap: 6px; }
             .extra-button { font-size: 0.65rem; padding: 6px 10px; }
             .mini-social-icon { width: 28px; height: 28px; font-size: 0.8rem; }
+            .videos-section { padding: 30px 20px; }
+            .videos-section-title { font-size: 2rem; }
+            .videos-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
         }
     </style>
 </head>
@@ -474,7 +549,7 @@
 
     <div class="container">
         <div class="hero">
-            <h1 class="logo">TOOLS</h1>
+            <h1 class="logo">FREQUENCY</h1>
             <p class="tagline">Cyberlink</p>
         </div>
 
@@ -482,7 +557,7 @@
             <a href="index.html" class="nav-pill">Home</a>
             <a href="products.html" class="nav-pill">Products</a>
             <a href="experience.html" class="nav-pill">Experience</a>
-            <a href="magic.html" class="nav-pill active">Tools</a>
+            <a href="magic.html" class="nav-pill active">Frequency</a>
             <a href="index.html#signup" class="nav-pill">Sign Up</a>
         </nav>
 
@@ -513,6 +588,61 @@
                     <h3>Random</h3>
                     <p>Surprise me</p>
                 </a>
+            </div>
+        </div>
+
+        <!-- YouTube Videos Section -->
+        <div class="videos-section">
+            <h2 class="videos-section-title">WATCH</h2>
+            
+            <div class="videos-grid">
+                <div class="video-card">
+                    <h3 class="video-title">Episode 1</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/OuH5lw0-RSE" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <h3 class="video-title">Episode 2</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID_2" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <h3 class="video-title">Episode 3</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID_3" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <h3 class="video-title">Episode 4</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID_4" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
 

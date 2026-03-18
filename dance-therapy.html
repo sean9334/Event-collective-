@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reason to Dance Therapy - Cyberlink</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --chrome-pink: #ff0844;
+            --chrome-purple: #9d4edd;
+            --chrome-blue: #00b4d8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #e0f0ff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            animation: spin 60s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.65);
+            pointer-events: none;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(157, 78, 221, 0.3) !important;
+            border-radius: 50px;
+            color: #9d4edd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #9d4edd !important;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(135deg, #ff0844, #9d4edd, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #90c5ff;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            text-align: center;
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-header h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            background: linear-gradient(135deg, #ff0844, #9d4edd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-description {
+            color: #2b2d42;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .price-tag {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #ff0844, #9d4edd);
+            color: white;
+            border-radius: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .benefits-list {
+            margin: 30px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 12px 0 12px 35px;
+            color: #2b2d42;
+            font-size: 1.05rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .benefits-list li:before {
+            content: "💃";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            padding-top: 30px;
+            border-top: 2px solid #e0e8f0;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #9d4edd;
+        }
+
+        .form-label {
+            display: block;
+            color: #2b2d42;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff0844, #9d4edd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.4);
+        }
+
+        .payment-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .payment-section h3 {
+            color: #2b2d42;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .paypal-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #0070ba;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 112, 186, 0.3);
+        }
+
+        .paypal-button:hover {
+            background: #005ea6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 112, 186, 0.5);
+        }
+
+        .note-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .content-card { padding: 30px 25px; }
+            .service-header h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <a href="index.html" class="back-button">← Back</a>
+
+    <div class="container">
+        <h1 class="page-title">REASON TO DANCE</h1>
+        <p class="subtitle">Movement Therapy for Mind & Body</p>
+
+        <div class="content-card">
+            <div class="service-icon">💃</div>
+            
+            <div class="service-header">
+                <h2>REDISCOVER JOY THROUGH MOVEMENT</h2>
+            </div>
+
+            <p class="service-description">
+                Reason to Dance is movement therapy that reconnects you with your body and spirit. Through expressive dance, free movement, and guided exercises, release stress, rediscover joy, and find your natural rhythm again. No dance experience needed—just a willingness to move and feel.
+            </p>
+
+            <div style="text-align: center;">
+                <div class="price-tag">£10.00</div>
+                <p style="color: #6c757d; font-size: 0.95rem; margin-top: 10px;">One-on-one session or small group</p>
+            </div>
+
+            <ul class="benefits-list">
+                <li>Release emotional stress through movement</li>
+                <li>Reconnect with your body and physical presence</li>
+                <li>Boost mood through endorphin release</li>
+                <li>Express feelings that words can't capture</li>
+                <li>Improve confidence and self-expression</li>
+                <li>Learn to move with freedom and joy</li>
+                <li>No judgement, no choreography—just authentic movement</li>
+            </ul>
+
+            <p class="service-description">
+                This isn't traditional dance class. It's therapeutic movement in a safe, supportive space where you can explore how your body wants to move, release what you've been holding onto, and remember what it feels like to move for the pure joy of it.
+            </p>
+
+            <form class="booking-form" action="https://formsubmit.co/seanonline9334@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Dance Therapy Session Booking!">
+                <input type="hidden" name="_next" value="https://eventcollective.it.com/thankyou.html">
+                <input type="hidden" name="Service" value="Reason to Dance Therapy - £10">
+                
+                <div class="form-group">
+                    <label class="form-label">Your Email *</label>
+                    <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Session Type *</label>
+                    <select name="session_type" class="form-input" required>
+                        <option value="">Select...</option>
+                        <option value="One-on-One">One-on-One</option>
+                        <option value="Small Group (2-4 people)">Small Group (2-4 people)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred Date & Time</label>
+                    <input type="text" name="preferred_time" class="form-input" placeholder="e.g., Weekend afternoons, Weekday evenings, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What Brings You Here? *</label>
+                    <textarea name="intention" class="form-textarea" placeholder="What are you hoping to work through or experience? (Completely confidential)" required rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Any Physical Limitations or Health Info?</label>
+                    <textarea name="health_info" class="form-textarea" placeholder="Injuries, mobility issues, health conditions I should know about..." rows="2"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Booking Request</button>
+
+                <div class="payment-section">
+                    <h3>Complete Your Booking</h3>
+                    <p class="note-text">Step 1: Submit your request details above</p>
+                    <p class="note-text">Step 2: Click below to pay £10 via PayPal</p>
+                    
+                    <a href="https://www.paypal.com/paypalme/sean9334/10" target="_blank" class="paypal-button">
+                        💳 Pay £10 via PayPal
+                    </a>
+                    
+                    <p class="note-text" style="margin-top: 20px;">You'll receive session confirmation within 24 hours</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
