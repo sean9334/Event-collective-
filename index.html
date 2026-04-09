@@ -655,19 +655,19 @@
                     <a href="real-binder.html" class="content-card">
                         <h3 class="card-title">SOCIAL EVENTS</h3>
                         <p class="card-text">Experience concerts, theatre, classes, and social gatherings designed to bring people together in authentic ways.</p>
-                        <span class="cta-button">💋 Real Binder</span>
+                        <span class="cta-button">Join Social Events - £5</span>
                     </a>
                     
                     <a href="notebook.html" class="content-card">
                         <h3 class="card-title">COMMUNITY</h3>
                         <p class="card-text">Join a vibrant community of people who value real-world connections and shared experiences.</p>
-                        <span class="cta-button">📓 Bomber's Notebook</span>
+                        <span class="cta-button">Join Community - £5</span>
                     </a>
                     
                     <a href="professional-services.html" class="content-card">
                         <h3 class="card-title">NETWORKING</h3>
                         <p class="card-text">Build meaningful relationships through curated events and interactive experiences.</p>
-                        <span class="cta-button">💼 Professional Services</span>
+                        <span class="cta-button">Join Network - £10</span>
                     </a>
                 </div>
 
@@ -745,13 +745,45 @@
                     <a href="tarot-reading.html" class="content-card">
                         <h3 class="card-title">TAROT READING</h3>
                         <p class="card-text">Draw two cards from the cosmic deck. Discover guidance, insight, and meaning in the ancient symbols.</p>
-                        <span class="cta-button">Book Reading Session - £2</span>
+                        <span class="cta-button">Book Reading Session - £5</span>
                     </a>
                     
                     <a href="remember-moment.html" class="content-card">
                         <h3 class="card-title">REMEMBER THE MOMENT</h3>
-                        <p class="card-text">Capture your special moments. Professional photography service to preserve your memories forever.</p>
-                        <span class="cta-button">Book Photography Session - £2</span>
+                        <p class="card-text">Capture your special moments. Photography service to preserve your memories forever.</p>
+                        <span class="cta-button">Book Photography Session - £5</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Spiritual Message Section -->
+            <div class="content-section" style="margin-top: 60px;">
+                <h2 class="section-title">SPIRITUAL MESSAGE</h2>
+                <p class="section-text">Find wisdom and inspiration from sacred traditions and uplifting spirit.</p>
+                
+                <div class="cards-grid">
+                    <a href="christianity-quotes.html" class="content-card">
+                        <h3 class="card-title">CHRISTIANITY</h3>
+                        <p class="card-text">Draw wisdom from the Holy Bible. Sacred verses and timeless teachings to guide your path.</p>
+                        <span class="cta-button">🎲 Draw Scripture</span>
+                    </a>
+                    
+                    <a href="islam-quotes.html" class="content-card">
+                        <h3 class="card-title">ISLAM</h3>
+                        <p class="card-text">Receive guidance from the Holy Quran. Divine verses of peace, wisdom, and reflection.</p>
+                        <span class="cta-button">🎲 Draw Verse</span>
+                    </a>
+                    
+                    <a href="buddha-quotes.html" class="content-card">
+                        <h3 class="card-title">BUDDHA</h3>
+                        <p class="card-text">Discover teachings of enlightenment. Ancient wisdom from Buddhist scriptures and sutras.</p>
+                        <span class="cta-button">🎲 Draw Teaching</span>
+                    </a>
+                    
+                    <a href="spirit-quotes.html" class="content-card">
+                        <h3 class="card-title">SPIRIT</h3>
+                        <p class="card-text">Uplift your soul with universal wisdom. Inspiring messages to elevate your spirit.</p>
+                        <span class="cta-button">🎲 Draw Inspiration</span>
                     </a>
                 </div>
             </div>
@@ -848,13 +880,8 @@
         }
 
         function proceedToPayment() {
-            const amount = document.getElementById('customAmount').value;
-            if (!amount || amount <= 0) {
-                alert('Please enter a valid amount');
-                return;
-            }
-            // PayPal.me link with custom amount
-            window.open(`https://paypal.me/sean9334/${amount}GBP`, '_blank');
+            // Open Stripe custom payment link
+            window.open('https://buy.stripe.com/8x2eVf5ILfQDb11gja2ZO06', '_blank');
             closeCustomPayment();
         }
 

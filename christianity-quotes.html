@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christianity Quotes - Cyberlink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black:ital@1&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RE7ZLZJ8VY');
+    </script>
+
+    <style>
+        :root {
+            --chrome-pink: #ff0844;
+            --chrome-purple: #9d4edd;
+            --chrome-blue: #00b4d8;
+            --chrome-cyan: #4af2ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #000;
+            color: #2b2d42;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(235, 235, 235, 0.82);
+            pointer-events: none;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2b2d42;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 2px solid rgba(200, 200, 200, 0.5);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            color: white;
+            transform: translateX(-5px);
+            border-color: transparent;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        .page-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            font-style: italic;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 50px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(200, 200, 200, 0.5);
+        }
+
+        .quote-container {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            background: rgba(240, 240, 240, 0.5);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #2b2d42;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .quote-reference {
+            font-size: 1.1rem;
+            color: var(--chrome-purple);
+            font-weight: 700;
+        }
+
+        .dice-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(255, 8, 68, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dice-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 8, 68, 0.4);
+        }
+
+        .dice-button:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 100px 25px 60px; }
+            .page-title { font-size: 2rem; }
+            .content-card { padding: 40px 30px; }
+            .quote-text { font-size: 1.2rem; }
+            .dice-button { padding: 15px 35px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <a href="index.html" class="back-button">← Back</a>
+
+    <div class="container">
+        <h1 class="page-title">CHRISTIANITY ✝️</h1>
+        <p class="subtitle">Wisdom from the Holy Bible</p>
+
+        <div class="content-card">
+            <div class="quote-container" id="quoteContainer">
+                <div class="quote-icon">✝️</div>
+                <p class="quote-text" id="quoteText">Click the dice to receive divine wisdom</p>
+                <p class="quote-reference" id="quoteReference"></p>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="dice-button" onclick="drawQuote()">🎲 DRAW SCRIPTURE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bibleQuotes = [
+            { text: "The Lord is my shepherd; I shall not want.", reference: "Psalm 23:1" },
+            { text: "I can do all things through Christ who strengthens me.", reference: "Philippians 4:13" },
+            { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", reference: "John 3:16" },
+            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", reference: "Proverbs 3:5" },
+            { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", reference: "Psalm 34:18" },
+            { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", reference: "Joshua 1:9" },
+            { text: "Come to me, all you who are weary and burdened, and I will give you rest.", reference: "Matthew 11:28" },
+            { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", reference: "Numbers 6:24-25" },
+            { text: "Cast all your anxiety on him because he cares for you.", reference: "1 Peter 5:7" },
+            { text: "And we know that in all things God works for the good of those who love him.", reference: "Romans 8:28" },
+            { text: "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.", reference: "John 14:27" },
+            { text: "The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?", reference: "Psalm 27:1" },
+            { text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", reference: "1 Corinthians 13:4" },
+            { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", reference: "Philippians 4:6" },
+            { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", reference: "Isaiah 40:31" },
+            { text: "The Lord is good, a refuge in times of trouble. He cares for those who trust in him.", reference: "Nahum 1:7" },
+            { text: "Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.", reference: "Matthew 7:7" },
+            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", reference: "Jeremiah 29:11" },
+            { text: "The name of the Lord is a fortified tower; the righteous run to it and are safe.", reference: "Proverbs 18:10" },
+            { text: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.", reference: "Ephesians 4:32" }
+        ];
+
+        let quoteHistory = JSON.parse(localStorage.getItem('christianityQuoteHistory') || '[]');
+
+        function drawQuote() {
+            let newQuote;
+            let attempts = 0;
+            const maxAttempts = 50;
+
+            // Keep trying until we get a quote not in recent history
+            do {
+                newQuote = bibleQuotes[Math.floor(Math.random() * bibleQuotes.length)];
+                attempts++;
+            } while (quoteHistory.includes(newQuote.reference) && attempts < maxAttempts);
+
+            // Update history (keep last 5)
+            quoteHistory.push(newQuote.reference);
+            if (quoteHistory.length > 5) {
+                quoteHistory.shift();
+            }
+            localStorage.setItem('christianityQuoteHistory', JSON.stringify(quoteHistory));
+
+            // Display quote with animation
+            const container = document.getElementById('quoteContainer');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('quoteText').textContent = `"${newQuote.text}"`;
+                document.getElementById('quoteReference').textContent = newQuote.reference;
+                container.style.transition = 'opacity 0.5s';
+                container.style.opacity = '1';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
