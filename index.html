@@ -628,13 +628,13 @@
             <span class="top-tab-icon">👥</span>
             <span class="top-tab-text">PEOPLE</span>
         </div>
-        <div class="top-tab active" onclick="switchMainTab('places')">
-            <span class="top-tab-icon">📍</span>
-            <span class="top-tab-text">PLACES</span>
-        </div>
-        <div class="top-tab" onclick="switchMainTab('energy')">
+        <div class="top-tab active" onclick="switchMainTab('energy')">
             <span class="top-tab-icon">✨</span>
             <span class="top-tab-text">EXPERIENCES</span>
+        </div>
+        <div class="top-tab" onclick="switchMainTab('places')">
+            <span class="top-tab-icon">📍</span>
+            <span class="top-tab-text">PLACES</span>
         </div>
     </div>
 
@@ -678,7 +678,7 @@
         </div>
 
         <!-- Places Tab -->
-        <div id="places" class="tab-content active">
+        <div id="places" class="tab-content">
             <div class="content-section">
                 <h2 class="section-title">EXPLORE PLACES</h2>
                 <p class="section-text">Discover Liverpool and London through immersive experiences.</p>
@@ -717,7 +717,7 @@
         </div>
 
         <!-- Experiences Tab -->
-        <div id="energy" class="tab-content">
+        <div id="energy" class="tab-content active">
             <div class="content-section">
                 <h2 class="section-title">EXPERIENCES</h2>
                 <p class="section-text">Experience connection through curated moments.</p>
@@ -727,6 +727,13 @@
                         <h3 class="card-title">FREESTYLE TAI CHI</h3>
                         <p class="card-text">10 minutes of presence. Flow through ancient movements adapted for modern life. Find your center, release tension, cultivate energy.</p>
                         <span class="cta-button">Book Session - £10</span>
+                    </a>
+                    
+                    <!-- Bespoke Moment - Red Featured Card (Middle Position) -->
+                    <a href="bespoke-moment.html" class="content-card" style="background: linear-gradient(135deg, rgba(255, 8, 68, 0.15), rgba(157, 78, 221, 0.15)); border: 3px solid var(--chrome-pink); box-shadow: 0 10px 40px rgba(255, 8, 68, 0.3);">
+                        <h3 class="card-title" style="font-size: 1.8rem;">✨ BESPOKE MOMENT ✨</h3>
+                        <p class="card-text" style="font-size: 1.1rem;">Create a special custom moment for someone you know. From recreating memories to staging unique experiences.</p>
+                        <span class="cta-button" style="background: linear-gradient(135deg, var(--chrome-pink), #ff4d7a); font-size: 1.1rem;">Create Custom Moment - From £50</span>
                     </a>
                     
                     <a href="cupid-service.html" class="content-card">
@@ -739,12 +746,6 @@
                         <h3 class="card-title">REASON TO DANCE</h3>
                         <p class="card-text">Movement therapy that reconnects you with joy. Dance away stress, rediscover your body, find your rhythm again.</p>
                         <span class="cta-button">Book Session - £10</span>
-                    </a>
-                    
-                    <a href="bespoke-moment.html" class="content-card">
-                        <h3 class="card-title">BESPOKE MOMENT</h3>
-                        <p class="card-text">Create a special custom moment for someone you know. From recreating memories to staging unique experiences.</p>
-                        <span class="cta-button">Create Custom Moment</span>
                     </a>
                     
                     <a href="tarot-reading.html" class="content-card">
@@ -784,10 +785,13 @@
                         <p class="card-text">Discover teachings of enlightenment. Ancient wisdom from Buddhist scriptures and sutras.</p>
                         <span class="cta-button">🎲 Draw Teaching</span>
                     </a>
-                    
-                    <a href="spirit-quotes.html" class="content-card">
-                        <h3 class="card-title">SPIRIT</h3>
-                        <p class="card-text">Uplift your soul with universal wisdom. Inspiring messages to elevate your spirit.</p>
+                </div>
+
+                <!-- Spirit Card - Centered Bottom Row -->
+                <div style="max-width: 500px; margin: 40px auto 0;">
+                    <a href="spirit-quotes.html" class="content-card" style="display: block; text-decoration: none;">
+                        <h3 class="card-title">SPIRIT ✨</h3>
+                        <p class="card-text">Uplift your soul with universal wisdom. Ancient teachings from yogis, mystics, and spiritual masters.</p>
                         <span class="cta-button">🎲 Draw Inspiration</span>
                     </a>
                 </div>
@@ -849,7 +853,7 @@
     <script>
         // Set default tab to PLACES
         document.addEventListener('DOMContentLoaded', function() {
-            switchMainTab('places');
+            switchMainTab('energy');
         });
 
         function switchMainTab(tabName) {
