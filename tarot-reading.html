@@ -283,19 +283,32 @@
         <p class="subtitle">Your cosmic guidance awaits</p>
 
         <div class="content-card">
-            <div class="cards-container" id="cardsContainer"></div>
-            
-            <button class="draw-again-btn" onclick="drawNewCards()">🔮 Draw New Cards</button>
-            
-            <div style="text-align: center; padding: 40px 0; margin-top: 40px; border-top: 2px solid rgba(157, 78, 221, 0.3);">
-                <h3 style="color: #2b2d42; font-size: 1.3rem; margin-bottom: 20px; font-weight: 700;">Professional Reading</h3>
-                <p style="color: #6c757d; margin-bottom: 30px;">Want a deeper, personalized tarot reading? Book a session for just £5</p>
+            <div id="revealButton" style="text-align: center; padding: 60px 0;">
+                <button class="draw-again-btn" onclick="revealTarotMystery()" style="font-size: 1.8rem; padding: 30px 70px;">
+                    🎲 ROLL THE DICE
+                </button>
+            </div>
+
+            <div id="tarotReading" style="display: none;">
+                <div class="cards-container" id="cardsContainer"></div>
                 
-                <a href="https://buy.stripe.com/aFadRb5ILgUHgll5Ew2ZO02" target="_blank" class="draw-again-btn" style="text-decoration: none; display: inline-block;">
-                    💳 Pay £5 (Card or Digital Wallet)
-                </a>
+                <div id="combinedMeaning" style="background: rgba(240, 240, 240, 0.5); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center;">
+                    <h3 style="color: var(--chrome-purple); font-size: 1.4rem; margin-bottom: 20px; font-weight: 700;">What These Cards Mean Together</h3>
+                    <p id="meaningText" style="color: #2b2d42; font-size: 1.2rem; line-height: 1.8; font-style: italic;"></p>
+                </div>
                 
-                <p style="color: #6c757d; font-size: 0.9rem; margin-top: 20px; font-style: italic;">After payment, I'll reach out within 24 hours to arrange your personalized reading</p>
+                <button class="draw-again-btn" onclick="drawNewCards()" style="margin-bottom: 40px;">🎲 Roll Again</button>
+                
+                <div style="text-align: center; padding: 40px 0; border-top: 2px solid rgba(157, 78, 221, 0.3);">
+                    <h3 style="color: #2b2d42; font-size: 1.3rem; margin-bottom: 20px; font-weight: 700;">Professional Reading</h3>
+                    <p style="color: #6c757d; margin-bottom: 30px;">Want a deeper, personalized tarot reading? Book a session for just £5</p>
+                    
+                    <a href="https://buy.stripe.com/aFadRb5ILgUHgll5Ew2ZO02" target="_blank" class="draw-again-btn" style="text-decoration: none; display: inline-block;">
+                        💳 Pay £5 (Card or Digital Wallet)
+                    </a>
+                    
+                    <p style="color: #6c757d; font-size: 0.9rem; margin-top: 20px; font-style: italic;">After payment, I'll reach out within 24 hours to arrange your personalized reading</p>
+                </div>
             </div>
         </div>
     </div>
@@ -436,6 +449,12 @@
             }
         ];
 
+        function revealTarotMystery() {
+            document.getElementById('revealButton').style.display = 'none';
+            document.getElementById('tarotReading').style.display = 'block';
+            drawNewCards();
+        }
+
         function drawNewCards() {
             const container = document.getElementById('cardsContainer');
             const shuffled = [...tarotDeck].sort(() => Math.random() - 0.5);
@@ -453,10 +472,57 @@
                     </div>
                 </div>
             `).join('');
+
+            // Generate combined meaning
+            const combinedMeaning = generateCombinedMeaning(drawnCards[0], drawnCards[1]);
+            document.getElementById('meaningText').textContent = combinedMeaning;
         }
 
-        // Draw initial cards on page load
-        drawNewCards();
+        function generateCombinedMeaning(card1, card2) {
+            const meanings = [
+                "This powerful combination suggests a time of profound transformation. Embrace the changes ahead while staying grounded in your truth and authentic self. What may feel uncertain now is actually clearing the path for something more aligned with your highest good.",
+                
+                "Together, these cards speak of the delicate balance between taking action and allowing space for reflection. This is not a time to rush forward impulsively, nor is it a time to remain completely still. Find the sweet spot between doing and being, and let your inner wisdom guide each step.",
+                
+                "This pairing indicates a journey from darkness into light, suggesting you may be moving through a challenging period. The struggles you're facing now are preparing you for greater wisdom and understanding. Trust that the difficulty has purpose, and brighter days are ahead.",
+                
+                "These energies combined suggest it's time to release the old to make space for new beginnings. Whether it's outdated beliefs, relationships, or patterns, the universe is asking you to let go. Create space for the new by honoring what was and releasing it with gratitude.",
+                
+                "This reading points to inner strength meeting outer opportunity in perfect timing. You've been building your foundation, and now the universe is presenting opportunities that match your evolution. Trust that you're ready for what's coming, even if it feels bigger than anything you've done before.",
+                
+                "The union of these cards reveals the profound importance of knowing when to be patient and when to take decisive action. Some situations require you to wait and observe, while others demand bold moves. Learn to feel the difference, and you'll navigate life with much greater ease.",
+                
+                "This combination speaks of emotional healing that comes through honest, compassionate self-reflection. You're being guided to look within and face aspects of yourself you may have been avoiding. True healing begins when we stop running from ourselves and offer ourselves the love we've been seeking externally.",
+                
+                "Together, they indicate a creative breakthrough emerging from the marriage of structured thinking and wild imagination. Use logic to build the container, and let imagination fill it with magic. This synthesis of left brain and right brain will produce something truly remarkable.",
+                
+                "This pairing suggests that relationships and partnerships are taking center stage in your life right now. Collaboration, rather than going it alone, will bring unexpected rewards and open doors you didn't even know existed. Be willing to trust, share, and build together with the right people.",
+                
+                "These cards together point to both material and spiritual abundance flowing toward you. Your job is to remain open to receive in whatever form abundance wants to arrive. Release any beliefs about scarcity or unworthiness, and know that you're deserving of good things.",
+                
+                "This reading shows the profound need to trust the process, especially when the path ahead isn't clear. Sometimes the most important journeys require us to walk by faith rather than by sight. Trust that every step is guided, even when you can't see where it's leading.",
+                
+                "The combination suggests you're breaking free from limitations that have held you back for too long. You're waking up to your own power and possibility as you realize many boundaries were self-imposed. This liberation may feel both exhilarating and terrifying - both reactions are normal when we step into our potential.",
+                
+                "Together, these energies speak of finding peace through radical acceptance of what is. When we release the need to force outcomes and instead accept what life is presenting, we discover a deep inner peace. This doesn't mean giving up - it means working with life rather than against it.",
+                
+                "This pairing indicates that your consistent effort and hard work are building something truly lasting. Every small step is contributing to a larger vision that's taking shape. Stay committed to what you're building - your patience and dedication will pay off.",
+                
+                "These cards combined suggest your higher self has an important message for you right now. Pay close attention to your dreams, the synchronicities appearing in your life, and those quiet intuitive nudges. The messages are there - you just need to tune in.",
+                
+                "This reading points to the transformative power of authentic communication. There's something important you need to express, or perhaps you need to create space for someone else to share their truth. When we communicate authentically, we create the foundation for genuine connection and understanding.",
+                
+                "Together, they show that victory and breakthrough are emerging from the struggles you've been facing. Your persistence through difficulty is about to pay off in significant ways. Don't give up now - you're closer than you think to a major turning point.",
+                
+                "This combination speaks of renewal, fresh starts, and the ending of an old cycle. Honor what's ending while getting excited about what's beginning. Endings are not failures - they're necessary transitions that make space for new possibilities to emerge.",
+                
+                "The pairing suggests that wisdom is being gained through your lived experiences. All the lessons you've learned and growth you've achieved are forming a deep well of understanding. Trust the wisdom you've earned - your experiences have taught you things that can only be learned by walking your unique path.",
+                
+                "These cards together indicate that the universe is aligning in your favor in powerful ways. Doors are opening, opportunities are appearing, and things are falling into place with almost magical timing. This is your moment to move forward with confidence and trust."
+            ];
+            
+            return meanings[Math.floor(Math.random() * meanings.length)];
+        }
     </script>
 </body>
 </html>
