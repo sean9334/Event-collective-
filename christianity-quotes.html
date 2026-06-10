@@ -1,287 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christianity Quotes - Cyberlink</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black:ital@1&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RE7ZLZJ8VY');
-    </script>
-
-    <style>
-        :root {
-            --chrome-pink: #ff0844;
-            --chrome-purple: #9d4edd;
-            --chrome-blue: #00b4d8;
-            --chrome-cyan: #4af2ff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: #000;
-            color: #2b2d42;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .video-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(235, 235, 235, 0.82);
-            pointer-events: none;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #2b2d42;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .back-button:hover {
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            transform: translateX(-5px);
-            border-color: transparent;
-        }
-
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 40px 80px;
-        }
-
-        .page-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            font-style: italic;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #6c757d;
-            margin-bottom: 50px;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            padding: 60px 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .quote-container {
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px;
-            background: rgba(240, 240, 240, 0.5);
-            border-radius: 20px;
-            margin-bottom: 40px;
-        }
-
-        .quote-icon {
-            font-size: 4rem;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: #2b2d42;
-            margin-bottom: 30px;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        .quote-reference {
-            font-size: 1.1rem;
-            color: var(--chrome-purple);
-            font-weight: 700;
-        }
-
-        .dice-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 35px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 30px rgba(255, 8, 68, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .dice-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255, 8, 68, 0.4);
-        }
-
-        .dice-button:active {
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 100px 25px 60px; }
-            .page-title { font-size: 2rem; }
-            .content-card { padding: 40px 30px; }
-            .quote-text { font-size: 1.2rem; }
-            .dice-button { padding: 15px 35px; font-size: 1.1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christianity Quotes | Cyberlink</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#c9a227; --gold-light:#f0d060; --gold-dim:#7a5f10; --bg:#0a0608; --bg2:#110d14; --purple:#6b3fa0; --text:#e8dcc8; --text-dim:#9b8f7a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'IM Fell English',Georgia,serif;min-height:100vh;overflow-x:hidden}
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1px 1px at 10% 15%,rgba(201,162,39,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 55% 25%,rgba(201,162,39,.4) 0%,transparent 100%),radial-gradient(1px 1px at 75% 80%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 90% 10%,rgba(201,162,39,.6) 0%,transparent 100%),radial-gradient(1px 1px at 20% 90%,rgba(255,255,255,.2) 0%,transparent 100%),radial-gradient(1px 1px at 65% 45%,rgba(155,111,208,.4) 0%,transparent 100%)}
+  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(201,162,39,.2);background:rgba(10,6,8,.85);backdrop-filter:blur(10px)}
+  .nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);text-decoration:none;letter-spacing:3px}
+  .nav-back{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-dim);text-decoration:none;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(201,162,39,.3);padding:8px 18px;border-radius:20px;transition:all .3s}
+  .nav-back:hover{color:var(--gold);border-color:var(--gold)}
+  header{position:relative;z-index:2;text-align:center;padding:60px 20px 40px}
+  .eyebrow{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:5px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.8rem,5vw,3rem);background:linear-gradient(135deg,var(--gold-dim),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+  .subtitle{color:var(--text-dim);font-style:italic;font-size:1rem}
+  .arena{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:0 20px 80px}
+  .card{background:linear-gradient(135deg,rgba(26,16,32,.9),rgba(17,13,20,.9));border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:40px 40px 32px;margin-bottom:20px}
+  .quote-icon{font-size:2.5rem;text-align:center;margin-bottom:20px;opacity:.8}
+  .quote-text{font-size:1.3rem;line-height:1.85;font-style:italic;color:var(--text);text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
+  .quote-ref{text-align:center;margin-top:18px;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;opacity:0;transition:opacity .4s .3s}
+  .quote-ref.show{opacity:1}
+  .quote-text.fade{opacity:0}
+  .ornament{text-align:center;color:var(--gold-dim);letter-spacing:6px;margin:20px 0;font-size:1rem}
+  .counter{text-align:center;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--text-dim);margin-bottom:24px}
+  .btn-wrap{text-align:center;margin-top:8px}
+  .btn{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:16px 44px;border-radius:30px;border:none;cursor:pointer;transition:all .3s;background:linear-gradient(135deg,#7a5f10,var(--gold),#c9a227);color:var(--bg);box-shadow:0 0 20px rgba(201,162,39,.3)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 4px 28px rgba(201,162,39,.5)}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  .spinning{animation:spin .5s ease}
+  .reset-bar{text-align:center;margin-top:8px}
+  .reset-btn{background:none;border:none;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:2px;color:var(--text-dim);cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .3s}
+  .reset-btn:hover{color:var(--gold)}
+</style>
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="bg.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="stars"></div>
+<nav>
+  <a href="index.html" class="nav-logo">CYBERLINK</a>
+  <a href="index.html" class="nav-back">← Return</a>
+</nav>
+<header>
+  <p class="eyebrow">✦ The Holy Bible ✦</p>
+  <h1>CHRISTIANITY ✝️</h1>
+  <p class="subtitle">Wisdom from the Word of God</p>
+</header>
+<div class="arena">
+  <div class="card">
+    <div class="quote-icon">✝️</div>
+    <div class="quote-text" id="quoteText">Press the button below to receive a verse</div>
+    <div class="ornament">· · ✦ · ·</div>
+    <div class="quote-ref" id="quoteRef"></div>
+  </div>
+  <div class="counter" id="counter"></div>
+  <div class="btn-wrap">
+    <button class="btn" id="diceBtn" onclick="drawQuote()">🎲 &nbsp;Draw a Verse</button>
+  </div>
+  <div class="reset-bar">
+    <button class="reset-btn" onclick="resetHistory()">✦ Reset History ✦</button>
+  </div>
+</div>
+<script>
+const quotes = [
+  { text:"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", ref:"John 3:16" },
+  { text:"I can do all this through him who gives me strength.", ref:"Philippians 4:13" },
+  { text:"The Lord is my shepherd, I lack nothing.", ref:"Psalm 23:1" },
+  { text:"Trust in the Lord with all your heart and lean not on your own understanding.", ref:"Proverbs 3:5" },
+  { text:"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", ref:"Joshua 1:9" },
+  { text:"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", ref:"Philippians 4:6" },
+  { text:"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.", ref:"Isaiah 40:31" },
+  { text:"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", ref:"Jeremiah 29:11" },
+  { text:"Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.", ref:"Matthew 7:7" },
+  { text:"Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.", ref:"Ephesians 4:32" },
+  { text:"The name of the Lord is a fortified tower; the righteous run to it and are safe.", ref:"Proverbs 18:10" },
+  { text:"Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", ref:"1 Corinthians 13:4" },
+  { text:"Come to me, all you who are weary and burdened, and I will give you rest.", ref:"Matthew 11:28" },
+  { text:"The Lord is my light and my salvation — whom shall I fear? The Lord is the stronghold of my life — of whom shall I be afraid?", ref:"Psalm 27:1" },
+  { text:"And we know that in all things God works for the good of those who love him, who have been called according to his purpose.", ref:"Romans 8:28" },
+  { text:"Do not conform to the pattern of this world, but be transformed by the renewing of your mind.", ref:"Romans 12:2" },
+  { text:"For where two or three gather in my name, there am I with them.", ref:"Matthew 18:20" },
+  { text:"The peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.", ref:"Philippians 4:7" },
+  { text:"He gives strength to the weary and increases the power of the weak.", ref:"Isaiah 40:29" },
+  { text:"Cast all your anxiety on him because he cares for you.", ref:"1 Peter 5:7" },
+  { text:"A friend loves at all times, and a brother is born for a time of adversity.", ref:"Proverbs 17:17" },
+  { text:"Give thanks in all circumstances; for this is God's will for you in Christ Jesus.", ref:"1 Thessalonians 5:18" },
+  { text:"Even though I walk through the darkest valley, I will fear no evil, for you are with me.", ref:"Psalm 23:4" },
+  { text:"Your word is a lamp for my feet, a light on my path.", ref:"Psalm 119:105" },
+  { text:"In the beginning was the Word, and the Word was with God, and the Word was God.", ref:"John 1:1" },
+  { text:"Blessed are the poor in spirit, for theirs is the kingdom of heaven.", ref:"Matthew 5:3" },
+  { text:"Blessed are the peacemakers, for they will be called children of God.", ref:"Matthew 5:9" },
+  { text:"You are the light of the world. A town built on a hill cannot be hidden.", ref:"Matthew 5:14" },
+  { text:"But seek first his kingdom and his righteousness, and all these things will be given to you as well.", ref:"Matthew 6:33" },
+  { text:"So do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.", ref:"Matthew 6:34" },
+  { text:"For God has not given us a spirit of fear, but of power and of love and of a sound mind.", ref:"2 Timothy 1:7" },
+  { text:"I am the way and the truth and the life. No one comes to the Father except through me.", ref:"John 14:6" },
+  { text:"Peace I leave with you; my peace I give you. I do not give to you as the world gives.", ref:"John 14:27" },
+  { text:"I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit.", ref:"John 15:5" },
+  { text:"Greater love has no one than this: to lay down one's life for one's friends.", ref:"John 15:13" },
+  { text:"For it is by grace you have been saved, through faith — and this is not from yourselves, it is the gift of God.", ref:"Ephesians 2:8" },
+  { text:"I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus.", ref:"Philippians 3:14" },
+  { text:"My grace is sufficient for you, for my power is made perfect in weakness.", ref:"2 Corinthians 12:9" },
+  { text:"Therefore, if anyone is in Christ, the new creation has come: the old has gone, the new is here!", ref:"2 Corinthians 5:17" },
+  { text:"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.", ref:"Galatians 5:22–23" },
+  { text:"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", ref:"Numbers 6:24–25" },
+  { text:"He heals the brokenhearted and binds up their wounds.", ref:"Psalm 147:3" },
+  { text:"The Lord is close to the brokenhearted and saves those who are crushed in spirit.", ref:"Psalm 34:18" },
+  { text:"Delight yourself in the Lord, and he will give you the desires of your heart.", ref:"Psalm 37:4" },
+  { text:"The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning.", ref:"Lamentations 3:22–23" },
+  { text:"Have I not commanded you? Be strong and courageous. Do not be frightened, for the Lord your God is with you wherever you go.", ref:"Joshua 1:9" },
+  { text:"With man this is impossible, but with God all things are possible.", ref:"Matthew 19:26" },
+  { text:"Truly I tell you, if you have faith as small as a mustard seed, you can say to this mountain, 'Move from here to there,' and it will move.", ref:"Matthew 17:20" },
+  { text:"For nothing will be impossible with God.", ref:"Luke 1:37" },
+  { text:"What, then, shall we say in response to these things? If God is for us, who can be against us?", ref:"Romans 8:31" },
+  { text:"Now faith is confidence in what we hope for and assurance about what we do not see.", ref:"Hebrews 11:1" },
+  { text:"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", ref:"Galatians 6:9" },
+  { text:"Draw near to God, and he will draw near to you.", ref:"James 4:8" },
+  { text:"Every good and perfect gift is from above, coming down from the Father of the heavenly lights.", ref:"James 1:17" },
+  { text:"Do not let your hearts be troubled. You believe in God; believe also in me.", ref:"John 14:1" },
+  { text:"The Lord your God is with you, the Mighty Warrior who saves. He will take great delight in you.", ref:"Zephaniah 3:17" },
+  { text:"He who began a good work in you will carry it on to completion until the day of Christ Jesus.", ref:"Philippians 1:6" },
+  { text:"And the God of all grace, who called you to his eternal glory in Christ, after you have suffered a little while, will himself restore you.", ref:"1 Peter 5:10" },
+  { text:"For I am convinced that neither death nor life, neither angels nor demons, can separate us from the love of God.", ref:"Romans 8:38–39" },
+  { text:"God is our refuge and strength, an ever-present help in trouble.", ref:"Psalm 46:1" },
+  { text:"Be still and know that I am God.", ref:"Psalm 46:10" },
+  { text:"The Lord is my strength and my shield; my heart trusts in him, and he helps me.", ref:"Psalm 28:7" },
+  { text:"Taste and see that the Lord is good; blessed is the one who takes refuge in him.", ref:"Psalm 34:8" },
+  { text:"Create in me a pure heart, O God, and renew a steadfast spirit within me.", ref:"Psalm 51:10" },
+  { text:"Surely your goodness and love will follow me all the days of my life.", ref:"Psalm 23:6" },
+  { text:"For the Lord is good and his love endures forever; his faithfulness continues through all generations.", ref:"Psalm 100:5" },
+  { text:"You will seek me and find me when you seek me with all your heart.", ref:"Jeremiah 29:13" },
+  { text:"He has made everything beautiful in its time.", ref:"Ecclesiastes 3:11" },
+  { text:"Let the morning bring me word of your unfailing love, for I have put my trust in you.", ref:"Psalm 143:8" },
+  { text:"Fear not, for I have redeemed you; I have summoned you by name; you are mine.", ref:"Isaiah 43:1" }
+];
 
-    <a href="index.html" class="back-button">← Back</a>
+let history = JSON.parse(sessionStorage.getItem('xtyHistory')||'[]');
+let total = 0;
 
-    <div class="container">
-        <h1 class="page-title">CHRISTIANITY ✝️</h1>
-        <p class="subtitle">Wisdom from the Holy Bible</p>
+function drawQuote() {
+  const btn = document.getElementById('diceBtn');
+  const textEl = document.getElementById('quoteText');
+  const refEl = document.getElementById('quoteRef');
 
-        <div class="content-card">
-            <div class="quote-container" id="quoteContainer">
-                <div class="quote-icon">✝️</div>
-                <p class="quote-text" id="quoteText">Click the dice to receive divine wisdom</p>
-                <p class="quote-reference" id="quoteReference"></p>
-            </div>
-            
-            <div style="text-align: center;">
-                <button class="dice-button" onclick="drawQuote()">🎲 DRAW SCRIPTURE</button>
-            </div>
-        </div>
-    </div>
+  btn.classList.add('spinning');
+  setTimeout(() => btn.classList.remove('spinning'), 500);
 
-    <script>
-        const bibleQuotes = [
-            { text: "The Lord is my shepherd; I shall not want.", reference: "Psalm 23:1" },
-            { text: "I can do all things through Christ who strengthens me.", reference: "Philippians 4:13" },
-            { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", reference: "John 3:16" },
-            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", reference: "Proverbs 3:5" },
-            { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", reference: "Psalm 34:18" },
-            { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", reference: "Joshua 1:9" },
-            { text: "Come to me, all you who are weary and burdened, and I will give you rest.", reference: "Matthew 11:28" },
-            { text: "The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.", reference: "Numbers 6:24-25" },
-            { text: "Cast all your anxiety on him because he cares for you.", reference: "1 Peter 5:7" },
-            { text: "And we know that in all things God works for the good of those who love him.", reference: "Romans 8:28" },
-            { text: "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.", reference: "John 14:27" },
-            { text: "The Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?", reference: "Psalm 27:1" },
-            { text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", reference: "1 Corinthians 13:4" },
-            { text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.", reference: "Philippians 4:6" },
-            { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", reference: "Isaiah 40:31" },
-            { text: "The Lord is good, a refuge in times of trouble. He cares for those who trust in him.", reference: "Nahum 1:7" },
-            { text: "Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.", reference: "Matthew 7:7" },
-            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.", reference: "Jeremiah 29:11" },
-            { text: "The name of the Lord is a fortified tower; the righteous run to it and are safe.", reference: "Proverbs 18:10" },
-            { text: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.", reference: "Ephesians 4:32" }
-        ];
+  textEl.classList.add('fade');
+  refEl.classList.remove('show');
 
-        let quoteHistory = JSON.parse(localStorage.getItem('christianityQuoteHistory') || '[]');
+  setTimeout(() => {
+    let pool = quotes.filter((_,i) => !history.includes(i));
+    if (pool.length === 0) { history = []; pool = quotes; }
+    const idx = quotes.indexOf(pool[Math.floor(Math.random() * pool.length)]);
+    history.push(idx);
+    if (history.length > 10) history.shift();
+    sessionStorage.setItem('xtyHistory', JSON.stringify(history));
 
-        function drawQuote() {
-            let newQuote;
-            let attempts = 0;
-            const maxAttempts = 50;
+    const q = quotes[idx];
+    textEl.textContent = '\u201C' + q.text + '\u201D';
+    refEl.textContent = q.ref;
+    total++;
+    document.getElementById('counter').textContent = total > 0 ? total + ' verse' + (total>1?'s':'') + ' drawn' : '';
+    textEl.classList.remove('fade');
+    setTimeout(() => refEl.classList.add('show'), 300);
+  }, 350);
+}
 
-            // Keep trying until we get a quote not in recent history
-            do {
-                newQuote = bibleQuotes[Math.floor(Math.random() * bibleQuotes.length)];
-                attempts++;
-            } while (quoteHistory.includes(newQuote.reference) && attempts < maxAttempts);
-
-            // Update history (keep last 5)
-            quoteHistory.push(newQuote.reference);
-            if (quoteHistory.length > 5) {
-                quoteHistory.shift();
-            }
-            localStorage.setItem('christianityQuoteHistory', JSON.stringify(quoteHistory));
-
-            // Display quote with animation
-            const container = document.getElementById('quoteContainer');
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('quoteText').textContent = `"${newQuote.text}"`;
-                document.getElementById('quoteReference').textContent = newQuote.reference;
-                container.style.transition = 'opacity 0.5s';
-                container.style.opacity = '1';
-            }, 300);
-        }
-    </script>
+function resetHistory() { history = []; sessionStorage.removeItem('xtyHistory'); total = 0; document.getElementById('counter').textContent = ''; }
+</script>
 </body>
 </html>

@@ -1,528 +1,1030 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Reading - Cyberlink</title>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RE7ZLZJ8VY');
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Reading | Cyberlink</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a227;
+    --gold-light: #f0d060;
+    --gold-dim: #7a5f10;
+    --bg: #0a0608;
+    --bg2: #110d14;
+    --bg3: #1a1020;
+    --purple: #6b3fa0;
+    --purple-light: #9b6fd0;
+    --crimson: #8b1a2a;
+    --text: #e8dcc8;
+    --text-dim: #9b8f7a;
+    --card-w: 160px;
+    --card-h: 280px;
+  }
 
-        :root {
-            --chrome-pink: #ff0844;
-            --chrome-purple: #9d4edd;
-            --chrome-blue: #00b4d8;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: #e0f0ff;
-            min-height: 100vh;
-            padding: 40px 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IM Fell English', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
+  /* ─── STAR FIELD ─── */
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(1px 1px at 10% 15%, rgba(201,162,39,.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 25%, rgba(201,162,39,.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 80%, rgba(255,255,255,.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 10%, rgba(201,162,39,.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 90%, rgba(255,255,255,.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 55%, rgba(155,111,208,.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 40%, rgba(255,255,255,.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 35%, rgba(201,162,39,.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,.3) 0%, transparent 100%);
+  }
 
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            animation: spin 60s linear infinite;
-        }
+  /* ─── NAV ─── */
+  nav {
+    position: relative; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(201,162,39,.2);
+    background: rgba(10,6,8,.8);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 3px;
+  }
+  .nav-back {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,162,39,.3);
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: all .3s;
+  }
+  .nav-back:hover { color: var(--gold); border-color: var(--gold); }
 
-        @keyframes spin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+  /* ─── HEADER ─── */
+  header {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: 5px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .sub {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
 
-        .video-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(235, 235, 235, 0.82);
-            pointer-events: none;
-        }
+  /* ─── STAGE INDICATOR ─── */
+  .stage-bar {
+    position: relative; z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 0 20px 40px;
+  }
+  .stage-step {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .stage-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    color: var(--gold-dim);
+    transition: all .5s;
+    position: relative;
+  }
+  .stage-dot.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 16px rgba(201,162,39,.4);
+  }
+  .stage-dot.done {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+  }
+  .stage-label {
+    font-family: 'Cinzel', serif;
+    font-size: .65rem;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    transition: color .5s;
+  }
+  .stage-label.active { color: var(--gold); }
+  .stage-line {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+    margin: 0 6px;
+  }
+  @media(max-width:600px) {
+    .stage-label { display: none; }
+    .stage-line { width: 20px; }
+  }
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(157, 78, 221, 0.3);
-            border-radius: 50px;
-            color: #9d4edd;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+  /* ─── MAIN ARENA ─── */
+  .arena {
+    position: relative; z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 1);
-            border-color: #9d4edd;
-            transform: translateY(-2px);
-        }
+  /* ─── PHASE PANELS ─── */
+  .phase {
+    display: none;
+    animation: fadeUp .6s ease;
+  }
+  .phase.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 60px;
-            position: relative;
-            z-index: 10;
-        }
+  /* ─── PHASE TITLES ─── */
+  .phase-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .phase-title h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .phase-title p {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: .95rem;
+  }
+  .ornament {
+    text-align: center;
+    color: var(--gold-dim);
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    margin: 14px 0 30px;
+  }
 
-        .page-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            font-style: italic;
-            text-align: center;
-            background: linear-gradient(135deg, #ff0844, #9d4edd, #00d4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
+  /* ─── CARD TRAY ─── */
+  .card-tray {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    min-height: 320px;
+    margin-bottom: 30px;
+  }
 
-        .subtitle {
-            text-align: center;
-            color: #90c5ff;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
+  /* ─── SINGLE TAROT CARD ─── */
+  .tarot-card {
+    width: var(--card-w);
+    height: var(--card-h);
+    position: relative;
+    cursor: default;
+    flex-shrink: 0;
+  }
+  .tarot-card.face-down {
+    cursor: pointer;
+  }
+  .card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .8s cubic-bezier(.4,0,.2,1);
+    border-radius: 10px;
+  }
+  .tarot-card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  .card-face, .card-back {
+    position: absolute; inset: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  /* BACK side */
+  .card-back {
+    background: linear-gradient(160deg, #1a0a28, #0e0615, #1a0a28);
+    border: 2px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-back::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,162,39,.2);
+    border-radius: 6px;
+  }
+  .card-back-symbol {
+    font-size: 3rem;
+    opacity: .5;
+    color: var(--gold-dim);
+  }
+  .back-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(201,162,39,.04) 8px, rgba(201,162,39,.04) 9px),
+      repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(201,162,39,.04) 8px, rgba(201,162,39,.04) 9px);
+  }
 
-        .content-card {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(157, 78, 221, 0.3);
-        }
+  /* FRONT side */
+  .card-face {
+    transform: rotateY(180deg);
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 20px rgba(201,162,39,.3);
+  }
+  .card-face svg {
+    width: 100%; height: 100%;
+  }
 
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin: 40px 0;
-        }
+  /* card label beneath */
+  .card-label {
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity .4s .6s;
+  }
+  .tarot-card.flipped .card-label { opacity: 1; }
+  .card-label .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .card-label .card-role {
+    font-size: .7rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 2px;
+  }
 
-        .tarot-card {
-            background: linear-gradient(135deg, #f5f5f0, #e8e8e0);
-            border: 4px solid #8b7355;
-            border-radius: 15px;
-            padding: 0;
-            text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            position: relative;
-        }
+  /* face-down tap hint */
+  .tap-hint {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .65rem;
+    color: var(--gold-dim);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: .4; }
+    50%      { opacity: 1; }
+  }
 
-        .tarot-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(45deg, transparent 48%, rgba(139, 115, 85, 0.2) 49%, rgba(139, 115, 85, 0.2) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(139, 115, 85, 0.2) 49%, rgba(139, 115, 85, 0.2) 51%, transparent 52%);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            pointer-events: none;
-        }
+  /* ─── MEANING BOX ─── */
+  .meaning-box {
+    background: linear-gradient(135deg, rgba(26,16,32,.9), rgba(17,13,20,.9));
+    border: 1px solid rgba(201,162,39,.25);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 36px 0 28px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .5s, transform .5s;
+  }
+  .meaning-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .meaning-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: .8rem;
+    letter-spacing: 3px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .meaning-box p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    font-style: italic;
+  }
+  .meaning-box .card-title-in-meaning {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    font-style: normal;
+    display: block;
+    margin-bottom: 6px;
+  }
 
-        .tarot-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(157, 78, 221, 0.5);
-        }
+  /* three-card spread: each card's mini meaning */
+  .trio-meanings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 30px 0;
+    opacity: 0;
+    transition: opacity .5s .3s;
+  }
+  .trio-meanings.visible { opacity: 1; }
+  .trio-meaning-item {
+    background: rgba(26,16,32,.7);
+    border: 1px solid rgba(201,162,39,.15);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .trio-meaning-item h4 {
+    font-family: 'Cinzel', serif;
+    font-size: .65rem;
+    letter-spacing: 2px;
+    color: var(--purple-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .trio-meaning-item .card-nm { color: var(--gold); font-size: .85rem; font-family: 'Cinzel',serif; margin-bottom: 4px; }
+  .trio-meaning-item p { font-size: .85rem; color: var(--text-dim); font-style: italic; line-height: 1.6; }
+  @media(max-width:600px) {
+    .trio-meanings { grid-template-columns: 1fr; }
+  }
 
-        .card-inner {
-            position: relative;
-            z-index: 1;
-            padding: 30px 20px;
-        }
+  /* two-card final spread */
+  .duality-label {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: 3px;
+    color: var(--purple-light);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-        .card-frame {
-            border: 3px solid #8b7355;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 240, 0.9));
-        }
+  /* ─── BUTTONS ─── */
+  .btn-wrap { text-align: center; margin-top: 28px; }
+  .btn {
+    font-family: 'Cinzel', serif;
+    font-size: .85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #7a5f10, var(--gold), #c9a227);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(201,162,39,.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 28px rgba(201,162,39,.5);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .btn-secondary:hover { background: rgba(201,162,39,.1); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; transform: none !important; }
 
-        .card-symbol {
-            font-size: 8rem;
-            margin: 20px 0;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
-            position: relative;
-        }
+  /* dice roll animation */
+  @keyframes diceRoll {
+    0%   { transform: rotate(0deg) scale(1); }
+    25%  { transform: rotate(90deg) scale(1.1); }
+    50%  { transform: rotate(180deg) scale(.9); }
+    75%  { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  .rolling { animation: diceRoll .6s ease; }
 
-        .card-symbol::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.2), transparent);
-            border-radius: 50%;
-            z-index: -1;
-        }
+  /* ─── BOOKING ─── */
+  .booking-strip {
+    margin-top: 50px;
+    background: linear-gradient(135deg, rgba(107,63,160,.15), rgba(139,26,42,.1));
+    border: 1px solid rgba(201,162,39,.2);
+    border-radius: 14px;
+    padding: 36px;
+    text-align: center;
+  }
+  .booking-strip h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .booking-strip p { color: var(--text-dim); font-style: italic; margin-bottom: 22px; }
 
-        .card-number {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: #8b7355;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-        }
+  /* ─── RESET ─── */
+  .reset-bar {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .reset-btn {
+    background: none; border: none;
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color .3s;
+  }
+  .reset-btn:hover { color: var(--gold); }
 
-        .card-name {
-            font-family: 'Archivo Black', sans-serif;
-            font-style: italic;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #8b7355, #5d4a37);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            padding: 10px 0;
-            border-top: 2px solid #8b7355;
-            border-bottom: 2px solid #8b7355;
-        }
-
-        .card-meaning {
-            color: #2b2d42;
-            font-size: 1rem;
-            line-height: 1.7;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(139, 115, 85, 0.3);
-        }
-
-        .draw-again-btn {
-            display: block;
-            margin: 40px auto 0;
-            padding: 18px 50px;
-            background: linear-gradient(135deg, #ff0844, #9d4edd);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.4);
-        }
-
-        .draw-again-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            .page-title { font-size: 2rem; }
-            .content-card { padding: 30px 20px; }
-            .cards-container { grid-template-columns: 1fr; gap: 25px; }
-            .card-symbol { font-size: 4rem; }
-            .card-name { font-size: 1.5rem; }
-        }
-    </style>
+  /* ─── CARD ARRIVAL ANIMATION ─── */
+  @keyframes cardArrive {
+    from { opacity: 0; transform: translateY(-40px) rotateX(20deg); }
+    to   { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  }
+  .card-arriving { animation: cardArrive .5s ease forwards; }
+</style>
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="bg.mp4" type="video/mp4">
-        </video>
+<div class="stars"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CYBERLINK</a>
+  <a href="index.html" class="nav-back">← Return</a>
+</nav>
+
+<header>
+  <p class="eyebrow">✦ The Ancient Art ✦</p>
+  <h1>Tarot Reading</h1>
+  <p class="sub">The cards do not tell your future — they reveal what already moves within you.</p>
+</header>
+
+<!-- Stage progress bar -->
+<div class="stage-bar">
+  <div class="stage-step">
+    <div class="stage-dot active" id="dot1">I</div>
+    <span class="stage-label active" id="lbl1">Significator</span>
+  </div>
+  <div class="stage-line"></div>
+  <div class="stage-step">
+    <div class="stage-dot" id="dot2">II</div>
+    <span class="stage-label" id="lbl2">The Trinity</span>
+  </div>
+  <div class="stage-line"></div>
+  <div class="stage-step">
+    <div class="stage-dot" id="dot3">III</div>
+    <span class="stage-label" id="lbl3">Resolution</span>
+  </div>
+</div>
+
+<div class="arena">
+
+  <!-- ══════════════════════════════════
+       PHASE 1 — SIGNIFICATOR (1 card)
+  ══════════════════════════════════ -->
+  <div class="phase active" id="phase1">
+    <div class="phase-title">
+      <h2>Draw Your Significator</h2>
+      <p>One card to reveal the energy surrounding you now</p>
+    </div>
+    <div class="ornament">· · ✦ · ·</div>
+
+    <div class="card-tray" id="tray1"></div>
+
+    <div class="meaning-box" id="meaning1">
+      <h3>Your Card Speaks</h3>
+      <span class="card-title-in-meaning" id="m1-name"></span>
+      <p id="m1-text"></p>
     </div>
 
-    <a href="index.html" class="back-button">← Back</a>
+    <div class="btn-wrap">
+      <button class="btn btn-primary" id="btn1-roll" onclick="rollPhase1()">
+        🎲 &nbsp;Roll the Dice
+      </button>
+      <div style="margin-top:16px">
+        <button class="btn btn-secondary" id="btn1-next" onclick="goPhase2()" style="display:none">
+          Reveal the Trinity →
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <div class="container">
-        <h1 class="page-title">TAROT READING</h1>
-        <p class="subtitle">Your cosmic guidance awaits</p>
+  <!-- ══════════════════════════════════
+       PHASE 2 — THE TRINITY (3 cards)
+       Past · Present · Future
+  ══════════════════════════════════ -->
+  <div class="phase" id="phase2">
+    <div class="phase-title">
+      <h2>The Trinity Spread</h2>
+      <p>Past energy that led here · What sits at the centre · What approaches</p>
+    </div>
+    <div class="ornament">· · ✦ · ·</div>
 
-        <div class="content-card">
-            <div id="revealButton" style="text-align: center; padding: 60px 0;">
-                <button class="draw-again-btn" onclick="revealTarotMystery()" style="font-size: 1.8rem; padding: 30px 70px;">
-                    🎲 ROLL THE DICE
-                </button>
-            </div>
+    <div class="card-tray" id="tray2"></div>
 
-            <div id="tarotReading" style="display: none;">
-                <div class="cards-container" id="cardsContainer"></div>
-                
-                <div id="combinedMeaning" style="background: rgba(240, 240, 240, 0.5); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: center;">
-                    <h3 style="color: var(--chrome-purple); font-size: 1.4rem; margin-bottom: 20px; font-weight: 700;">What These Cards Mean Together</h3>
-                    <p id="meaningText" style="color: #2b2d42; font-size: 1.2rem; line-height: 1.8; font-style: italic;"></p>
-                </div>
-                
-                <button class="draw-again-btn" onclick="drawNewCards()" style="margin-bottom: 40px;">🎲 Roll Again</button>
-                
-                <div style="text-align: center; padding: 40px 0; border-top: 2px solid rgba(157, 78, 221, 0.3);">
-                    <h3 style="color: #2b2d42; font-size: 1.3rem; margin-bottom: 20px; font-weight: 700;">Professional Reading</h3>
-                    <p style="color: #6c757d; margin-bottom: 30px;">Want a deeper, personalized tarot reading? Book a session for just £5</p>
-                    
-                    <a href="https://buy.stripe.com/aFadRb5ILgUHgll5Ew2ZO02" target="_blank" class="draw-again-btn" style="text-decoration: none; display: inline-block;">
-                        💳 Pay £5 (Card or Digital Wallet)
-                    </a>
-                    
-                    <p style="color: #6c757d; font-size: 0.9rem; margin-top: 20px; font-style: italic;">After payment, I'll reach out within 24 hours to arrange your personalized reading</p>
-                </div>
-            </div>
-        </div>
+    <!-- Individual trio meanings appear after all 3 flipped -->
+    <div class="trio-meanings" id="trio-meanings">
+      <div class="trio-meaning-item">
+        <h4>The Past</h4>
+        <div class="card-nm" id="t-past-name"></div>
+        <p id="t-past-text"></p>
+      </div>
+      <div class="trio-meaning-item">
+        <h4>The Present</h4>
+        <div class="card-nm" id="t-present-name"></div>
+        <p id="t-present-text"></p>
+      </div>
+      <div class="trio-meaning-item">
+        <h4>What Approaches</h4>
+        <div class="card-nm" id="t-future-name"></div>
+        <p id="t-future-text"></p>
+      </div>
     </div>
 
-    <script>
-        const tarotDeck = [
-            {
-                number: "0",
-                name: "The Fool",
-                symbol: "🃏",
-                meaning: "New beginnings, innocence, spontaneity, and free spirit. The Fool encourages you to embrace the unknown with an open heart and trust in the journey ahead."
-            },
-            {
-                number: "I",
-                name: "The Magician",
-                symbol: "🎩",
-                meaning: "Manifestation, resourcefulness, power, and inspired action. You have all the tools you need to create the reality you desire."
-            },
-            {
-                number: "II",
-                name: "The High Priestess",
-                symbol: "🌙",
-                meaning: "Intuition, sacred knowledge, divine feminine, and the subconscious mind. Trust your inner voice and pay attention to your dreams."
-            },
-            {
-                number: "III",
-                name: "The Empress",
-                symbol: "👑",
-                meaning: "Femininity, beauty, nature, nurturing, and abundance. A time of growth and creativity is upon you."
-            },
-            {
-                number: "IV",
-                name: "The Emperor",
-                symbol: "⚔️",
-                meaning: "Authority, establishment, structure, and father figure. Take control and create order from chaos."
-            },
-            {
-                number: "V",
-                name: "The Hierophant",
-                symbol: "📿",
-                meaning: "Spiritual wisdom, religious beliefs, conformity, tradition. Seek guidance from established systems and mentors."
-            },
-            {
-                number: "VI",
-                name: "The Lovers",
-                symbol: "💕",
-                meaning: "Love, harmony, relationships, values alignment, and choices. A significant relationship or decision awaits."
-            },
-            {
-                number: "VII",
-                name: "The Chariot",
-                symbol: "🏇",
-                meaning: "Control, willpower, success, action, and determination. Move forward with confidence and purpose."
-            },
-            {
-                number: "VIII",
-                name: "Strength",
-                symbol: "🦁",
-                meaning: "Inner strength, courage, persuasion, influence, and compassion. Face challenges with grace and patience."
-            },
-            {
-                number: "IX",
-                name: "The Hermit",
-                symbol: "🕯️",
-                meaning: "Soul searching, introspection, being alone, and inner guidance. Take time for solitude and reflection."
-            },
-            {
-                number: "X",
-                name: "Wheel of Fortune",
-                symbol: "☸️",
-                meaning: "Good luck, karma, life cycles, destiny, and turning point. Change is coming - embrace the cycle."
-            },
-            {
-                number: "XI",
-                name: "Justice",
-                symbol: "⚖️",
-                meaning: "Justice, fairness, truth, cause and effect, and law. Truth will prevail and balance will be restored."
-            },
-            {
-                number: "XII",
-                name: "The Hanged Man",
-                symbol: "🙃",
-                meaning: "Pause, surrender, letting go, and new perspectives. Sometimes you must pause to gain clarity."
-            },
-            {
-                number: "XIII",
-                name: "Death",
-                symbol: "💀",
-                meaning: "Endings, change, transformation, and transition. An old chapter closes to make way for rebirth."
-            },
-            {
-                number: "XIV",
-                name: "Temperance",
-                symbol: "⚗️",
-                meaning: "Balance, moderation, patience, purpose, and meaning. Find the middle path and blend opposing forces."
-            },
-            {
-                number: "XV",
-                name: "The Devil",
-                symbol: "😈",
-                meaning: "Shadow self, attachment, addiction, restriction, and sexuality. Recognize what binds you and choose freedom."
-            },
-            {
-                number: "XVI",
-                name: "The Tower",
-                symbol: "⚡",
-                meaning: "Sudden change, upheaval, chaos, revelation, and awakening. Destruction clears the way for reconstruction."
-            },
-            {
-                number: "XVII",
-                name: "The Star",
-                symbol: "⭐",
-                meaning: "Hope, faith, purpose, renewal, and spirituality. After darkness comes light and renewed hope."
-            },
-            {
-                number: "XVIII",
-                name: "The Moon",
-                symbol: "🌕",
-                meaning: "Illusion, fear, anxiety, subconscious, and intuition. Not all is as it seems - trust your instincts."
-            },
-            {
-                number: "XIX",
-                name: "The Sun",
-                symbol: "☀️",
-                meaning: "Positivity, fun, warmth, success, and vitality. Joy and abundance shine upon you now."
-            },
-            {
-                number: "XX",
-                name: "Judgement",
-                symbol: "📯",
-                meaning: "Judgement, rebirth, inner calling, and absolution. A time of reckoning and spiritual awakening."
-            },
-            {
-                number: "XXI",
-                name: "The World",
-                symbol: "🌍",
-                meaning: "Completion, integration, accomplishment, and travel. You've come full circle and achieved wholeness."
-            }
-        ];
+    <!-- Combined trinity meaning -->
+    <div class="meaning-box" id="meaning2">
+      <h3>Combined Reading of the Three</h3>
+      <p id="m2-text"></p>
+    </div>
 
-        function revealTarotMystery() {
-            document.getElementById('revealButton').style.display = 'none';
-            document.getElementById('tarotReading').style.display = 'block';
-            drawNewCards();
-        }
+    <div class="btn-wrap">
+      <button class="btn btn-secondary" id="btn2-next" onclick="goPhase3()" style="display:none">
+        The Resolution →
+      </button>
+    </div>
+  </div>
 
-        function drawNewCards() {
-            const container = document.getElementById('cardsContainer');
-            const shuffled = [...tarotDeck].sort(() => Math.random() - 0.5);
-            const drawnCards = shuffled.slice(0, 2);
+  <!-- ══════════════════════════════════
+       PHASE 3 — RESOLUTION (2 cards)
+       Challenge + Outcome
+  ══════════════════════════════════ -->
+  <div class="phase" id="phase3">
+    <div class="phase-title">
+      <h2>Challenge & Outcome</h2>
+      <p>What stands before you · What the path opens into</p>
+    </div>
+    <div class="ornament">· · ✦ · ·</div>
 
-            container.innerHTML = drawnCards.map(card => `
-                <div class="tarot-card">
-                    <div class="card-inner">
-                        <div class="card-frame">
-                            <div class="card-number">${card.number}</div>
-                            <div class="card-symbol">${card.symbol}</div>
-                            <div class="card-name">${card.name}</div>
-                            <p class="card-meaning">${card.meaning}</p>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+    <div class="card-tray" id="tray3">
+      <div>
+        <div class="duality-label">The Challenge</div>
+        <div id="slot-challenge"></div>
+      </div>
+      <div>
+        <div class="duality-label">The Outcome</div>
+        <div id="slot-outcome"></div>
+      </div>
+    </div>
 
-            // Generate combined meaning
-            const combinedMeaning = generateCombinedMeaning(drawnCards[0], drawnCards[1]);
-            document.getElementById('meaningText').textContent = combinedMeaning;
-        }
+    <!-- Challenge card meaning (shows when challenge flipped) -->
+    <div class="meaning-box" id="meaning3a">
+      <h3>The Challenge</h3>
+      <span class="card-title-in-meaning" id="m3a-name"></span>
+      <p id="m3a-text"></p>
+    </div>
 
-        function generateCombinedMeaning(card1, card2) {
-            const meanings = [
-                "This powerful combination suggests a time of profound transformation. Embrace the changes ahead while staying grounded in your truth and authentic self. What may feel uncertain now is actually clearing the path for something more aligned with your highest good.",
-                
-                "Together, these cards speak of the delicate balance between taking action and allowing space for reflection. This is not a time to rush forward impulsively, nor is it a time to remain completely still. Find the sweet spot between doing and being, and let your inner wisdom guide each step.",
-                
-                "This pairing indicates a journey from darkness into light, suggesting you may be moving through a challenging period. The struggles you're facing now are preparing you for greater wisdom and understanding. Trust that the difficulty has purpose, and brighter days are ahead.",
-                
-                "These energies combined suggest it's time to release the old to make space for new beginnings. Whether it's outdated beliefs, relationships, or patterns, the universe is asking you to let go. Create space for the new by honoring what was and releasing it with gratitude.",
-                
-                "This reading points to inner strength meeting outer opportunity in perfect timing. You've been building your foundation, and now the universe is presenting opportunities that match your evolution. Trust that you're ready for what's coming, even if it feels bigger than anything you've done before.",
-                
-                "The union of these cards reveals the profound importance of knowing when to be patient and when to take decisive action. Some situations require you to wait and observe, while others demand bold moves. Learn to feel the difference, and you'll navigate life with much greater ease.",
-                
-                "This combination speaks of emotional healing that comes through honest, compassionate self-reflection. You're being guided to look within and face aspects of yourself you may have been avoiding. True healing begins when we stop running from ourselves and offer ourselves the love we've been seeking externally.",
-                
-                "Together, they indicate a creative breakthrough emerging from the marriage of structured thinking and wild imagination. Use logic to build the container, and let imagination fill it with magic. This synthesis of left brain and right brain will produce something truly remarkable.",
-                
-                "This pairing suggests that relationships and partnerships are taking center stage in your life right now. Collaboration, rather than going it alone, will bring unexpected rewards and open doors you didn't even know existed. Be willing to trust, share, and build together with the right people.",
-                
-                "These cards together point to both material and spiritual abundance flowing toward you. Your job is to remain open to receive in whatever form abundance wants to arrive. Release any beliefs about scarcity or unworthiness, and know that you're deserving of good things.",
-                
-                "This reading shows the profound need to trust the process, especially when the path ahead isn't clear. Sometimes the most important journeys require us to walk by faith rather than by sight. Trust that every step is guided, even when you can't see where it's leading.",
-                
-                "The combination suggests you're breaking free from limitations that have held you back for too long. You're waking up to your own power and possibility as you realize many boundaries were self-imposed. This liberation may feel both exhilarating and terrifying - both reactions are normal when we step into our potential.",
-                
-                "Together, these energies speak of finding peace through radical acceptance of what is. When we release the need to force outcomes and instead accept what life is presenting, we discover a deep inner peace. This doesn't mean giving up - it means working with life rather than against it.",
-                
-                "This pairing indicates that your consistent effort and hard work are building something truly lasting. Every small step is contributing to a larger vision that's taking shape. Stay committed to what you're building - your patience and dedication will pay off.",
-                
-                "These cards combined suggest your higher self has an important message for you right now. Pay close attention to your dreams, the synchronicities appearing in your life, and those quiet intuitive nudges. The messages are there - you just need to tune in.",
-                
-                "This reading points to the transformative power of authentic communication. There's something important you need to express, or perhaps you need to create space for someone else to share their truth. When we communicate authentically, we create the foundation for genuine connection and understanding.",
-                
-                "Together, they show that victory and breakthrough are emerging from the struggles you've been facing. Your persistence through difficulty is about to pay off in significant ways. Don't give up now - you're closer than you think to a major turning point.",
-                
-                "This combination speaks of renewal, fresh starts, and the ending of an old cycle. Honor what's ending while getting excited about what's beginning. Endings are not failures - they're necessary transitions that make space for new possibilities to emerge.",
-                
-                "The pairing suggests that wisdom is being gained through your lived experiences. All the lessons you've learned and growth you've achieved are forming a deep well of understanding. Trust the wisdom you've earned - your experiences have taught you things that can only be learned by walking your unique path.",
-                
-                "These cards together indicate that the universe is aligning in your favor in powerful ways. Doors are opening, opportunities are appearing, and things are falling into place with almost magical timing. This is your moment to move forward with confidence and trust."
-            ];
-            
-            return meanings[Math.floor(Math.random() * meanings.length)];
-        }
-    </script>
+    <!-- Outcome card meaning (shows when outcome flipped) -->
+    <div class="meaning-box" id="meaning3b">
+      <h3>The Outcome</h3>
+      <span class="card-title-in-meaning" id="m3b-name"></span>
+      <p id="m3b-text"></p>
+    </div>
+
+    <!-- Full reading synthesis -->
+    <div class="meaning-box" id="meaning3-full">
+      <h3>✦ Your Full Reading</h3>
+      <p id="m3-full-text"></p>
+    </div>
+
+    <div class="btn-wrap" id="phase3-reveal-btn">
+      <button class="btn btn-primary" onclick="revealChallenge()">
+        🎲 &nbsp;Reveal the Challenge
+      </button>
+    </div>
+
+    <!-- Booking block appears at end -->
+    <div class="booking-strip" id="booking" style="display:none">
+      <h3>Go Deeper With a Live Reading</h3>
+      <p>Sit with a reader and explore what the cards are truly saying to you</p>
+      <button class="btn btn-primary" onclick="openBooking()">Book a Reading — £5</button>
+    </div>
+  </div>
+
+</div><!-- /arena -->
+
+<div class="reset-bar">
+  <button class="reset-btn" onclick="resetReading()">✦ Begin a New Reading ✦</button>
+</div>
+<br><br>
+
+<script>
+// ═══════════════════════════════════════════
+// TAROT DECK — All 22 Major Arcana
+// ═══════════════════════════════════════════
+const DECK = [
+  { id:0, name:"The Fool",         numeral:"0",
+    meaning:"A leap of faith, new beginnings, and fearless innocence. The Fool steps into the unknown with open hands — the journey has not yet left its mark.",
+    shortMeaning:"New beginnings, unbounded potential, the leap into the unknown." },
+  { id:1, name:"The Magician",     numeral:"I",
+    meaning:"You possess every tool required. Will, skill, and intention converge — the power to manifest is not coming, it is already in your hands.",
+    shortMeaning:"Mastery, manifestation, focused willpower." },
+  { id:2, name:"The High Priestess", numeral:"II",
+    meaning:"Beneath the surface, hidden knowledge stirs. She does not speak yet she knows. Trust the intuition that rises before logic can form.",
+    shortMeaning:"Intuition, mystery, inner knowing." },
+  { id:3, name:"The Empress",      numeral:"III",
+    meaning:"Abundance, fertility, and the creative force of nature. What has been tended with patience is ready to bloom. The earth rewards the devoted.",
+    shortMeaning:"Abundance, nurturing, creative fertility." },
+  { id:4, name:"The Emperor",      numeral:"IV",
+    meaning:"Structure gives freedom its shape. Authority rooted in wisdom rather than fear — the foundation that lets others build. Stability is your gift.",
+    shortMeaning:"Authority, structure, grounded stability." },
+  { id:5, name:"The Hierophant",   numeral:"V",
+    meaning:"Ancient wisdom, tradition, and the sacred institutions that carry truth across generations. Seek counsel. The answer exists — it has been known before.",
+    shortMeaning:"Tradition, spiritual wisdom, guidance." },
+  { id:6, name:"The Lovers",       numeral:"VI",
+    meaning:"A union of forces, but more: a choice. Not simply love — the alignment of values. What you choose to unite yourself with defines the self.",
+    shortMeaning:"Union, alignment of values, a significant choice." },
+  { id:7, name:"The Chariot",      numeral:"VII",
+    meaning:"Opposing forces harnessed in motion. Victory comes not by eliminating tension but by steering through it. Determination that does not flinch.",
+    shortMeaning:"Determination, control, forward momentum." },
+  { id:8, name:"Strength",         numeral:"VIII",
+    meaning:"Not force, but presence. The lion is stilled by gentleness, not chains. The deepest power is the capacity to remain calm within the storm.",
+    shortMeaning:"Inner strength, compassion, patient courage." },
+  { id:9, name:"The Hermit",       numeral:"IX",
+    meaning:"Solitude is not absence — it is the turning inward to find what no one else can hand you. The light you carry illuminates your own path first.",
+    shortMeaning:"Solitude, inner guidance, reflection." },
+  { id:10, name:"Wheel of Fortune", numeral:"X",
+    meaning:"The great turning — cycles rise and fall beyond any single hand. Fate is in motion. What rises will fall; what has fallen stirs again.",
+    shortMeaning:"Cycles, fate, turning points." },
+  { id:11, name:"Justice",         numeral:"XI",
+    meaning:"Cause meets effect with absolute precision. No embellishment, no escape. The scales weigh what was done, not what was intended.",
+    shortMeaning:"Balance, truth, cause and consequence." },
+  { id:12, name:"The Hanged Man",  numeral:"XII",
+    meaning:"Suspended between — not defeated but deliberately still. The sacrifice of forward motion yields the vision that rushing obscures. See differently.",
+    shortMeaning:"Suspension, sacrifice, a new perspective." },
+  { id:13, name:"Death",           numeral:"XIII",
+    meaning:"A chapter ends absolutely. Not destruction — transformation. What cannot carry forward is released so that what must live may breathe.",
+    shortMeaning:"Endings, transformation, necessary release." },
+  { id:14, name:"Temperance",      numeral:"XIV",
+    meaning:"The art of the measured pour — too much from either vessel and the balance tips. Moderation here is not restraint but mastery of flow.",
+    shortMeaning:"Balance, patience, the middle path." },
+  { id:15, name:"The Devil",       numeral:"XV",
+    meaning:"The chain is loose. What binds you is less solid than it appears. The shadow self demands recognition — not indulgence, but honest acknowledgement.",
+    shortMeaning:"Shadow, bondage, the illusion of constraint." },
+  { id:16, name:"The Tower",       numeral:"XVI",
+    meaning:"What was built on false foundations must fall. The lightning is painful but merciful — it ends what would have collapsed slowly, painfully, later.",
+    shortMeaning:"Sudden upheaval, revelation, necessary collapse." },
+  { id:17, name:"The Star",        numeral:"XVII",
+    meaning:"After the storm, stillness. Hope poured freely upon the world without guard or condition. You are being renewed. The sky is not empty — it remembers you.",
+    shortMeaning:"Hope, renewal, gentle faith." },
+  { id:18, name:"The Moon",        numeral:"XVIII",
+    meaning:"The path is lit by reflected light — beautiful and uncertain. Illusions and subconscious fears walk here too. Look closely at what the shadows are showing.",
+    shortMeaning:"Illusion, the unconscious, hidden depths." },
+  { id:19, name:"The Sun",         numeral:"XIX",
+    meaning:"Clarity, joy, vitality — the unguarded warmth of full light. What has grown in secret now stands in the open. Radiance is not arrogance; it is truth.",
+    shortMeaning:"Joy, clarity, radiant success." },
+  { id:20, name:"Judgement",       numeral:"XX",
+    meaning:"A call rises from beneath the ordinary. Something in you has been waiting for exactly this summons. The old self is being asked to step aside.",
+    shortMeaning:"Awakening, a higher calling, reckoning." },
+  { id:21, name:"The World",       numeral:"XXI",
+    meaning:"The circle closes. Everything that was set in motion has arrived at its wholeness. You are not at the beginning — you are at the completion.",
+    shortMeaning:"Completion, wholeness, integration." }
+];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let drawnIds = new Set();
+let phase1Card = null;
+let triCards = [];
+let resCards = [];
+let triFlipped = 0;
+let resStage = 0; // 0=none, 1=challenge revealed, 2=outcome revealed
+
+// ═══════════════════════════════════════════
+// DRAW HELPERS
+// ═══════════════════════════════════════════
+function drawCard() {
+  const available = DECK.filter(c => !drawnIds.has(c.id));
+  const card = available[Math.floor(Math.random() * available.length)];
+  drawnIds.add(card.id);
+  return card;
+}
+
+// ═══════════════════════════════════════════
+// SVG CARD ARTWORK
+// ═══════════════════════════════════════════
+// We have compact SVGs per card — unique symbolic art for each
+const CARD_SVGS = {
+  0: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e1a2e"/><stop offset="100%" stop-color="#0a0c18"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg0)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><rect x="12" y="12" width="136" height="256" rx="4" fill="none" stroke="#c9a227" stroke-width=".4" opacity=".3"/><circle cx="80" cy="40" r="14" fill="none" stroke="#c9a227" stroke-width="1.2"/><text x="80" y="45" text-anchor="middle" font-size="16" fill="#c9a227">0</text><path d="M50 90 Q80 60 110 90 L105 160 Q80 180 55 160 Z" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="80" cy="120" r="12" fill="#1a2a1a"/><path d="M73 113 Q80 105 87 113 L87 127 Q80 135 73 127 Z" fill="#2a5a1a" stroke="#c9a227" stroke-width=".8"/><path d="M20 200 Q40 170 80 175 Q120 170 140 200" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M50 230 L80 210 L110 230" fill="none" stroke="#c9a227" stroke-width="1"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE FOOL</text></svg>`,
+  1: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0e2e"/><stop offset="100%" stop-color="#0d0818"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg1)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">I</text><path d="M80 55 L80 130" stroke="#c9a227" stroke-width="1.5"/><circle cx="80" cy="55" r="10" fill="none" stroke="#c9a227" stroke-width="1.2"/><text x="80" y="60" text-anchor="middle" font-size="10" fill="#c9a227">∞</text><path d="M50 90 L110 90" stroke="#c9a227" stroke-width="1.2"/><circle cx="60" cy="110" r="6" fill="#1a1040" stroke="#c9a227" stroke-width="1"/><circle cx="100" cy="110" r="6" fill="#1a1040" stroke="#c9a227" stroke-width="1"/><path d="M65 140 L80 130 L95 140" fill="none" stroke="#c9a227" stroke-width="1"/><rect x="60" y="145" width="40" height="30" rx="3" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M40 190 L80 170 L120 190" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M55 220 L55 200 L105 200 L105 220" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE MAGICIAN</text></svg>`,
+  2: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e1a2a"/><stop offset="100%" stop-color="#080e1a"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg2)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">II</text><path d="M50 60 L50 180 L110 180 L110 60 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M50 60 Q80 45 110 60" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="80" cy="90" r="20" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M80 70 L80 110 M60 90 L100 90" stroke="#c9a227" stroke-width=".8" opacity=".4"/><path d="M68 82 Q80 75 92 82" fill="#0a1530" stroke="#c9a227" stroke-width=".8"/><path d="M62 130 L98 130" stroke="#c9a227" stroke-width=".8" stroke-dasharray="4,3"/><path d="M55 150 L105 150 L105 175 L55 175 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="167" text-anchor="middle" font-family="Georgia" font-size="7" fill="#c9a227" opacity=".6">TORA</text><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">HIGH PRIESTESS</text></svg>`,
+  3: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a08"/><stop offset="100%" stop-color="#0e1008"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg3)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">III</text><circle cx="80" cy="100" r="35" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M60 80 Q80 65 100 80 Q115 100 100 120 Q80 135 60 120 Q45 100 60 80" fill="#1a2a10" stroke="#c9a227" stroke-width=".8"/><path d="M70 100 Q80 90 90 100 Q90 115 80 120 Q70 115 70 100" fill="#2a4a18"/><path d="M40 150 Q60 140 80 145 Q100 140 120 150" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M35 165 L45 185 L55 165 Z" fill="#c9a227" opacity=".6"/><path d="M75 165 L85 185 L95 165 Z" fill="#c9a227" opacity=".6"/><path d="M115 165 L125 185 L105 185 Z" fill="#c9a227" opacity=".6"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE EMPRESS</text></svg>`,
+  4: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0a0a"/><stop offset="100%" stop-color="#100808"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg4)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">IV</text><rect x="55" y="55" width="50" height="16" rx="8" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M65 71 L65 140 M95 71 L95 140" stroke="#c9a227" stroke-width="1"/><path d="M65 140 L50 175 M95 140 L110 175" stroke="#c9a227" stroke-width="1"/><path d="M50 110 L110 110" stroke="#c9a227" stroke-width=".8"/><rect x="45" y="175" width="70" height="12" rx="3" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M35 175 L125 175" stroke="#c9a227" stroke-width="1"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE EMPEROR</text></svg>`,
+  5: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e0e1a"/><stop offset="100%" stop-color="#080810"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg5)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">V</text><rect x="55" y="55" width="50" height="70" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M55 55 L80 40 L105 55" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="80" cy="90" r="14" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M50 140 L70 130 M90 130 L110 140" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M60 155 L100 155" stroke="#c9a227" stroke-width=".8" stroke-dasharray="3,3"/><path d="M40 175 L120 175 M50 190 L110 190" stroke="#c9a227" stroke-width=".8" opacity=".5"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE HIEROPHANT</text></svg>`,
+  6: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0a18"/><stop offset="100%" stop-color="#100810"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg6)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">VI</text><circle cx="80" cy="55" r="15" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M72 48 L88 62 M88 48 L72 62" stroke="#c9a227" stroke-width="1"/><path d="M45 100 Q80 75 115 100" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M50 120 L75 140 L80 120" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M80 120 L85 140 L110 120" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M60 160 Q80 150 100 160" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M40 190 L80 170 L120 190" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="3,2"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE LOVERS</text></svg>`,
+  7: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1218"/><stop offset="100%" stop-color="#060c10"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg7)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">VII</text><rect x="45" y="65" width="70" height="80" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M45 65 L45 145 M115 65 L115 145" stroke="#c9a227" stroke-width="1.2"/><path d="M55 80 L80 65 L105 80" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="65" cy="110" r="10" fill="#0a1a0a" stroke="#c9a227" stroke-width="1"/><circle cx="95" cy="110" r="10" fill="#1a0a0a" stroke="#c9a227" stroke-width="1"/><path d="M45 145 L30 170 L70 175 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M115 145 L130 170 L90 175 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M70 175 L90 175 L80 195 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE CHARIOT</text></svg>`,
+  8: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1008"/><stop offset="100%" stop-color="#100c08"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg8)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">VIII</text><path d="M55 110 Q55 70 80 65 Q105 70 105 110 Q105 140 80 150 Q55 140 55 110 Z" fill="none" stroke="#c9a227" stroke-width="1.2"/><circle cx="80" cy="100" r="15" fill="#1a1808"/><path d="M70 95 Q80 88 90 95" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M68 105 Q80 115 92 105" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M40 160 Q80 145 120 160" fill="none" stroke="#c9a227" stroke-width="1"/><text x="80" y="200" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" opacity=".5" letter-spacing="1">∞</text><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">STRENGTH</text></svg>`,
+  9: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a1a"/><stop offset="100%" stop-color="#060610"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg9)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">IX</text><path d="M75 70 L75 160 Q75 170 80 175 Q85 170 85 160 L85 70 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M70 70 L90 70" stroke="#c9a227" stroke-width="1"/><circle cx="100" cy="80" r="12" fill="#1a1a08" stroke="#c9a227" stroke-width="1"/><path d="M94 78 L106 78 M100 72 L100 88" stroke="#c9a227" stroke-width=".8" opacity=".6"/><path d="M50 145 Q80 130 110 145" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="4,3"/><path d="M45 190 Q80 175 115 190" fill="none" stroke="#c9a227" stroke-width=".5" opacity=".4"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE HERMIT</text></svg>`,
+  10: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0a08"/><stop offset="100%" stop-color="#100808"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg10)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">X</text><circle cx="80" cy="110" r="50" fill="none" stroke="#c9a227" stroke-width="1.2"/><circle cx="80" cy="110" r="35" fill="none" stroke="#c9a227" stroke-width=".8" opacity=".5"/><circle cx="80" cy="110" r="18" fill="#200a08"/><path d="M80 60 L80 165 M30 110 L130 110 M45 75 L115 145 M115 75 L45 145" stroke="#c9a227" stroke-width=".6" opacity=".4"/><text x="80" y="115" text-anchor="middle" font-family="Georgia" font-size="12" fill="#c9a227">☸</text><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">WHEEL OF FORTUNE</text></svg>`,
+  11: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1018"/><stop offset="100%" stop-color="#080c10"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg11)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XI</text><path d="M80 55 L80 190" stroke="#c9a227" stroke-width="1.5"/><path d="M40 110 L120 110" stroke="#c9a227" stroke-width="1.2"/><path d="M40 100 L60 115 Q80 108 100 115 L120 100" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="45" cy="120" r="10" fill="#0a1808" stroke="#c9a227" stroke-width="1"/><circle cx="115" cy="120" r="10" fill="#180a0a" stroke="#c9a227" stroke-width="1"/><path d="M45 130 L115 130" stroke="#c9a227" stroke-width=".5" stroke-dasharray="3,3" opacity=".5"/><path d="M75 155 L85 155 L85 175 L75 175 Z" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">JUSTICE</text></svg>`,
+  12: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg12" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e1820"/><stop offset="100%" stop-color="#081018"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg12)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XII</text><path d="M50 65 L110 65" stroke="#c9a227" stroke-width="1.2"/><path d="M65 65 L65 80 M95 65 L95 80" stroke="#c9a227" stroke-width="1"/><path d="M80 80 L80 155" stroke="#c9a227" stroke-width="1"/><path d="M80 80 L60 100 M80 80 L100 100" stroke="#c9a227" stroke-width="1"/><circle cx="80" cy="165" r="14" fill="#0a1818" stroke="#c9a227" stroke-width="1.2"/><path d="M73 162 Q80 157 87 162 M75 168 Q80 173 85 168" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE HANGED MAN</text></svg>`,
+  13: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg13" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a0a"/><stop offset="100%" stop-color="#050505"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg13)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XIII</text><path d="M45 170 Q60 80 80 70 Q100 80 115 170" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M55 140 L80 70 L105 140" fill="none" stroke="#c9a227" stroke-width=".8" opacity=".4"/><path d="M35 175 Q60 160 80 165 Q100 160 125 175" fill="#1a0808" stroke="#c9a227" stroke-width="1"/><path d="M40 185 L120 185" stroke="#c9a227" stroke-width=".6" opacity=".5"/><circle cx="80" cy="110" r="10" fill="#200808"/><path d="M74 107 L86 107 M80 101 L80 119" stroke="#c9a227" stroke-width="1" opacity=".7"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">DEATH</text></svg>`,
+  14: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg14" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1418"/><stop offset="100%" stop-color="#081018"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg14)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XIV</text><path d="M50 80 L50 160 M110 80 L110 160" stroke="#c9a227" stroke-width="1"/><path d="M48 78 L62 78 M98 78 L112 78" stroke="#c9a227" stroke-width="1"/><path d="M50 90 Q75 110 110 90" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M50 120 Q75 100 110 120" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M50 150 Q75 165 110 150" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="80" cy="55" r="10" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M75 55 L85 55 M80 50 L80 60" stroke="#c9a227" stroke-width=".8" opacity=".5"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">TEMPERANCE</text></svg>`,
+  15: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg15" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#18080a"/><stop offset="100%" stop-color="#100608"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg15)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XV</text><path d="M55 65 L80 50 L105 65 L105 120 L80 130 L55 120 Z" fill="#1a0808" stroke="#c9a227" stroke-width="1.2"/><circle cx="80" cy="85" r="14" fill="#200808"/><path d="M75 82 Q80 77 85 82 Q88 88 85 92 Q80 95 75 92 Q72 88 75 82" fill="#400808" stroke="#c9a227" stroke-width=".8"/><path d="M65 145 L80 135 L95 145 L95 165 L80 170 L65 165 Z" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="3,2"/><path d="M50 185 L70 175 M90 175 L110 185" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE DEVIL</text></svg>`,
+  16: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg16" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14080a"/><stop offset="100%" stop-color="#0a0608"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg16)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XVI</text><rect x="55" y="60" width="50" height="90" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M55 60 L80 50 L105 60" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M65 60 L80 50 L95 60" fill="#300808" stroke="#c9a227" stroke-width="1"/><path d="M100 70 L135 40" stroke="#f0d060" stroke-width="1.5" opacity=".8"/><path d="M135 40 L125 55 L140 52 Z" fill="#f0d060" opacity=".8"/><circle cx="45" cy="130" r="8" fill="none" stroke="#c9a227" stroke-width="1"/><circle cx="115" cy="145" r="8" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M40 175 Q80 160 120 175" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="4,3"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE TOWER</text></svg>`,
+  17: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg17" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080a18"/><stop offset="100%" stop-color="#060810"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg17)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XVII</text><circle cx="80" cy="70" r="16" fill="#0a0a28" stroke="#c9a227" stroke-width="1.2"/><path d="M80 54 L80 42 M80 86 L80 98 M64 70 L52 70 M96 70 L108 70 M69 59 L61 51 M91 81 L99 89 M91 59 L99 51 M69 81 L61 89" stroke="#c9a227" stroke-width="1" opacity=".6"/><path d="M45 115 Q55 100 80 108 Q105 100 115 115" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M35 140 Q60 125 80 132 Q100 125 125 140" fill="none" stroke="#c9a227" stroke-width=".8"/><path d="M40 165 Q80 150 120 165" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="5,3"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE STAR</text></svg>`,
+  18: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg18" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080e18"/><stop offset="100%" stop-color="#060a10"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg18)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XVIII</text><path d="M80 55 Q90 70 80 90 Q70 70 80 55" fill="#1a1428" stroke="#c9a227" stroke-width="1"/><path d="M60 100 Q80 90 100 100" fill="none" stroke="#c9a227" stroke-width="1.2"/><path d="M45 130 Q80 115 115 130" fill="#0a1020" stroke="#c9a227" stroke-width="1"/><path d="M35 155 Q80 140 125 155" fill="none" stroke="#c9a227" stroke-width=".8" stroke-dasharray="4,2"/><path d="M40 175 L60 185 L80 165 L100 185 L120 175" fill="none" stroke="#c9a227" stroke-width=".8" opacity=".6"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE MOON</text></svg>`,
+  19: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg19" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1408"/><stop offset="100%" stop-color="#100e06"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg19)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XIX</text><circle cx="80" cy="80" r="28" fill="#201808" stroke="#c9a227" stroke-width="1.5"/><path d="M80 52 L80 38 M80 108 L80 122 M52 80 L38 80 M108 80 L122 80 M60 60 L50 50 M100 100 L110 110 M100 60 L110 50 M60 100 L50 110" stroke="#c9a227" stroke-width="1" opacity=".7"/><circle cx="80" cy="80" r="14" fill="#301808" stroke="#f0d060" stroke-width=".8"/><path d="M55 145 Q80 130 105 145" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M45 170 Q80 155 115 170" fill="none" stroke="#c9a227" stroke-width=".8"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE SUN</text></svg>`,
+  20: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg20" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e1020"/><stop offset="100%" stop-color="#080a18"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg20)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XX</text><path d="M35 80 Q80 55 125 80" fill="none" stroke="#c9a227" stroke-width="1.5"/><path d="M60 80 L60 120 M100 80 L100 120" stroke="#c9a227" stroke-width="1"/><path d="M80 60 L80 80 L70 100 L90 100 Z" fill="none" stroke="#c9a227" stroke-width="1"/><path d="M45 145 L55 130 L65 145 Z M75 145 L85 130 L95 145 Z M105 145 L115 130 L125 145 Z" fill="#c9a227" opacity=".5"/><path d="M40 165 L120 165" stroke="#c9a227" stroke-width=".8"/><path d="M35 175 Q80 162 125 175 L125 185 Q80 172 35 185 Z" fill="none" stroke="#c9a227" stroke-width=".8" opacity=".5"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">JUDGEMENT</text></svg>`,
+  21: `<svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg21" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1428"/><stop offset="100%" stop-color="#081018"/></linearGradient></defs><rect width="160" height="280" fill="url(#bg21)"/><rect x="8" y="8" width="144" height="264" rx="6" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".5"/><text x="80" y="32" text-anchor="middle" font-family="Georgia" font-size="11" fill="#c9a227" opacity=".7">XXI</text><ellipse cx="80" cy="115" rx="45" ry="60" fill="none" stroke="#c9a227" stroke-width="1.5"/><ellipse cx="80" cy="115" rx="35" ry="48" fill="none" stroke="#c9a227" stroke-width=".6" opacity=".4"/><circle cx="80" cy="115" r="16" fill="#0a1828" stroke="#c9a227" stroke-width="1"/><path d="M74 110 L86 110 M80 104 L80 126" stroke="#c9a227" stroke-width=".8" opacity=".6"/><path d="M35 55 L45 75 L55 55 Z" fill="#c9a227" opacity=".5"/><path d="M105 55 L115 75 L125 55 Z" fill="#c9a227" opacity=".5"/><path d="M35 170 L45 190 L55 170 Z" fill="#c9a227" opacity=".5"/><path d="M105 170 L115 190 L125 170 Z" fill="#c9a227" opacity=".5"/><text x="80" y="258" text-anchor="middle" font-family="Georgia" font-size="9" fill="#c9a227" letter-spacing="2">THE WORLD</text></svg>`
+};
+
+// ═══════════════════════════════════════════
+// COMBINED READING GENERATORS
+// ═══════════════════════════════════════════
+function trinityReading(past, present, future) {
+  return `${past.name} in the past speaks of ${past.shortMeaning.toLowerCase()} — energies that have shaped the path to this moment. ${present.name} at the centre suggests ${present.shortMeaning.toLowerCase()} is the living reality right now, the axis point everything turns around. And ${future.name} on the horizon carries the quality of ${future.shortMeaning.toLowerCase()} — not a destination fixed in stone, but the energy that is gathering. Together, these three form a coherent current: where you have been is informing what stands before you, and both are pointing toward a particular kind of becoming.`;
+}
+
+function resolutionReading(challenge, outcome, sig, tri) {
+  return `Across your full spread: the ${sig.name} named your present energy; the trinity of ${tri[0].name}, ${tri[1].name}, and ${tri[2].name} traced the arc of your path. Now ${challenge.name} stands as the threshold — ${challenge.shortMeaning.toLowerCase()} is the work directly before you. Yet ${outcome.name} waits beyond it, carrying ${outcome.shortMeaning.toLowerCase()}. The reading does not promise ease. It promises direction. The challenge is real; so is what lies on the other side of it.`;
+}
+
+// ═══════════════════════════════════════════
+// BUILD A CARD ELEMENT
+// ═══════════════════════════════════════════
+function buildCard(card, role, autoFlip = false, onFlipCb = null) {
+  const wrap = document.createElement('div');
+  wrap.style.textAlign = 'center';
+  wrap.style.animation = 'cardArrive .5s ease';
+
+  const tc = document.createElement('div');
+  tc.className = 'tarot-card' + (autoFlip ? '' : ' face-down');
+
+  const inner = document.createElement('div');
+  inner.className = 'card-inner';
+
+  // Back
+  const back = document.createElement('div');
+  back.className = 'card-back';
+  back.innerHTML = `<div class="back-pattern"></div><div class="card-back-symbol">✦</div>`;
+
+  // Front
+  const front = document.createElement('div');
+  front.className = 'card-face';
+  front.innerHTML = CARD_SVGS[card.id] || CARD_SVGS[0];
+
+  inner.appendChild(back);
+  inner.appendChild(front);
+  tc.appendChild(inner);
+
+  // Label
+  const lbl = document.createElement('div');
+  lbl.className = 'card-label';
+  lbl.innerHTML = `<div class="card-name">${card.name}</div>${role ? `<div class="card-role">${role}</div>` : ''}`;
+  tc.appendChild(lbl);
+
+  if (!autoFlip) {
+    const hint = document.createElement('div');
+    hint.className = 'tap-hint';
+    hint.textContent = 'Tap to reveal';
+    tc.appendChild(hint);
+
+    tc.addEventListener('click', () => {
+      if (tc.classList.contains('face-down')) {
+        tc.classList.remove('face-down');
+        tc.classList.add('flipped');
+        hint.remove();
+        if (onFlipCb) onFlipCb();
+      }
+    }, { once: true });
+  } else {
+    // auto-flip after short delay
+    setTimeout(() => tc.classList.add('flipped'), 300);
+  }
+
+  wrap.appendChild(tc);
+  return { wrap, tc };
+}
+
+// ═══════════════════════════════════════════
+// PHASE 1 — SIGNIFICATOR
+// ═══════════════════════════════════════════
+function rollPhase1() {
+  const btn = document.getElementById('btn1-roll');
+  btn.classList.add('rolling');
+  btn.disabled = true;
+  setTimeout(() => btn.classList.remove('rolling'), 700);
+
+  phase1Card = drawCard();
+  const tray = document.getElementById('tray1');
+  tray.innerHTML = '';
+
+  const { wrap } = buildCard(phase1Card, 'Your Significator', false, () => {
+    // Show meaning when flipped
+    const box = document.getElementById('meaning1');
+    document.getElementById('m1-name').textContent = phase1Card.name;
+    document.getElementById('m1-text').textContent = phase1Card.meaning;
+    box.classList.add('visible');
+    // Show next button
+    setTimeout(() => { document.getElementById('btn1-next').style.display = 'inline-block'; }, 400);
+  });
+
+  tray.appendChild(wrap);
+  btn.style.display = 'none';
+}
+
+// ═══════════════════════════════════════════
+// GO TO PHASE 2
+// ═══════════════════════════════════════════
+function goPhase2() {
+  setStage(2);
+  document.getElementById('phase1').classList.remove('active');
+  const p2 = document.getElementById('phase2');
+  p2.classList.add('active');
+
+  triCards = [drawCard(), drawCard(), drawCard()];
+  const roles = ['The Past', 'The Present', 'What Approaches'];
+  const tray = document.getElementById('tray2');
+  tray.innerHTML = '';
+  triFlipped = 0;
+
+  triCards.forEach((card, i) => {
+    const { wrap } = buildCard(card, roles[i], false, () => {
+      triFlipped++;
+      if (triFlipped === 3) showTrinityMeaning();
+    });
+    // stagger
+    wrap.style.animationDelay = (i * 0.12) + 's';
+    wrap.style.opacity = '0';
+    setTimeout(() => { wrap.style.opacity = '1'; }, i * 120);
+    tray.appendChild(wrap);
+  });
+}
+
+function showTrinityMeaning() {
+  const ids = ['past', 'present', 'future'];
+  const keys = ['shortMeaning', 'shortMeaning', 'shortMeaning'];
+  ids.forEach((id, i) => {
+    document.getElementById(`t-${id}-name`).textContent = triCards[i].name;
+    document.getElementById(`t-${id}-text`).textContent = triCards[i].shortMeaning;
+  });
+  document.getElementById('trio-meanings').classList.add('visible');
+
+  const box = document.getElementById('meaning2');
+  document.getElementById('m2-text').textContent = trinityReading(triCards[0], triCards[1], triCards[2]);
+  setTimeout(() => box.classList.add('visible'), 200);
+  setTimeout(() => { document.getElementById('btn2-next').style.display = 'inline-block'; }, 500);
+}
+
+// ═══════════════════════════════════════════
+// GO TO PHASE 3
+// ═══════════════════════════════════════════
+function goPhase3() {
+  setStage(3);
+  document.getElementById('phase2').classList.remove('active');
+  document.getElementById('phase3').classList.add('active');
+
+  resCards = [drawCard(), drawCard()];
+  resStage = 0;
+}
+
+function revealChallenge() {
+  document.getElementById('phase3-reveal-btn').style.display = 'none';
+  const slot = document.getElementById('slot-challenge');
+  const card = resCards[0];
+
+  const { wrap } = buildCard(card, 'Challenge', false, () => {
+    const box = document.getElementById('meaning3a');
+    document.getElementById('m3a-name').textContent = card.name;
+    document.getElementById('m3a-text').textContent = card.meaning;
+    setTimeout(() => box.classList.add('visible'), 100);
+    // Show outcome reveal button
+    setTimeout(() => {
+      const obtn = document.createElement('div');
+      obtn.className = 'btn-wrap';
+      obtn.id = 'reveal-outcome-btn';
+      obtn.innerHTML = '<button class="btn btn-primary" onclick="revealOutcome()">🎲 &nbsp;Reveal the Outcome</button>';
+      document.getElementById('phase3').appendChild(obtn);
+    }, 600);
+  });
+  slot.appendChild(wrap);
+}
+
+function revealOutcome() {
+  document.getElementById('reveal-outcome-btn')?.remove();
+  const slot = document.getElementById('slot-outcome');
+  const card = resCards[1];
+
+  const { wrap } = buildCard(card, 'Outcome', false, () => {
+    const box = document.getElementById('meaning3b');
+    document.getElementById('m3b-name').textContent = card.name;
+    document.getElementById('m3b-text').textContent = card.meaning;
+    setTimeout(() => box.classList.add('visible'), 100);
+    // Full reading
+    setTimeout(() => {
+      const full = document.getElementById('meaning3-full');
+      document.getElementById('m3-full-text').textContent =
+        resolutionReading(resCards[0], resCards[1], phase1Card, triCards);
+      full.classList.add('visible');
+      document.getElementById('booking').style.display = 'block';
+    }, 800);
+  });
+  slot.appendChild(wrap);
+}
+
+// ═══════════════════════════════════════════
+// STAGE INDICATOR
+// ═══════════════════════════════════════════
+function setStage(n) {
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById(`dot${i}`);
+    const lbl = document.getElementById(`lbl${i}`);
+    dot.classList.remove('active', 'done');
+    lbl.classList.remove('active');
+    if (i < n) { dot.classList.add('done'); dot.innerHTML = '✓'; }
+    else if (i === n) { dot.classList.add('active'); lbl.classList.add('active'); }
+  }
+}
+
+// ═══════════════════════════════════════════
+// RESET
+// ═══════════════════════════════════════════
+function resetReading() {
+  drawnIds.clear(); phase1Card = null; triCards = []; resCards = []; triFlipped = 0;
+
+  // Reset phases
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+  document.getElementById('phase1').classList.add('active');
+
+  // Reset UI
+  document.getElementById('tray1').innerHTML = '';
+  document.getElementById('tray2').innerHTML = '';
+  document.getElementById('slot-challenge').innerHTML = '';
+  document.getElementById('slot-outcome').innerHTML = '';
+  document.querySelectorAll('.meaning-box').forEach(b => b.classList.remove('visible'));
+  document.getElementById('trio-meanings').classList.remove('visible');
+  document.getElementById('btn1-roll').style.display = 'inline-block';
+  document.getElementById('btn1-roll').disabled = false;
+  document.getElementById('btn1-next').style.display = 'none';
+  document.getElementById('btn2-next').style.display = 'none';
+  document.getElementById('phase3-reveal-btn').style.display = 'block';
+  document.getElementById('booking').style.display = 'none';
+  document.getElementById('reveal-outcome-btn')?.remove();
+  setStage(1);
+
+  // Reset stage dots text
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById(`dot${i}`);
+    dot.innerHTML = ['I','II','III'][i-1];
+  }
+}
+
+// ═══════════════════════════════════════════
+// BOOKING
+// ═══════════════════════════════════════════
+function openBooking() {
+  alert('Stripe booking coming soon — replace this with your Stripe payment link or modal.');
+}
+</script>
 </body>
 </html>

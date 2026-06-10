@@ -1,287 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islam Quotes - Cyberlink</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black:ital@1&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RE7ZLZJ8VY');
-    </script>
-
-    <style>
-        :root {
-            --chrome-pink: #ff0844;
-            --chrome-purple: #9d4edd;
-            --chrome-blue: #00b4d8;
-            --chrome-cyan: #4af2ff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: #000;
-            color: #2b2d42;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .video-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(235, 235, 235, 0.82);
-            pointer-events: none;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #2b2d42;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .back-button:hover {
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            transform: translateX(-5px);
-            border-color: transparent;
-        }
-
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 40px 80px;
-        }
-
-        .page-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            font-style: italic;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #6c757d;
-            margin-bottom: 50px;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            padding: 60px 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .quote-container {
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px;
-            background: rgba(240, 240, 240, 0.5);
-            border-radius: 20px;
-            margin-bottom: 40px;
-        }
-
-        .quote-icon {
-            font-size: 4rem;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: #2b2d42;
-            margin-bottom: 30px;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        .quote-reference {
-            font-size: 1.1rem;
-            color: var(--chrome-purple);
-            font-weight: 700;
-        }
-
-        .dice-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 35px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 30px rgba(255, 8, 68, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .dice-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255, 8, 68, 0.4);
-        }
-
-        .dice-button:active {
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 100px 25px 60px; }
-            .page-title { font-size: 2rem; }
-            .content-card { padding: 40px 30px; }
-            .quote-text { font-size: 1.2rem; }
-            .dice-button { padding: 15px 35px; font-size: 1.1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islam Quotes | Cyberlink</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#c9a227; --gold-light:#f0d060; --gold-dim:#7a5f10; --bg:#0a0608; --bg2:#110d14; --text:#e8dcc8; --text-dim:#9b8f7a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'IM Fell English',Georgia,serif;min-height:100vh;overflow-x:hidden}
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1px 1px at 10% 15%,rgba(201,162,39,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 55% 25%,rgba(201,162,39,.4) 0%,transparent 100%),radial-gradient(1px 1px at 75% 80%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 90% 10%,rgba(201,162,39,.6) 0%,transparent 100%),radial-gradient(1px 1px at 20% 90%,rgba(255,255,255,.2) 0%,transparent 100%)}
+  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(201,162,39,.2);background:rgba(10,6,8,.85);backdrop-filter:blur(10px)}
+  .nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);text-decoration:none;letter-spacing:3px}
+  .nav-back{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-dim);text-decoration:none;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(201,162,39,.3);padding:8px 18px;border-radius:20px;transition:all .3s}
+  .nav-back:hover{color:var(--gold);border-color:var(--gold)}
+  header{position:relative;z-index:2;text-align:center;padding:60px 20px 40px}
+  .eyebrow{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:5px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.8rem,5vw,3rem);background:linear-gradient(135deg,var(--gold-dim),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+  .subtitle{color:var(--text-dim);font-style:italic;font-size:1rem}
+  .arena{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:0 20px 80px}
+  .card{background:linear-gradient(135deg,rgba(26,16,32,.9),rgba(17,13,20,.9));border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:40px 40px 32px;margin-bottom:20px}
+  .quote-icon{font-size:2.5rem;text-align:center;margin-bottom:20px;opacity:.8}
+  .quote-text{font-size:1.3rem;line-height:1.85;font-style:italic;color:var(--text);text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
+  .quote-ref{text-align:center;margin-top:18px;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;opacity:0;transition:opacity .4s .3s}
+  .quote-ref.show{opacity:1}
+  .quote-text.fade{opacity:0}
+  .ornament{text-align:center;color:var(--gold-dim);letter-spacing:6px;margin:20px 0;font-size:1rem}
+  .counter{text-align:center;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--text-dim);margin-bottom:24px}
+  .btn-wrap{text-align:center;margin-top:8px}
+  .btn{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:16px 44px;border-radius:30px;border:none;cursor:pointer;transition:all .3s;background:linear-gradient(135deg,#7a5f10,var(--gold),#c9a227);color:var(--bg);box-shadow:0 0 20px rgba(201,162,39,.3)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 4px 28px rgba(201,162,39,.5)}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  .spinning{animation:spin .5s ease}
+  .reset-bar{text-align:center;margin-top:8px}
+  .reset-btn{background:none;border:none;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:2px;color:var(--text-dim);cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .3s}
+  .reset-btn:hover{color:var(--gold)}
+</style>
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="bg.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="stars"></div>
+<nav>
+  <a href="index.html" class="nav-logo">CYBERLINK</a>
+  <a href="index.html" class="nav-back">← Return</a>
+</nav>
+<header>
+  <p class="eyebrow">✦ The Holy Quran & Hadith ✦</p>
+  <h1>ISLAM ☪️</h1>
+  <p class="subtitle">Wisdom from the Word of Allah</p>
+</header>
+<div class="arena">
+  <div class="card">
+    <div class="quote-icon">☪️</div>
+    <div class="quote-text" id="quoteText">Press the button below to receive a verse</div>
+    <div class="ornament">· · ✦ · ·</div>
+    <div class="quote-ref" id="quoteRef"></div>
+  </div>
+  <div class="counter" id="counter"></div>
+  <div class="btn-wrap">
+    <button class="btn" id="diceBtn" onclick="drawQuote()">🎲 &nbsp;Draw a Verse</button>
+  </div>
+  <div class="reset-bar">
+    <button class="reset-btn" onclick="resetHistory()">✦ Reset History ✦</button>
+  </div>
+</div>
+<script>
+const quotes = [
+  { text:"And whoever relies upon Allah — then He is sufficient for him. Indeed, Allah will accomplish His purpose.", ref:"Quran 65:3" },
+  { text:"Verily, with hardship comes ease.", ref:"Quran 94:6" },
+  { text:"Allah does not burden a soul beyond that it can bear.", ref:"Quran 2:286" },
+  { text:"And He found you lost and guided you.", ref:"Quran 93:7" },
+  { text:"So remember Me; I will remember you. And be grateful to Me and do not deny Me.", ref:"Quran 2:152" },
+  { text:"When My servants ask you about Me, I am near. I respond to the call of the one who calls, whenever he calls Me.", ref:"Quran 2:186" },
+  { text:"And We have certainly created man and We know what his soul whispers to him, and We are closer to him than his jugular vein.", ref:"Quran 50:16" },
+  { text:"Indeed, Allah is with the patient.", ref:"Quran 2:153" },
+  { text:"Do not despair of the mercy of Allah. Indeed, Allah forgives all sins.", ref:"Quran 39:53" },
+  { text:"And it is He who created the heavens and earth in six days — and His Throne had been upon water — that He might test you as to which of you is best in deed.", ref:"Quran 11:7" },
+  { text:"And We have certainly honored the children of Adam.", ref:"Quran 17:70" },
+  { text:"And whoever is grateful — his gratitude is only for himself.", ref:"Quran 31:12" },
+  { text:"Allah intends for you ease and does not intend for you hardship.", ref:"Quran 2:185" },
+  { text:"He knows what is within the heavens and earth and knows what you conceal and what you declare. And Allah is Knowing of that within the breasts.", ref:"Quran 64:4" },
+  { text:"And your Lord says, Call upon Me; I will respond to you.", ref:"Quran 40:60" },
+  { text:"Unquestionably, by the remembrance of Allah hearts are assured.", ref:"Quran 13:28" },
+  { text:"Indeed, those who have said, Our Lord is Allah, and then remained on a right course — there will be no fear concerning them, nor will they grieve.", ref:"Quran 46:13" },
+  { text:"Say, Indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds.", ref:"Quran 6:162" },
+  { text:"And We will surely test you with something of fear and hunger and a loss of wealth and lives and fruits, but give good tidings to the patient.", ref:"Quran 2:155" },
+  { text:"Indeed, Allah loves those who are constantly repentant and loves those who purify themselves.", ref:"Quran 2:222" },
+  { text:"O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.", ref:"Quran 2:153" },
+  { text:"And do good; indeed, Allah loves the doers of good.", ref:"Quran 2:195" },
+  { text:"And lower to them the wing of humility out of mercy and say, My Lord, have mercy upon them as they brought me up when I was small.", ref:"Quran 17:24" },
+  { text:"And whatever you spend in the way of Allah will be repaid to you, and you will not be wronged.", ref:"Quran 8:60" },
+  { text:"The worldly life is but amusement and diversion. And if you believe and fear Allah, He will give you your rewards.", ref:"Quran 47:36" },
+  { text:"Whoever does righteousness, whether male or female, while he is a believer — We will surely cause him to live a good life.", ref:"Quran 16:97" },
+  { text:"And He is the Forgiving, the Affectionate.", ref:"Quran 85:14" },
+  { text:"And be patient, for indeed, Allah does not allow to be lost the reward of those who do good.", ref:"Quran 11:115" },
+  { text:"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence.", ref:"Quran 2:255" },
+  { text:"He is Allah, other than whom there is no deity, Knower of the unseen and the witnessed.", ref:"Quran 59:22" },
+  { text:"The best among you in the sight of Allah is the most righteous.", ref:"Quran 49:13" },
+  { text:"O mankind, indeed We have created you from male and female and made you peoples and tribes that you may know one another.", ref:"Quran 49:13" },
+  { text:"Speak good words or remain silent.", ref:"Hadith — Bukhari & Muslim" },
+  { text:"The strong man is not the one who can overpower others; the strong man is the one who controls himself when he is angry.", ref:"Hadith — Bukhari" },
+  { text:"None of you truly believes until he loves for his brother what he loves for himself.", ref:"Hadith — Bukhari & Muslim" },
+  { text:"The best of people are those most beneficial to people.", ref:"Hadith — Al-Albani" },
+  { text:"Make things easy and do not make them difficult, cheer people up and do not drive them away.", ref:"Hadith — Bukhari" },
+  { text:"Allah is gentle and loves gentleness in all matters.", ref:"Hadith — Bukhari" },
+  { text:"Smiling at your brother is an act of charity.", ref:"Hadith — Tirmidhi" },
+  { text:"The world is a prison for the believer and a paradise for the unbeliever.", ref:"Hadith — Muslim" },
+  { text:"Whoever believes in Allah and the Last Day should say something good or keep quiet.", ref:"Hadith — Bukhari" },
+  { text:"Richness is not having many possessions, but richness is being content with oneself.", ref:"Hadith — Bukhari" },
+  { text:"Take care of what is between you and Allah, and Allah will take care of what is between you and people.", ref:"Hadith — Tirmidhi" },
+  { text:"A Muslim who plants a tree or sows a field, from which man, birds and animals can eat, is committing an act of charity.", ref:"Hadith — Bukhari" },
+  { text:"Whoever removes a worldly grief from a believer, Allah will remove from him one of the griefs of the Day of Resurrection.", ref:"Hadith — Muslim" },
+  { text:"The heart of the believer is between two fingers of the Most Merciful, and He turns it however He wishes.", ref:"Hadith — Muslim" },
+  { text:"Be in this world as though you were a stranger or a traveller along a path.", ref:"Hadith — Bukhari" },
+  { text:"Seeking knowledge is an obligation upon every Muslim.", ref:"Hadith — Ibn Majah" },
+  { text:"He who knows himself knows his Lord.", ref:"Hadith — attributed tradition" },
+  { text:"Allah has mercy on those who show mercy to others. Show mercy to those on earth, and the One in the heavens will show mercy to you.", ref:"Hadith — Tirmidhi" },
+  { text:"Indeed actions are by intentions, and every person will have what they intended.", ref:"Hadith — Bukhari & Muslim" },
+  { text:"The most beloved of deeds to Allah are those done consistently, even if they are small.", ref:"Hadith — Bukhari" },
+  { text:"Do not be angry, and Paradise will be yours.", ref:"Hadith — Tabarani" },
+  { text:"Whoever is not grateful to people is not grateful to Allah.", ref:"Hadith — Abu Dawud" },
+  { text:"Allah says: I am as My servant thinks I am.", ref:"Hadith Qudsi — Bukhari" },
+  { text:"Tie your camel first, then put your trust in Allah.", ref:"Hadith — Tirmidhi" },
+  { text:"Modesty is part of faith.", ref:"Hadith — Bukhari" },
+  { text:"Verily Allah does not look at your appearance or wealth, but rather He looks at your hearts and actions.", ref:"Hadith — Muslim" },
+  { text:"Cleanliness is half of faith.", ref:"Hadith — Muslim" },
+  { text:"The best of you are those who are best to their families.", ref:"Hadith — Tirmidhi" },
+  { text:"A kind word is charity.", ref:"Hadith — Bukhari & Muslim" },
+  { text:"Whoever loves to meet Allah, Allah loves to meet him.", ref:"Hadith — Bukhari" },
+  { text:"Shall I not tell you about what is better than fasting, prayer, and charity? It is reconciling between people.", ref:"Hadith — Abu Dawud" },
+  { text:"Every act of kindness is charity.", ref:"Hadith — Bukhari" },
+  { text:"The greatest jihad is to battle your own soul, to fight the evil within yourself.", ref:"Hadith — Tirmidhi" },
+  { text:"There is no disease that Allah has created, except that He also has created its treatment.", ref:"Hadith — Bukhari" },
+  { text:"Make du'a to Allah with certainty that He will answer your prayers.", ref:"Hadith — Tirmidhi" },
+  { text:"Whoever guides someone to goodness will have a reward like one who did it.", ref:"Hadith — Muslim" },
+  { text:"This world is the believer's prison and the disbeliever's paradise — and the hereafter is the believer's paradise.", ref:"Hadith — Muslim" }
+];
 
-    <a href="index.html" class="back-button">← Back</a>
+let history = JSON.parse(sessionStorage.getItem('islamHistory')||'[]');
+let total = 0;
 
-    <div class="container">
-        <h1 class="page-title">ISLAM ☪️</h1>
-        <p class="subtitle">Wisdom from the Holy Quran</p>
-
-        <div class="content-card">
-            <div class="quote-container" id="quoteContainer">
-                <div class="quote-icon">☪️</div>
-                <p class="quote-text" id="quoteText">Click the dice to receive divine wisdom</p>
-                <p class="quote-reference" id="quoteReference"></p>
-            </div>
-            
-            <div style="text-align: center;">
-                <button class="dice-button" onclick="drawQuote()">🎲 DRAW VERSE</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const bibleQuotes = [
-            { text: "Indeed, with hardship comes ease.", reference: "Quran 94:6" },
-            { text: "Allah does not burden a soul beyond that it can bear.", reference: "Quran 2:286" },
-            { text: "So remember Me; I will remember you. And be grateful to Me and do not deny Me.", reference: "Quran 2:152" },
-            { text: "And He is with you wherever you are.", reference: "Quran 57:4" },
-            { text: "Verily, in the remembrance of Allah do hearts find rest.", reference: "Quran 13:28" },
-            { text: "And seek help through patience and prayer.", reference: "Quran 2:45" },
-            { text: "Do not lose hope, nor be sad.", reference: "Quran 3:139" },
-            { text: "Indeed, Allah is with those who are patient.", reference: "Quran 8:46" },
-            { text: "And whoever relies upon Allah - then He is sufficient for him.", reference: "Quran 65:3" },
-            { text: "And He found you lost and guided you.", reference: "Quran 93:7" },
-            { text: "So verily, with the hardship, there is relief. Verily, with the hardship, there is relief.", reference: "Quran 94:5-6" },
-            { text: "And when My servants ask you concerning Me, indeed I am near.", reference: "Quran 2:186" },
-            { text: "Allah is the ally of those who believe.", reference: "Quran 2:257" },
-            { text: "And it is He who accepts repentance from His servants and pardons misdeeds.", reference: "Quran 42:25" },
-            { text: "Indeed, my Lord is near and responsive.", reference: "Quran 11:61" },
-            { text: "And be patient, for indeed, Allah does not allow to be lost the reward of those who do good.", reference: "Quran 11:115" },
-            { text: "And whoever does good, male or female, while being a believer - those will enter Paradise.", reference: "Quran 4:124" },
-            { text: "He who created death and life to test you as to which of you is best in deed.", reference: "Quran 67:2" },
-            { text: "And speak to people good words.", reference: "Quran 2:83" },
-            { text: "Indeed, Allah loves those who are constantly repentant and loves those who purify themselves.", reference: "Quran 2:222" }
-        ];
-
-        let quoteHistory = JSON.parse(localStorage.getItem('islamQuoteHistory') || '[]');
-
-        function drawQuote() {
-            let newQuote;
-            let attempts = 0;
-            const maxAttempts = 50;
-
-            // Keep trying until we get a quote not in recent history
-            do {
-                newQuote = bibleQuotes[Math.floor(Math.random() * bibleQuotes.length)];
-                attempts++;
-            } while (quoteHistory.includes(newQuote.reference) && attempts < maxAttempts);
-
-            // Update history (keep last 5)
-            quoteHistory.push(newQuote.reference);
-            if (quoteHistory.length > 5) {
-                quoteHistory.shift();
-            }
-            localStorage.setItem('islamQuoteHistory', JSON.stringify(quoteHistory));
-
-            // Display quote with animation
-            const container = document.getElementById('quoteContainer');
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('quoteText').textContent = `"${newQuote.text}"`;
-                document.getElementById('quoteReference').textContent = newQuote.reference;
-                container.style.transition = 'opacity 0.5s';
-                container.style.opacity = '1';
-            }, 300);
-        }
-    </script>
+function drawQuote() {
+  const btn = document.getElementById('diceBtn');
+  const textEl = document.getElementById('quoteText');
+  const refEl = document.getElementById('quoteRef');
+  btn.classList.add('spinning');
+  setTimeout(() => btn.classList.remove('spinning'), 500);
+  textEl.classList.add('fade');
+  refEl.classList.remove('show');
+  setTimeout(() => {
+    let pool = quotes.filter((_,i) => !history.includes(i));
+    if (pool.length === 0) { history = []; pool = quotes; }
+    const idx = quotes.indexOf(pool[Math.floor(Math.random() * pool.length)]);
+    history.push(idx);
+    if (history.length > 10) history.shift();
+    sessionStorage.setItem('islamHistory', JSON.stringify(history));
+    const q = quotes[idx];
+    textEl.textContent = '\u201C' + q.text + '\u201D';
+    refEl.textContent = q.ref;
+    total++;
+    document.getElementById('counter').textContent = total > 0 ? total + ' verse' + (total>1?'s':'') + ' drawn' : '';
+    textEl.classList.remove('fade');
+    setTimeout(() => refEl.classList.add('show'), 300);
+  }, 350);
+}
+function resetHistory() { history = []; sessionStorage.removeItem('islamHistory'); total = 0; document.getElementById('counter').textContent = ''; }
+</script>
 </body>
 </html>

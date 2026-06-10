@@ -1,287 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buddha Quotes - Cyberlink</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black:ital@1&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RE7ZLZJ8VY');
-    </script>
-
-    <style>
-        :root {
-            --chrome-pink: #ff0844;
-            --chrome-purple: #9d4edd;
-            --chrome-blue: #00b4d8;
-            --chrome-cyan: #4af2ff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: #000;
-            color: #2b2d42;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .video-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(235, 235, 235, 0.82);
-            pointer-events: none;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #2b2d42;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .back-button:hover {
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            transform: translateX(-5px);
-            border-color: transparent;
-        }
-
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 40px 80px;
-        }
-
-        .page-title {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 3rem;
-            font-style: italic;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #6c757d;
-            margin-bottom: 50px;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            padding: 60px 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(200, 200, 200, 0.5);
-        }
-
-        .quote-container {
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px;
-            background: rgba(240, 240, 240, 0.5);
-            border-radius: 20px;
-            margin-bottom: 40px;
-        }
-
-        .quote-icon {
-            font-size: 4rem;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: #2b2d42;
-            margin-bottom: 30px;
-            font-style: italic;
-            font-weight: 300;
-        }
-
-        .quote-reference {
-            font-size: 1.1rem;
-            color: var(--chrome-purple);
-            font-weight: 700;
-        }
-
-        .dice-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-purple));
-            color: white;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 35px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 30px rgba(255, 8, 68, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .dice-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255, 8, 68, 0.4);
-        }
-
-        .dice-button:active {
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 100px 25px 60px; }
-            .page-title { font-size: 2rem; }
-            .content-card { padding: 40px 30px; }
-            .quote-text { font-size: 1.2rem; }
-            .dice-button { padding: 15px 35px; font-size: 1.1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buddha Quotes | Cyberlink</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#c9a227; --gold-light:#f0d060; --gold-dim:#7a5f10; --bg:#0a0608; --text:#e8dcc8; --text-dim:#9b8f7a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'IM Fell English',Georgia,serif;min-height:100vh;overflow-x:hidden}
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1px 1px at 10% 15%,rgba(201,162,39,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 55% 25%,rgba(201,162,39,.4) 0%,transparent 100%),radial-gradient(1px 1px at 75% 80%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 90% 10%,rgba(201,162,39,.6) 0%,transparent 100%),radial-gradient(1px 1px at 20% 90%,rgba(255,255,255,.2) 0%,transparent 100%)}
+  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid rgba(201,162,39,.2);background:rgba(10,6,8,.85);backdrop-filter:blur(10px)}
+  .nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);text-decoration:none;letter-spacing:3px}
+  .nav-back{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-dim);text-decoration:none;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(201,162,39,.3);padding:8px 18px;border-radius:20px;transition:all .3s}
+  .nav-back:hover{color:var(--gold);border-color:var(--gold)}
+  header{position:relative;z-index:2;text-align:center;padding:60px 20px 40px}
+  .eyebrow{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:5px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.8rem,5vw,3rem);background:linear-gradient(135deg,var(--gold-dim),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+  .subtitle{color:var(--text-dim);font-style:italic;font-size:1rem}
+  .arena{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:0 20px 80px}
+  .card{background:linear-gradient(135deg,rgba(26,16,32,.9),rgba(17,13,20,.9));border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:40px 40px 32px;margin-bottom:20px}
+  .quote-icon{font-size:2.5rem;text-align:center;margin-bottom:20px;opacity:.8}
+  .quote-text{font-size:1.3rem;line-height:1.85;font-style:italic;color:var(--text);text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
+  .quote-ref{text-align:center;margin-top:18px;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;opacity:0;transition:opacity .4s .3s}
+  .quote-ref.show{opacity:1}
+  .quote-text.fade{opacity:0}
+  .ornament{text-align:center;color:var(--gold-dim);letter-spacing:6px;margin:20px 0;font-size:1rem}
+  .counter{text-align:center;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--text-dim);margin-bottom:24px}
+  .btn-wrap{text-align:center;margin-top:8px}
+  .btn{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:16px 44px;border-radius:30px;border:none;cursor:pointer;transition:all .3s;background:linear-gradient(135deg,#7a5f10,var(--gold),#c9a227);color:var(--bg);box-shadow:0 0 20px rgba(201,162,39,.3)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 4px 28px rgba(201,162,39,.5)}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  .spinning{animation:spin .5s ease}
+  .reset-bar{text-align:center;margin-top:8px}
+  .reset-btn{background:none;border:none;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:2px;color:var(--text-dim);cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .3s}
+  .reset-btn:hover{color:var(--gold)}
+</style>
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop playsinline preload="auto">
-            <source src="bg.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="stars"></div>
+<nav>
+  <a href="index.html" class="nav-logo">CYBERLINK</a>
+  <a href="index.html" class="nav-back">← Return</a>
+</nav>
+<header>
+  <p class="eyebrow">✦ Buddhist Teachings ✦</p>
+  <h1>BUDDHA ☸️</h1>
+  <p class="subtitle">Wisdom from the Enlightened Path</p>
+</header>
+<div class="arena">
+  <div class="card">
+    <div class="quote-icon">☸️</div>
+    <div class="quote-text" id="quoteText">Press the button below to receive a teaching</div>
+    <div class="ornament">· · ✦ · ·</div>
+    <div class="quote-ref" id="quoteRef"></div>
+  </div>
+  <div class="counter" id="counter"></div>
+  <div class="btn-wrap">
+    <button class="btn" id="diceBtn" onclick="drawQuote()">🎲 &nbsp;Draw a Teaching</button>
+  </div>
+  <div class="reset-bar">
+    <button class="reset-btn" onclick="resetHistory()">✦ Reset History ✦</button>
+  </div>
+</div>
+<script>
+const quotes = [
+  { text:"Peace comes from within. Do not seek it without.", ref:"The Buddha" },
+  { text:"The mind is everything. What you think, you become.", ref:"The Buddha" },
+  { text:"Three things cannot be long hidden: the sun, the moon, and the truth.", ref:"The Buddha" },
+  { text:"No one saves us but ourselves. No one can and no one may. We ourselves must walk the path.", ref:"Dhammapada" },
+  { text:"In the end, only three things matter: how much you loved, how gently you lived, and how gracefully you let go of things not meant for you.", ref:"Buddhist teaching" },
+  { text:"You yourself, as much as anybody in the entire universe, deserve your love and affection.", ref:"The Buddha" },
+  { text:"If you knew what I know about the power of giving, you would not let a single meal pass without sharing it in some way.", ref:"The Buddha" },
+  { text:"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", ref:"The Buddha" },
+  { text:"It is better to travel well than to arrive.", ref:"The Buddha" },
+  { text:"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.", ref:"The Buddha" },
+  { text:"To keep the body in good health is a duty — otherwise we shall not be able to keep the mind strong and clear.", ref:"The Buddha" },
+  { text:"The tongue is like a sharp knife — it kills without drawing blood.", ref:"The Buddha" },
+  { text:"Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.", ref:"Dhammapada" },
+  { text:"What you are is what you have been. What you'll be is what you do now.", ref:"The Buddha" },
+  { text:"Pain is certain, suffering is optional.", ref:"The Buddha" },
+  { text:"If your compassion does not include yourself, it is incomplete.", ref:"The Buddha" },
+  { text:"Do not look for a sanctuary in anyone except yourself.", ref:"The Buddha" },
+  { text:"An idea that is developed and put into action is more important than an idea that exists only as an idea.", ref:"The Buddha" },
+  { text:"Work out your own salvation. Do not depend on others.", ref:"The Buddha" },
+  { text:"There are only two mistakes one can make along the road to truth: not going all the way, and not starting.", ref:"The Buddha" },
+  { text:"Your purpose in life is to find your purpose and give your whole heart and soul to it.", ref:"Buddhist teaching" },
+  { text:"If you find no one to support you on the spiritual path, walk alone. There is no companionship with the immature.", ref:"Dhammapada" },
+  { text:"Holding onto anger is like drinking poison and expecting the other person to die.", ref:"Buddhist tradition" },
+  { text:"Radiate boundless love towards the entire world — above, below, and across — unhindered, without ill will, without enmity.", ref:"Sutta Nipata" },
+  { text:"Hatred does not cease by hatred, but only by love; this is the eternal rule.", ref:"Dhammapada 1:5" },
+  { text:"Just as a mother would protect her only child with her own life, even so let one cultivate a boundless love towards all beings.", ref:"Sutta Nipata" },
+  { text:"Better than a thousand hollow words is one word that brings peace.", ref:"Dhammapada" },
+  { text:"Drop by drop is the water pot filled. Likewise, the wise man, gathering it little by little, fills himself with good.", ref:"Dhammapada" },
+  { text:"The whole secret of existence is to have no fear. Never fear what will become of you, depend on no one. Only the moment you reject all help are you freed.", ref:"The Buddha" },
+  { text:"There is no fire like passion, no crime like hatred, no sorrow like separation, no sickness like hunger of heart, and no joy like the joy of freedom.", ref:"Dhammapada" },
+  { text:"Let go of what has passed. Let go of what may come. Let go of what is happening now. Don't try to figure anything out. Don't try to make anything happen. Relax, right now, and rest.", ref:"Tilopa" },
+  { text:"If you are quiet enough, you will hear the flow of the universe. You will feel its rhythm. Go with this flow. Happiness lies ahead.", ref:"The Buddha" },
+  { text:"Every morning we are born again. What we do today is what matters most.", ref:"The Buddha" },
+  { text:"The secret of health for both mind and body is not to mourn for the past, not to worry about the future, but to live the present moment wisely and earnestly.", ref:"The Buddha" },
+  { text:"Chaos is inherent in all compounded things. Strive on with diligence.", ref:"The Buddha — last words" },
+  { text:"Teach this triple truth to all: a generous heart, kind speech, and a life of service and compassion are the things which renew humanity.", ref:"The Buddha" },
+  { text:"Whatever words we utter should be chosen with care for people will hear them and be influenced by them for good or ill.", ref:"The Buddha" },
+  { text:"The way is not in the sky. The way is in the heart.", ref:"Dhammapada" },
+  { text:"Better than worshipping gods is obedience to the laws of righteousness.", ref:"The Buddha" },
+  { text:"True love is born from understanding.", ref:"Thich Nhat Hanh" },
+  { text:"The present moment is the only moment available to us, and it is the door to all moments.", ref:"Thich Nhat Hanh" },
+  { text:"The most precious gift we can offer anyone is our attention.", ref:"Thich Nhat Hanh" },
+  { text:"Because you are alive, everything is possible.", ref:"Thich Nhat Hanh" },
+  { text:"Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.", ref:"Thich Nhat Hanh" },
+  { text:"To be beautiful means to be yourself. You don't need to be accepted by others. You need to accept yourself.", ref:"Thich Nhat Hanh" },
+  { text:"In the beginner's mind there are many possibilities, but in the expert's mind there are few.", ref:"Shunryu Suzuki" },
+  { text:"You are already complete. Nothing needs to be added.", ref:"Zen teaching" },
+  { text:"Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.", ref:"Zen proverb" },
+  { text:"If you understand, things are just as they are; if you do not understand, things are just as they are.", ref:"Zen saying" },
+  { text:"When you realize how perfect everything is, you will tilt your head back and laugh at the sky.", ref:"The Buddha" },
+  { text:"Do not be too quick to judge, for we know not what karma has placed on another's path.", ref:"Buddhist teaching" },
+  { text:"The flower that blooms in adversity is the rarest and most beautiful of all.", ref:"Buddhist teaching" },
+  { text:"Life is a river always flowing. Do not hold onto things. Work hard.", ref:"The Buddha" },
+  { text:"Purity or impurity depends on oneself. No one can purify another.", ref:"Dhammapada" },
+  { text:"Conquer anger with non-anger. Conquer evil with good. Conquer the miser with generosity. Conquer the liar with truth.", ref:"Dhammapada 17:3" },
+  { text:"To live a pure unselfish life, one must count nothing as one's own in the midst of abundance.", ref:"The Buddha" },
+  { text:"Long is the night to him who is awake; long is a mile to him who is tired; long is life to the foolish who do not know the true law.", ref:"Dhammapada" },
+  { text:"A disciplined mind brings happiness.", ref:"Dhammapada" },
+  { text:"He who envies others does not obtain peace of mind.", ref:"The Buddha" },
+  { text:"Without health, life is not life; it is only a state of langour and suffering.", ref:"The Buddha" },
+  { text:"Just as the great ocean has one taste, the taste of salt, so also this teaching and discipline has one taste, the taste of liberation.", ref:"Udana 5.5" },
+  { text:"Understanding is the heartwood of well-spoken words.", ref:"Sutta Nipata" },
+  { text:"Should a person do good, let him do it again and again. Let him find pleasure therein, for blissful is the accumulation of good.", ref:"Dhammapada" },
+  { text:"They are not following dharma who resort to violence to achieve their purpose.", ref:"Dhammapada" },
+  { text:"Those who have destroyed the roots of jealousy have peace of mind always.", ref:"The Buddha" },
+  { text:"One moment can change a day, one day can change a life, and one life can change the world.", ref:"The Buddha" },
+  { text:"If you propose to speak, always ask yourself: is it true, is it necessary, is it kind?", ref:"The Buddha" },
+  { text:"Not by rituals and resolutions, nor by much learning, nor by celibacy, nor even by meditation can you find the supreme, immortal joy of nirvana until you have extinguished your self-will.", ref:"Majjhima Nikaya" }
+];
 
-    <a href="index.html" class="back-button">← Back</a>
+let history = JSON.parse(sessionStorage.getItem('buddhaHistory')||'[]');
+let total = 0;
 
-    <div class="container">
-        <h1 class="page-title">BUDDHA ☸️</h1>
-        <p class="subtitle">Wisdom from Buddhist Teachings</p>
-
-        <div class="content-card">
-            <div class="quote-container" id="quoteContainer">
-                <div class="quote-icon">☸️</div>
-                <p class="quote-text" id="quoteText">Click the dice to receive divine wisdom</p>
-                <p class="quote-reference" id="quoteReference"></p>
-            </div>
-            
-            <div style="text-align: center;">
-                <button class="dice-button" onclick="drawQuote()">🎲 DRAW TEACHING</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const bibleQuotes = [
-            { text: "Peace comes from within. Do not seek it without.", reference: "Buddha" },
-            { text: "The mind is everything. What you think you become.", reference: "Buddha" },
-            { text: "Three things cannot be long hidden: the sun, the moon, and the truth.", reference: "Buddha" },
-            { text: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", reference: "Buddha" },
-            { text: "Hatred does not cease by hatred, but only by love; this is the eternal rule.", reference: "Dhammapada" },
-            { text: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", reference: "Buddha" },
-            { text: "Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.", reference: "Buddha" },
-            { text: "Better than a thousand hollow words, is one word that brings peace.", reference: "Dhammapada" },
-            { text: "In the end, only three things matter: how much you loved, how gently you lived, and how gracefully you let go of things not meant for you.", reference: "Buddha" },
-            { text: "The root of suffering is attachment.", reference: "Buddha" },
-            { text: "Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned.", reference: "Buddha" },
-            { text: "No one saves us but ourselves. No one can and no one may. We ourselves must walk the path.", reference: "Buddha" },
-            { text: "To be idle is a short road to death and to be diligent is a way of life; foolish people are idle, wise people are diligent.", reference: "Dhammapada" },
-            { text: "Work out your own salvation. Do not depend on others.", reference: "Buddha" },
-            { text: "An insincere and evil friend is more to be feared than a wild beast; a wild beast may wound your body, but an evil friend will wound your mind.", reference: "Buddha" },
-            { text: "To understand everything is to forgive everything.", reference: "Buddha" },
-            { text: "There is no path to happiness: happiness is the path.", reference: "Buddha" },
-            { text: "If you truly loved yourself, you could never hurt another.", reference: "Buddha" },
-            { text: "The only real failure in life is not to be true to the best one knows.", reference: "Buddha" },
-            { text: "Meditate. Live purely. Be quiet. Do your work with mastery. Like the moon, come out from behind the clouds! Shine.", reference: "Buddha" }
-        ];
-
-        let quoteHistory = JSON.parse(localStorage.getItem('buddhaQuoteHistory') || '[]');
-
-        function drawQuote() {
-            let newQuote;
-            let attempts = 0;
-            const maxAttempts = 50;
-
-            // Keep trying until we get a quote not in recent history
-            do {
-                newQuote = bibleQuotes[Math.floor(Math.random() * bibleQuotes.length)];
-                attempts++;
-            } while (quoteHistory.includes(newQuote.reference) && attempts < maxAttempts);
-
-            // Update history (keep last 5)
-            quoteHistory.push(newQuote.reference);
-            if (quoteHistory.length > 5) {
-                quoteHistory.shift();
-            }
-            localStorage.setItem('buddhaQuoteHistory', JSON.stringify(quoteHistory));
-
-            // Display quote with animation
-            const container = document.getElementById('quoteContainer');
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('quoteText').textContent = `"${newQuote.text}"`;
-                document.getElementById('quoteReference').textContent = newQuote.reference;
-                container.style.transition = 'opacity 0.5s';
-                container.style.opacity = '1';
-            }, 300);
-        }
-    </script>
+function drawQuote() {
+  const btn = document.getElementById('diceBtn');
+  const textEl = document.getElementById('quoteText');
+  const refEl = document.getElementById('quoteRef');
+  btn.classList.add('spinning');
+  setTimeout(() => btn.classList.remove('spinning'), 500);
+  textEl.classList.add('fade');
+  refEl.classList.remove('show');
+  setTimeout(() => {
+    let pool = quotes.filter((_,i) => !history.includes(i));
+    if (pool.length === 0) { history = []; pool = quotes; }
+    const idx = quotes.indexOf(pool[Math.floor(Math.random() * pool.length)]);
+    history.push(idx);
+    if (history.length > 10) history.shift();
+    sessionStorage.setItem('buddhaHistory', JSON.stringify(history));
+    const q = quotes[idx];
+    textEl.textContent = '\u201C' + q.text + '\u201D';
+    refEl.textContent = q.ref;
+    total++;
+    document.getElementById('counter').textContent = total > 0 ? total + ' teaching' + (total>1?'s':'') + ' drawn' : '';
+    textEl.classList.remove('fade');
+    setTimeout(() => refEl.classList.add('show'), 300);
+  }, 350);
+}
+function resetHistory() { history = []; sessionStorage.removeItem('buddhaHistory'); total = 0; document.getElementById('counter').textContent = ''; }
+</script>
 </body>
 </html>

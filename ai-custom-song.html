@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Custom Song | Cyberlink</title>
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RE7ZLZJ8VY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RE7ZLZJ8VY');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--pink:#ff0844;--purple:#9d4edd;--blue:#00b4d8;--cyan:#4af2ff}
+
+  body{font-family:'Outfit',sans-serif;color:#e0f0ff;min-height:100vh;overflow-x:hidden;position:relative}
+
+  .video-background{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;background:linear-gradient(135deg,#0a0015 0%,#050010 50%,#0a0020 100%)}
+  .video-background::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(157,78,221,.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,180,216,.1) 0%,transparent 60%)}
+
+  nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 30px;background:rgba(5,0,16,.8);backdrop-filter:blur(10px);border-bottom:1px solid rgba(157,78,221,.3)}
+  .nav-logo{font-family:'Archivo Black',sans-serif;font-size:1.2rem;color:#fff;text-decoration:none;letter-spacing:2px}
+  .nav-back{font-family:'Outfit',sans-serif;font-size:.8rem;color:#aaa;text-decoration:none;letter-spacing:1px;border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:20px;transition:all .3s}
+  .nav-back:hover{color:#fff;border-color:#fff}
+
+  .container{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:40px 20px 80px}
+
+  .hero-badge{display:inline-block;background:linear-gradient(135deg,rgba(157,78,221,.3),rgba(255,8,68,.2));border:1px solid var(--purple);border-radius:30px;padding:8px 20px;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:#c9a0ff;margin-bottom:20px}
+  h1{font-family:'Archivo Black',sans-serif;font-size:clamp(2rem,6vw,3.2rem);line-height:1.1;margin-bottom:16px;background:linear-gradient(135deg,#fff 0%,#c9a0ff 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-sub{color:#aaa;font-size:1.05rem;line-height:1.7;margin-bottom:40px}
+
+  .price-card{background:rgba(157,78,221,.12);border:2px solid var(--purple);border-radius:16px;padding:28px 32px;text-align:center;margin-bottom:32px}
+  .price-tag{font-family:'Archivo Black',sans-serif;font-size:3rem;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .price-note{color:#888;font-size:.9rem;margin-top:6px}
+
+  .what-you-get{background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.25);border-radius:14px;padding:28px 32px;margin-bottom:32px}
+  .what-you-get h3{font-family:'Archivo Black',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin-bottom:18px}
+  .feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .feature-list li{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:#c0d8f0;line-height:1.5}
+  .feature-list li::before{content:'✦';color:var(--purple);flex-shrink:0;margin-top:2px}
+
+  .how-it-works{margin-bottom:32px}
+  .how-it-works h3{font-family:'Archivo Black',sans-serif;font-size:1rem;letter-spacing:2px;color:#fff;text-transform:uppercase;margin-bottom:18px}
+  .steps{display:flex;flex-direction:column;gap:0}
+  .step{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .step:last-child{border-bottom:none}
+  .step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:.8rem;color:#fff;flex-shrink:0;margin-top:2px}
+  .step-text h4{font-weight:700;font-size:.95rem;color:#fff;margin-bottom:4px}
+  .step-text p{font-size:.88rem;color:#888;line-height:1.5}
+
+  .form-section{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 32px;margin-bottom:28px}
+  .form-section h3{font-family:'Archivo Black',sans-serif;font-size:1rem;letter-spacing:2px;color:#fff;text-transform:uppercase;margin-bottom:20px}
+  .form-group{margin-bottom:18px}
+  label{display:block;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;color:#888;margin-bottom:8px}
+  input,textarea,select{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 14px;color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;transition:border .3s;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--purple)}
+  select option{background:#1a0030;color:#fff}
+  textarea{min-height:100px}
+
+  .pay-btn{display:block;width:100%;padding:18px;background:linear-gradient(135deg,var(--purple),var(--pink));border:none;border-radius:12px;font-family:'Archivo Black',sans-serif;font-size:1.1rem;color:#fff;cursor:pointer;letter-spacing:1px;transition:all .3s;text-align:center;text-decoration:none}
+  .pay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(157,78,221,.5)}
+
+  .small-note{text-align:center;color:#666;font-size:.8rem;margin-top:12px;line-height:1.5}
+
+  .genre-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chip{background:rgba(157,78,221,.15);border:1px solid rgba(157,78,221,.3);border-radius:20px;padding:6px 14px;font-size:.8rem;color:#c9a0ff;cursor:pointer;transition:all .2s;user-select:none}
+  .chip.selected{background:rgba(157,78,221,.4);border-color:var(--purple);color:#fff}
+</style>
+</head>
+<body>
+<div class="video-background"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">CYBERLINK</a>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<div class="container">
+  <div style="text-align:center;margin-bottom:32px">
+    <div class="hero-badge">🎵 Powered by AI</div>
+    <h1>Your Own Custom Song</h1>
+    <p class="hero-sub">Tell us about someone — a person, a memory, a feeling — and we'll generate a bespoke song made just for you. A gift nobody else can give.</p>
+  </div>
+
+  <div class="price-card">
+    <div class="price-tag">£10</div>
+    <div class="price-note">One custom AI-generated song · delivered within 24 hours</div>
+  </div>
+
+  <div class="what-you-get">
+    <h3>What You Get</h3>
+    <ul class="feature-list">
+      <li>A full original song written and generated by AI based on your brief</li>
+      <li>Your choice of genre — pop, R&B, hip hop, acoustic, electronic, and more</li>
+      <li>Personalised lyrics featuring real names, places, and details you provide</li>
+      <li>Audio file delivered via email — ready to share, play, or gift</li>
+      <li>Perfect for birthdays, anniversaries, parties, proposals, or just for fun</li>
+    </ul>
+  </div>
+
+  <div class="how-it-works">
+    <h3>How It Works</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Fill in the brief below</h4>
+          <p>Tell us who the song is for, what it should feel like, and any details you want included.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Pay £10</h4>
+          <p>Secure payment via card or digital wallet. Takes 30 seconds.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Receive your song</h4>
+          <p>We'll create and send your custom track within 24 hours — usually much faster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Your Song Brief</h3>
+
+    <div class="form-group">
+      <label>Who is the song for?</label>
+      <input type="text" id="songFor" placeholder="e.g. My mum Sarah, my mate Dave, my girlfriend">
+    </div>
+
+    <div class="form-group">
+      <label>What's the occasion or theme?</label>
+      <input type="text" id="occasion" placeholder="e.g. Birthday, love song, friendship tribute, just for laughs">
+    </div>
+
+    <div class="form-group">
+      <label>Tell us about them — the more detail the better</label>
+      <textarea id="details" placeholder="e.g. She loves dogs, lives in Liverpool, always laughing, been friends 10 years, reminds me of summers in Spain..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Pick a genre (tap to select)</label>
+      <div class="genre-chips" id="genreChips">
+        <div class="chip" onclick="toggleChip(this)">Pop</div>
+        <div class="chip" onclick="toggleChip(this)">R&B</div>
+        <div class="chip" onclick="toggleChip(this)">Hip Hop</div>
+        <div class="chip" onclick="toggleChip(this)">Acoustic</div>
+        <div class="chip" onclick="toggleChip(this)">Electronic</div>
+        <div class="chip" onclick="toggleChip(this)">Soul</div>
+        <div class="chip" onclick="toggleChip(this)">Reggae</div>
+        <div class="chip" onclick="toggleChip(this)">Rock</div>
+        <div class="chip" onclick="toggleChip(this)">Jazz</div>
+        <div class="chip" onclick="toggleChip(this)">Dance / Club</div>
+        <div class="chip" onclick="toggleChip(this)">Country</div>
+        <div class="chip" onclick="toggleChip(this)">Surprise Me</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Mood</label>
+      <select id="mood">
+        <option value="">Select a mood...</option>
+        <option>Uplifting & celebratory</option>
+        <option>Funny & playful</option>
+        <option>Heartfelt & emotional</option>
+        <option>Romantic & tender</option>
+        <option>Hype & energetic</option>
+        <option>Chill & nostalgic</option>
+        <option>Mix of funny and sweet</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Your email (for delivery)</label>
+      <input type="email" id="email" placeholder="your@email.com">
+    </div>
+  </div>
+
+  <!-- Stripe payment button — replace href with your Stripe link -->
+  <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_STRIPE_LINK" class="pay-btn" id="payBtn" onclick="handlePay(event)">
+    💳 &nbsp;Pay £10 — Get My Custom Song
+  </a>
+  <p class="small-note">Card, Apple Pay & Google Pay accepted · Secure checkout · Your brief is sent with your payment confirmation</p>
+</div>
+
+<script>
+function toggleChip(el) {
+  // Only one genre at a time
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function handlePay(e) {
+  const songFor = document.getElementById('songFor').value.trim();
+  const details = document.getElementById('details').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const genre = document.querySelector('.chip.selected')?.textContent || '';
+  const mood = document.getElementById('mood').value;
+  const occasion = document.getElementById('occasion').value.trim();
+
+  if (!songFor || !details || !email) {
+    e.preventDefault();
+    alert('Please fill in who the song is for, some details about them, and your email address.');
+    return;
+  }
+  // Brief is stored in sessionStorage so you can reference it post-payment if needed
+  sessionStorage.setItem('songBrief', JSON.stringify({ songFor, occasion, details, genre, mood, email }));
+}
+</script>
+</body>
+</html>
