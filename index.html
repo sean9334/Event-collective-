@@ -613,6 +613,149 @@
             .construction-banner p { font-size: 1.1rem; }
             .email-signup { flex-direction: column; }
         }
+
+        /* ── Products Bar ── */
+        .products-bar {
+            position: relative;
+            z-index: 10;
+            margin: 60px 0 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            border: 2px solid rgba(200, 200, 200, 0.5);
+            padding: 40px 40px 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .products-bar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .products-bar-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .products-bar-link {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.3);
+            white-space: nowrap;
+        }
+        .products-bar-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 8, 68, 0.5);
+        }
+        .products-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .pb-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(200, 200, 200, 0.5);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+        .pb-card:hover {
+            border-color: var(--chrome-pink);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(255, 8, 68, 0.25);
+        }
+        .pb-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+        }
+        .pb-image img {
+            width: 65%;
+            height: 65%;
+            object-fit: contain;
+            transition: transform 0.4s;
+        }
+        .pb-card:hover .pb-image img { transform: scale(1.06); }
+        .pb-body {
+            padding: 16px 18px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .pb-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--chrome-purple);
+            margin-bottom: 5px;
+        }
+        .pb-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .pb-desc {
+            font-size: 0.82rem;
+            color: #2b2d42;
+            line-height: 1.55;
+            flex: 1;
+            margin-bottom: 14px;
+        }
+        .pb-cta {
+            display: block;
+            text-align: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--chrome-pink), var(--chrome-blue));
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 12px rgba(255, 8, 68, 0.25);
+        }
+        .pb-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 8, 68, 0.4);
+        }
+        .products-bar-disclosure {
+            text-align: center;
+            font-size: 0.72rem;
+            color: rgba(43, 45, 66, 0.4);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .products-bar-grid { grid-template-columns: 1fr; }
+            .products-bar { padding: 30px 20px 40px; }
+            .products-bar-title { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -794,6 +937,57 @@
                     </a>
                 </div>
             </div>
+        </div>
+
+        <!-- Products Bar -->
+        <div class="products-bar">
+            <div class="products-bar-header">
+                <span class="products-bar-title">🛒 PRODUCTS</span>
+                <a href="products.html" class="products-bar-link">See All Products ↗</a>
+            </div>
+            <div class="products-bar-grid">
+
+                <a class="pb-card" href="https://amzn.to/4emneLU" target="_blank" rel="noopener sponsored">
+                    <div class="pb-image">
+                        <img src="https://m.media-amazon.com/images/I/51-XTocZOBL._AC_SL1000_.jpg"
+                             alt="LARS NYSØM Water Bottle" onerror="this.style.display='none'"/>
+                    </div>
+                    <div class="pb-body">
+                        <span class="pb-label">Hydration</span>
+                        <h3 class="pb-title">LARS NYSØM Insulated Water Bottle</h3>
+                        <p class="pb-desc">Premium stainless steel thermo flask. 12h hot, 24h cold. Leak-proof and dishwasher safe.</p>
+                        <span class="pb-cta">View on Amazon ↗</span>
+                    </div>
+                </a>
+
+                <a class="pb-card" href="https://amzn.to/4vauaDh" target="_blank" rel="noopener sponsored">
+                    <div class="pb-image">
+                        <img src="https://m.media-amazon.com/images/I/41oOu-jKpfL._AC_SL1000_.jpg"
+                             alt="FMG Desktop Mirror Black" onerror="this.style.display='none'"/>
+                    </div>
+                    <div class="pb-body">
+                        <span class="pb-label">Lifestyle</span>
+                        <h3 class="pb-title">FMG Free Standing Desktop Mirror</h3>
+                        <p class="pb-desc">Sleek black double-sided mirror. 1x + 3x magnification, 360° swivel. Perfect for desk or bathroom.</p>
+                        <span class="pb-cta">View on Amazon ↗</span>
+                    </div>
+                </a>
+
+                <a class="pb-card" href="https://amzn.to/4a01Xq9" target="_blank" rel="noopener sponsored">
+                    <div class="pb-image">
+                        <img src="https://m.media-amazon.com/images/I/71qQzKwGZ6L._AC_SL1500_.jpg"
+                             alt="Optimum Nutrition Gold Standard Whey" onerror="this.style.display='none'"/>
+                    </div>
+                    <div class="pb-body">
+                        <span class="pb-label">Fitness</span>
+                        <h3 class="pb-title">ON Gold Standard 100% Whey</h3>
+                        <p class="pb-desc">World's #1 whey protein. 24g protein per serving, 5.5g BCAAs. Trusted by athletes for 35+ years.</p>
+                        <span class="pb-cta">View on Amazon ↗</span>
+                    </div>
+                </a>
+
+            </div>
+            <p class="products-bar-disclosure">As an Amazon Associate, Cyberlink earns from qualifying purchases.</p>
         </div>
 
         <!-- Construction Banner -->
